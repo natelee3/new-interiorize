@@ -21,6 +21,9 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <footer>
+        <p>Interiorize Footer</p>
+      </footer>
     </div>
   );
 }
