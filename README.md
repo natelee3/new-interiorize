@@ -1,6 +1,1 @@
 # Interiorize
-
-
-
-
-# Hello from logan!
