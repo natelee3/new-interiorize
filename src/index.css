@@ -12,8 +12,7 @@ body {
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -66,19 +65,23 @@ p, a, button {
 
 html,
 body {
-  height: 100%;
-  position: relative;
+    height: 100%;
+    position: relative;
 }
+
 .App {
-  min-height: 100vh; /* will cover the 100% of viewport */
-  overflow: hidden;
-  display: block;
-  position: relative;
-  padding-bottom: 100px; /* height of your footer */
+    min-height: 100vh;
+    /* will cover the 100% of viewport */
+    overflow: hidden;
+    display: block;
+    position: relative;
+    padding-bottom: 100px;
+    /* height of your footer */
 }
+
 footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
 }
