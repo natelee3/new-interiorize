@@ -23,6 +23,10 @@ p, a, button {
 
 /* BUTTONS */
 
+button {
+  cursor:pointer;
+}
+
 .primaryBtn {
   background-color: #244d4d;
   border:none;

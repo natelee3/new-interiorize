@@ -108,11 +108,17 @@ nav img {
 
     .logo {
         width: 250px;
+        margin-left: 5px;
+        
     }
 
-    nav img {
-        margin-left: 5px
-    }
 
 
 }
+
+/* Galaxy Fold */
+@media(max-width: 320px){ 
+    .logo {
+        width: 200px;
+    }
+  }
