@@ -29,7 +29,7 @@ const Navbar = () => {
             </li>
             <li className="userProfileLink">
               {/* If user is signed in show user Profile else show Login */}
-              <a href="#">User Profile</a>
+              <a href="/user-profile">User Profile</a>
             </li>
           </ul>
         </div>
