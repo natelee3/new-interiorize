@@ -110,5 +110,9 @@ nav img {
         width: 250px;
     }
 
+    nav img {
+        margin-left: 5px
+    }
+
 
 }
