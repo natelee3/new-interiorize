@@ -3,13 +3,21 @@ import { useState } from "react";
 // To do: add values once exact db values received
 // Make margins and padding perfect. 
 // Make mobile responsive
+
 const Modal = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   const handleClick = (event) => {
     event.preventDefault();
     setIsVisible(!isVisible);
+    scrollToTop();
   };
+
+  //Useful for mobile devices. User doesn't have to scroll all the way to the top to see the form.
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
 
   return (
     <>

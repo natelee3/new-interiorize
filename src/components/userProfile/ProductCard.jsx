@@ -13,7 +13,6 @@ const ProductCard = () => {
     <>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
         <div className="productContainer">
-          <ProductCard />
           <img
             src="https://api.interiorize.design/images/2_piece_cement_metal_table_vase_set.jpg"
             alt="item on the way"

@@ -1,16 +1,14 @@
-import { useState } from "react";
-import ReactCardFlip from "react-card-flip";
+import ProductCard from './ProductCard';
 import Modal from './Modal';
 import "./userprofile.css";
 
+//To do:
+// map through real data and send to productCards and previous orders.
+//Add ternary statements once we have data
+// Fill out userpreferences with real data.
+// Review functionality is backlogged.
+
 const UserProfile = () => {
-  const [isFlipped, setIsFlipped] = useState(false);
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    setIsFlipped(!isFlipped);
-  };
-
   return (
     <>
       <div className="wrapper">
@@ -21,47 +19,10 @@ const UserProfile = () => {
             {/* Ternary statement Displays: 'you've got items on the way' or 'schedule an order!' based on status */}
             <p>You've got items on the way! </p>
             <div className="shipmentContainer">
-          
-              <div className="productContainer">
-                <img
-                  src="https://api.interiorize.design/images/desoto_oriental_area_rug.jpeg"
-                  alt="item on the way"
-                  className="productImage"
-                />
-                <button>View More</button>
-              </div>
-              <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-                <div className="productContainer">
-                  <img
-                    src="https://api.interiorize.design/images/bohemian_landscape_painting.jpg"
-                    alt="item on the way"
-                    className="productImage"
-                  />
-                  <button onClick={(event) => handleClick(event)}>
-                    View More
-                  </button>
-                </div>
-                <div className="productContainer">
-                  <h3>Product Name Goes Here</h3>
-                  <p>
-                    Product Description: Lorem ipsum dolor sit amet, consectetur
-                    adipiscing elit. Quisque eget sapien ipsum. Suspendisse eget
-                    aliquet quam, vel venenatis elit. Etiam lacinia sit amet
-                    urna vel semper.
-                  </p>
-                  <button onClick={(event) => handleClick(event)}>
-                    Return
-                  </button>
-                </div>
-              </ReactCardFlip>
-              <div className="productContainer">
-                <img
-                  src="https://api.interiorize.design/images/desoto_oriental_area_rug.jpeg"
-                  alt="item on the way"
-                  className="productImage"
-                />
-                <button>View More</button>
-              </div>
+              {/* Fake data rn later on we will do a map and send the right information to each productCard */}
+              <ProductCard/>
+              <ProductCard/>
+              <ProductCard/>
             </div>
             <button type="button" className="primaryBtn">
               Schedule An Order
@@ -108,7 +69,7 @@ const UserProfile = () => {
             <div className="preferencesRow">
               <div>
                 <h3>Budget</h3>
-                <p>Average - $80</p>
+                <p>$80</p>
                 <h3>Color Palette</h3>
                 <p>White, blue, red</p>
                 <h3>Style</h3>
