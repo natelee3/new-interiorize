@@ -1,8 +1,10 @@
+/* TOP SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 .homeMainContainer {
     display: flex;
     /* background-color: bisque; */
     /* width: 80%; */
-    height: 500px;
+    height: 600px;
     /* margin: auto; */
     /* min-width: 700px; */
     max-width: 640px;
@@ -32,7 +34,6 @@
     z-index: 1;
     position: absolute;
     left: 30%;
-    /* right: 8%%; */
     top: 150px;
 }
 
@@ -63,6 +64,9 @@
     color: white;
 }
 
+
+/* HOW IT WORKS SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
 .lowerTitle {
     margin: auto;
     display: flex;
@@ -75,8 +79,9 @@
 .lowerContainer {
     display: flex;
     flex-direction: row;
-    /* background-color: darkgrey; */
     justify-content: space-evenly;
+    height: fit-content;
+    margin-bottom: 10px;
 }
 
 .lowerBoxes {
@@ -84,9 +89,8 @@
     flex-direction: column;
     width: 25%;
     max-width: 300px;
-    height: 300px;
+    height: fit-content;
     justify-content: space-between;
-    /* background-color: darkorange; */
 }
 
 .icons {
@@ -94,6 +98,81 @@
     width: 30%;
     margin: auto;
 }
+
+.subContent {
+    margin: 10px;
+    text-align: center;
+}
+
+.subTitles {
+    text-align: center;
+}
+
+
+/* END PAGE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.endPageContainer {
+    display: flex;
+    margin: auto;
+    margin-top: 80px;
+    width: 100%;
+    height: 600px;
+    height: fit-content;
+    /* background-color: green; */
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.pictureBox {
+    width: 40%;
+    margin: auto;
+}
+
+.greenChairs {
+    width: 95%;
+    margin: 15px;
+}
+
+.backdropBox {
+    background-color: #244d42;
+    width: 95%;
+    height: 394px;
+}
+
+.endTextBox {
+    width: 40%;
+    padding-left: 20px;
+    padding-right: 20px;
+    align-content: center;
+    align-items: center;
+    margin: auto;
+    text-align: center;
+}
+
+.endTextH1 {
+    text-align: center;
+    margin: auto;
+}
+
+.endTextP {
+    text-align: center;
+    margin: auto;
+    margin-top: 25px;
+}
+
+.learnButton {
+    width: 200px;
+    margin: auto;
+    justify-content: center;
+    height: 50px;
+    border: 1px solid white;
+    background-color: #244d42;
+    color: white;
+    margin-top: 25px;
+}
+
+
+/* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 @media screen and (min-width: 280px) and (max-width: 640px) {
     html {
@@ -119,6 +198,7 @@
     .mainBox2 {
         display: flex;
         width: 100vw;
+        height: 455px;
         position: relative;
         margin: 0;
         top: 0;
@@ -147,20 +227,124 @@
     }
     .lowerBoxes {
         width: 85%;
+        height: fit-content;
         margin: auto;
         justify-content: center;
+        padding-bottom: 25px;
+        margin-bottom: 25px;
+        border-bottom: 1px solid gray;
     }
-    .subTitles {
+    .endPageContainer {
+        display: flex;
+        margin: auto;
+        margin-top: 25px;
+        width: 100%;
+        height: fit-content;
+        /* background-color: green; */
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .pictureBox {
+        width: 95%;
+        margin: auto;
+    }
+    .endTextBox {
+        width: 80%;
+        padding-left: 20px;
+        padding-right: 20px;
+        align-content: center;
+        align-items: center;
+        margin: auto;
         text-align: center;
     }
 }
 
 @media screen and (min-width: 641px) and (max-width: 1040px) {
+    .homeMainContainer {
+        display: flex;
+        flex-direction: column-reverse;
+        width: 100%;
+        top: 0;
+        min-width: 375px;
+        height: auto;
+    }
     .mainBox1 {
+        display: flex;
+        position: relative;
         left: 0;
+        top: 0;
+        width: 100vw;
+        text-align: center;
+        padding-bottom: 15px;
     }
     .mainBox2 {
-        left: 35%;
+        display: flex;
+        background-color: tomato;
+        width: 100%;
+        height: 455px;
+        position: relative;
+        margin: 0;
+        top: 0;
+        left: 0;
+    }
+    .homepageImg2 {
+        position: absolute;
+        min-width: 100vw;
+        min-height: 440px;
+    }
+    .startButton {
+        margin: auto;
+        height: 20%;
+        width: 50%;
+        border: 1px solid white;
+        background-color: transparent;
+        color: white;
+    }
+    .lowerTitle {
+        height: 100px;
+    }
+    .lowerContainer {
+        justify-content: center;
+        /* flex-direction: column; */
+        margin: auto;
+    }
+    .lowerBoxes {
+        width: 85%;
+        margin: auto;
+        justify-content: center;
+    }
+    .greetingContent {
+        width: 75%;
+        text-align: center;
+        margin: auto;
+    }
+    .endPageContainer {
+        display: flex;
+        margin: auto;
+        margin-top: 80px;
+        width: 100%;
+        height: fit-content;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .pictureBox {
+        width: 95%;
+        margin: auto;
+    }
+    .endTextBox {
+        width: 50%;
+        padding-left: 20px;
+        padding-right: 20px;
+        align-content: center;
+        align-items: center;
+        margin: auto;
+        text-align: center;
+    }
+}
+
+@media screen and (min-width: 1041px) and (max-width: 1179px) {
+    .greetingContent {
+        font-size: 1rem;
     }
 }
 
@@ -171,6 +355,9 @@
     .mainBox2 {
         left: 35%;
     }
+    .greetingContent {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (min-width: 1501px) and (max-width: 1685px) {
@@ -179,6 +366,9 @@
     }
     .mainBox2 {
         left: 42%;
+    }
+    .greetingContent {
+        font-size: 1rem;
     }
 }
 
@@ -189,6 +379,9 @@
     .mainBox2 {
         left: 43%;
     }
+    .greetingContent {
+        font-size: 1rem;
+    }
 }
 
 @media screen and (min-width: 1901px) {
@@ -197,5 +390,8 @@
     }
     .mainBox2 {
         left: 45%;
+    }
+    .greetingContent {
+        font-size: 1rem;
     }
 }
