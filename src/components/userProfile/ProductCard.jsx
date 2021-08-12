@@ -12,22 +12,22 @@ const ProductCard = () => {
   return (
     <>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-        <div className="productContainer">
+        <div className="productContainer" onClick={(event) => handleClick(event)}>
           <img
             src="https://api.interiorize.design/images/2_piece_cement_metal_table_vase_set.jpg"
             alt="item on the way"
             className="productImage"
           />
-          <button onClick={(event) => handleClick(event)}>View More</button>
+          <button>View More</button>
         </div>
-        <div className="productContainer">
+        <div className="productContainer" onClick={(event) => handleClick(event)}>
           <h3>Product Name Goes Here</h3>
           <p>
             Product Description: Lorem ipsum dolor sit amet, consectetur
             adipiscing elit. Quisque eget sapien ipsum. Suspendisse eget aliquet
             quam, vel venenatis elit. Etiam lacinia sit amet urna vel semper.
           </p>
-          <button onClick={(event) => handleClick(event)}>Return</button>
+          <button>View Less</button>
         </div>
       </ReactCardFlip>
     </>

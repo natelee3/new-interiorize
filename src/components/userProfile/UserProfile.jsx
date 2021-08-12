@@ -6,7 +6,7 @@ import "./userprofile.css";
 // map through real data and send to productCards and previous orders.
 //Add ternary statements once we have data
 // Fill out userpreferences with real data.
-// Review functionality is backlogged.
+// Review functionality is backlogged - just have placeholder rn
 
 const UserProfile = () => {
   return (
