@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className={!!active ? "navbar-links active" : "navbar-links"}>
           <ul>
             <li>
-              <a href="#">Shop</a>
+              <a href="/shop">Shop</a>
             </li>
             <li>
               <a href="#">Style Quiz</a>
