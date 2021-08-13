@@ -1,9 +1,40 @@
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import React, { useState } from 'react'
+import axios from "axios";
+// import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import "./shop.css"
 import "./shopDetails.css"
 
 
 const Shop = () => {
+    const [shopData, setShopData] = useState([]);
+    // const [item_name, setItemName] = useState("name");
+    // const [description, setDescription] = useState("description");
+    // const [img_src, setImgSrc] = useState("");
+    // const [price, SetPrice] = useState("");
+    // const [brand, SetBrand] = useState("");
+    // const [category_name, SetCategoryName] = useState("");
+    // const [color_name, SetColorName] = useState("");
+    // const [tags, SetTags] = useState("");
+
+    const getShopData = () => {
+        axios({
+        method: "GET",
+        url: `https://api.interiorize.design/items`,
+        })
+        .then((response) => {
+            console.log("Response is: ", response.data);  
+
+            // setItemName(response.data.item_name);
+            // setDescription(response.data.description);
+            // console.log("description: ", response.data.description)
+            // setImgSrc(response.data.img_src);
+            setShopData(response.data);
+
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
 
     return (
         <>
@@ -21,46 +52,84 @@ const Shop = () => {
                             <li>Bohemian</li>
                         </ul>
                         <hr />
+
                         <h2 className="detailTitle">Color</h2>
-                        <ul>
-                            <li>Blue</li>
-                            <li>White</li>
-                            <li>Yellow</li>
-                            <li>Red</li>
-                        </ul>
-                        <div>
+                        <div className="sideSection">
                             <div>
-                                <input type="checkbox" name="check-1" value="check-1" id="check-1" />
+                                <input type="checkbox" name="color-check-1" value="check-1" id="check-1" />
                                 <label for="check-1">Black</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="check-2" value="check-2" id="check-2" />
+                                <input type="checkbox" name="color-check-2" value="check-2" id="check-2" />
                                     <label for="check-2">Blue</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="check-3" value="check-3" id="check-3" />
+                                <input type="checkbox" name="color-check-3" value="check-3" id="check-3" />
                                 <label for="check-3">Green</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="check-2" value="check-2" id="check-2" />
+                                <input type="checkbox" name="color-check-4" value="check-2" id="check-2" />
                                     <label for="check-2">Red</label>
                             </div>
                             <div>
-                                <input type="checkbox" name="check-3" value="check-3" id="check-3" />
+                                <input type="checkbox" name="color-check-5" value="check-3" id="check-3" />
                                 <label for="check-3">Green</label>
                             </div>
                         </div>
                         <hr />
+
                         <h2 className="detailTitle">Price</h2>
-                        <ul >
-                            <li>$0 - $40</li>
-                            <li>$40 - $80</li>
-                            <li>$80 - $120</li>
-                        </ul>
+                        <div className="sideSection">
+                            <div>
+                                <input type="checkbox" name="check-1" value="check-1" id="check-1" />
+                                <label for="check-1">$0 - $40</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="check-2" value="check-2" id="check-2" />
+                                    <label for="check-2">$40 - $80</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="check-3" value="check-3" id="check-3" />
+                                <label for="check-3">$80 - $120</label>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+
+
+
                 <div className="itemContainer">
+
+
+                    <button id="button1" onClick={() => {
+                        getShopData();
+                    }}
+                    >
+                    Get Items
+                    </button>
+
                     <div className="itemCard">
+                        <ul className="itemList">
+                        {shopData.length > 0 ?(
+                            shopData.map((item, index) => (
+                            <>
+                                <ul className="itemUl">
+                                    <li kkey={`${item.item_name}-${index}`}>
+                                        <img className="itemImg" src={`https://api.interiorize.design/images/${item.img_src}`} alt="Img of Item" />
+                                        <p>{item.item_name}</p>
+                                        <p>Description : {item.description}</p>
+                                        <button type="button">See More</button>
+                                    </li>
+                                </ul>
+                            </>
+                            ))
+                        ): <></>}
+                        </ul> 
+                    </div>
+
+
+                    {/* <div className="itemCard">
                         <div className="itemImg">
                             <img></img>
                         </div>
@@ -69,37 +138,9 @@ const Shop = () => {
                             <p>Description. Button sends to item description page. Or just flips card?</p>
                             <button type="button">See More</button>
                         </div>
-                    </div>
-                    <div className="itemCard">
-                        <div className="itemImg">
-                            <img></img>
-                        </div>
-                        <div className="itemDescription">
-                            <p>Name</p>
-                            <p>Description. Button sends to item description page. Or just flips card?</p>
-                            <button type="button">See More</button>
-                        </div>
-                    </div>
-                    <div className="itemCard">
-                        <div className="itemImg">
-                            <img></img>
-                        </div>
-                        <div className="itemDescription">
-                            <p>Name</p>
-                            <p>Description. Button sends to item description page. Or just flips card?</p>
-                            <button type="button">See More</button>
-                        </div>
-                    </div>
-                    <div className="itemCard">
-                        <div className="itemImg">
-                            <img></img>
-                        </div>
-                        <div className="itemDescription">
-                            <p>Name</p>
-                            <p>Description. Button sends to item description page. Or just flips card?</p>
-                            <button type="button">See More</button>
-                        </div>
-                    </div>
+                    </div>  */}
+
+
                 </div>
 
 
