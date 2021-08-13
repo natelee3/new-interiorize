@@ -137,12 +137,14 @@ button.modal__close {
   margin-bottom: 10px;
 }
 
-.modal__content select, input {
-    border-radius: 5px;
-    margin-top: 10px;
-    padding:5px 3px;
-    border: 1px solid rgb(199, 199, 199); 
-    box-shadow: 0px 8px 15px rgba(221, 221, 221, 0.459);
+.modal__content select,
+input {
+  border-radius: 5px;
+  margin-top: 10px;
+  padding: 5px 3px;
+  border: 1px solid rgb(199, 199, 199);
+  box-shadow: 0px 8px 15px rgba(221, 221, 221, 0.459);
+  font-family:"Open Sans", sans-serif;
 }
 
 .colorSelectRow {
@@ -161,11 +163,141 @@ button.modal__close {
   margin-right: 22px;
 }
 
-.avoidLabel, .colorLabel {
+.avoidLabel,
+.colorLabel {
   font-weight: 600;
   margin-top: 12px;
 }
 
 .modal__content .primaryBtn {
-    margin-top: 6px;
+  margin-top: 6px;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media screen and (max-width: 960px) {
+  .wrapper {
+    width: auto;
+  }
+  .shipmentContainer {
+    flex-direction: column;
+    width: auto;
+  }
+
+  .shipmentCol {
+    padding: 15px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  h1 {
+    margin-top: -20px;
+  }
+
+  .userPreferencesCol {
+    margin-left: 0px;
+    padding: 15px;
+  }
+
+  .userPreferencesCol h2 {
+    margin-top: 0px;
+  }
+
+  .modal__content h1 {
+    margin-top: 25px;
+  }
+
+  .modal__content {
+    margin-left: 10px;
+    margin-right: 10px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .avoidRow label {
+    margin-right: 2px;
+  }
+}
+
+/* IPAD */
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1124px) {
+  .shipmentContainer {
+    flex-direction: row;
+  }
+
+  .modal__content h1 {
+    margin-top: 25px;
+  }
+
+  .wrapper {
+    width: auto;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userPreferencesCol {
+    margin-left: 0px;
+    padding: 15px;
+    flex-direction: column;
+    width: 724px;
+  }
+
+  .userPreferencesCol h2 {
+    margin-top: 10px;
+  }
+
+}
+
+/* IPAD PRO  */
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .wrapper {
+    width: auto;
+  }
+  .userPreferencesCol {
+    margin-left: 0px;
+    padding: 15px;
+    flex-direction: column;
+    width: 724px;
+  }
+
+  .userPreferencesCol h2 {
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) and (min-width: 637px) {
+  .shipmentContainer {
+    flex-direction: row;
+    width: auto;
+  }
+
+  .shipmentCol, .userPreferencesCol {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+}
+
+/* GALAXY FOLD */
+
+@media(max-width: 320px){ 
+  .modal__content {
+      width: 280px;
+      height: 800px;
+  }
+
+  .colorSelectRow {
+    flex-direction: column;
+  }
 }
