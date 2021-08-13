@@ -22,7 +22,7 @@ const Navbar = () => {
               <a href="#">Shop</a>
             </li>
             <li>
-              <a href="#">Style Quiz</a>
+              <a href="/style-quiz">Style Quiz</a>
             </li>
             <li>
               <a href="#">Register</a>
