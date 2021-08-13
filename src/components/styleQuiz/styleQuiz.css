@@ -72,3 +72,9 @@
 .styleCol input:checked + .styleImg {
   filter: none;
 }
+
+/* COLOR SELECTION + HIDDEN DIVS */
+
+.hidden {
+  display:none;
+}
