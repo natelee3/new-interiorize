@@ -33,7 +33,8 @@ const Navbar = () => {
               <a href="/user-profile">User Profile</a>
             </li>
             <li className="cartIcon">
-              <a href="/user-profile">  <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" /></a>
+              <a href="/#"> 
+              <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" /></a>
             </li>
           </ul>
         </div>
