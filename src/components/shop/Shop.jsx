@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./shop.css"
@@ -21,7 +21,11 @@ const Shop = (props) => {
         .catch((error) => {
             console.log(error);
         });
-    }
+    };
+
+    useEffect(() => {
+        getShopData();
+    }, []);
 
     return (
         <>
@@ -125,9 +129,7 @@ const Shop = (props) => {
                                             <img className="itemImg" src={`https://api.interiorize.design/images/${item.img_src}`} alt="Img of Item" />
                                             <p className="itemName">{item.item_name}</p>
                                             <p className="itemPrice">${item.price}</p>
-                                            <a href="/shop-intro/shop/item-details">
-                                                <button className="primaryBtn" type="button">See More</button>
-                                            </a>
+                                            <Link to={`/shop-intro/shop/${item.id}`}>View More</Link>
                                         </li>
                                     </ul>
                                 </div>

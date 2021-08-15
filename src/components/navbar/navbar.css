@@ -43,6 +43,10 @@ nav img {
     margin-left: auto;
 }
 
+.cartIcon {
+    height: 30px;
+}
+
 
 /* Hamburger Menu */
 
@@ -106,6 +110,10 @@ nav img {
     .logo {
         width: 250px;
         margin-left: 5px;
+    }
+
+    .cartIcon {
+        margin-left: -4px;
     }
 }
 
