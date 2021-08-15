@@ -1,93 +1,172 @@
-.shopNav {
-    display: flex;
-    margin: auto;
+.mainContainer1 {
     width: 100%;
-}
-
-.shopList {
+    height: 100%;
     display: flex;
     flex-direction: row;
     margin: auto;
+    justify-content: center;
+}
+
+
+/* Sidebar ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.sideBar {
+    display: flex;
+    height: max-content;
+    width: 15vw;
+    min-width: 140px;
+    max-width: 215px;
+    justify-content: center;
+    flex-direction: column;
+    /* background-color: #244d42;
+    color: white; */
+    /* Alt Colors */
+    background-color: white;
+    color: #244d42;
+    /* border-right: 1px solid #244d42; */
+}
+
+.sideSection {
+    margin-bottom: 35px;
+}
+
+.detailTitle {
+    text-align: center;
+}
+
+.sideLabel {
+    font-size: small;
+    align-items: center;
+}
+
+
+/* Item Content~~~~~~~~~~~~~~~~~~~~ */
+
+.itemContainer {
+    display: flex;
+    margin: 30px;
+    margin-top: 0;
+    width: 100%;
+    max-width: 1450px;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+}
+
+.itemContent {
+    width: 100%;
+}
+
+.itemCard {
+    /* background-color: #244d42;
+    border: 1px solid #244d42;
+    color: white; */
+    width: 290px;
+    height: 500px;
+    margin: 5px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    /* Alt Colors */
+    background-color: white;
+    border: 4px solid #ebebeb;
+    color: #244d42;
+}
+
+.itemList {
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     width: 100%;
+    margin: auto;
+    justify-content: space-evenly;
+    padding: 0;
 }
 
-.roomCard {
-    height: 375px;
-    width: 33vw;
+.itemUl {
+    width: 100%;
+    height: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+
+.itemLi {
     display: flex;
-    margin: 0;
-    text-align: center;
-    margin: auto;
-    margin-top: 5px;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
 }
 
-.nameBox {
+.itemImg {
+    width: 290px;
+    height: 290px;
+    background-size: contain;
+    align-content: center;
+}
+
+.itemName {
+    margin: 5px;
+}
+
+.itemPrice {
+    font-size: larger;
+    margin: 5px;
+}
+
+.moreButton {
+    width: 100px;
     margin: auto;
-    text-align: center;
+    height: 30px;
+    background-color: transparent;
+    /* border: 1px solid white;
+    color: white; */
+    /* Alt Colors */
+    border: 1px solid #244d42;
     color: #244d42;
-    background-color: rgba(255, 255, 255, 0.795);
+    align-items: flex-end;
+}
+
+
+/* Shopping Cart Area ~~~~~~~~~~~~~~~~ */
+
+
+/* .cartArea {
+    color: white;
+    height: max-content;
+    width: 15vw;
+    min-width: 140px;
+    max-width: 215px;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.cartIcon {
+    color: white;
+}
+
+.cartContent {
     width: 100%;
+    text-align: center;
 }
 
-.titleName {
+.cartCard {}
+
+.cartImg {
     width: 100%;
-    margin: auto;
-    margin-bottom: 30px;
-    text-align: center;
-    z-index: 2;
-}
+} */
 
-.livingCard {
-    text-align: center;
-    background-image: url(./imgs/farmhouseLiving.jpg);
-    background-size: cover;
-    height: auto;
-    width: 33.33vw;
-    display: flex;
-}
 
-.bedroomCard {
-    text-align: center;
-    background-image: url(./imgs/modernBed.jpg);
-    background-size: cover;
-    height: auto;
-    width: 33.33vw;
-    display: flex;
-}
+/* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-.bathCard {
-    text-align: center;
-    background-image: url(./imgs/contempBathroom.jpg);
-    background-size: cover;
-    height: auto;
-    width: 33.33vw;
-    display: flex;
-}
+@media screen and (max-width: 640px) {}
 
-.kitchenCard {
-    text-align: center;
-    background-image: url(./imgs/bohKitchen.jpg);
-    background-size: cover;
-    height: auto;
-    width: 33.33vw;
-    display: flex;
-}
+@media screen and (min-width: 641px) and (max-width: 1040px) {}
 
-.patioCard {
-    text-align: center;
-    background-image: url(./imgs/patio.jpg);
-    background-size: cover;
-    height: auto;
-    width: 33.33vw;
-    display: flex;
-}
+@media screen and (min-width: 1041px) and (max-width: 1179px) {}
 
-.allRoomCard {
-    text-align: center;
-    background-image: url(./imgs/house.jpg);
-    background-size: cover;
-    height: auto;
-    width: 33.33vw;
-    display: flex;
-}
+@media screen and (min-width: 1180px) and (max-width: 1500px) {}
+
+@media screen and (min-width: 1501px) and (max-width: 1685px) {}
+
+@media screen and (min-width: 1686px) and (max-width: 1900px) {}
+
+@media screen and (min-width: 1901px) {}

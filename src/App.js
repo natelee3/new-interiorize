@@ -4,7 +4,8 @@ import Homepage from "./components/homepage/Homepage";
 import StyleQuiz from "./components/styleQuiz/StyleQuiz";
 import UserProfile from "./components/userProfile/UserProfile";
 import Shop from "./components/shop/Shop";
-import ShopDetails from "./components/shop/ShopDetails";
+import ShopIntro from "./components/shop/ShopIntro";
+import ItemDetails from "./components/shop/ItemDetails";
 
 function App() {
     return ( 
@@ -15,11 +16,14 @@ function App() {
               <Route exact path = "/">
                 <Homepage />
               </Route> 
-              <Route exact path = "/shop">
+              <Route exact path = "/shop-intro/shop">
                 <Shop />
               </Route> 
-              <Route exact path = "/shop-details">
-                <ShopDetails />
+              <Route exact path = "/shop-intro">
+                <ShopIntro />
+              </Route>
+              <Route exact path = "/shop-intro/shop/item-details">
+                <ItemDetails />
               </Route>
               <Route exact path = "/style-quiz">
                 <StyleQuiz />
