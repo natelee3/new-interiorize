@@ -2,11 +2,15 @@ import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
-// Style quiz to do: Implement some kinda of arrow or 'next' button. Fade in and out with each press  of the arrow for the next set of questions.
-//Questions: budget, color pallete, style, room, avoid
-//Save each answer in local storage and then do a one big post.
+//To do:
+//Post the locally stored variables to the API
+//disable swiping and remove the buttons.
+//Make it look like the mock-up
+//Mobile Responsiveness
 
 const CarouselContainer = () => {
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   const [style, setStyle] = useState("");
   const [budget, setBudget] = useState("");
   const [room, setRoom] = useState("");
@@ -19,6 +23,17 @@ const CarouselContainer = () => {
   const [color2Visible, setColor2Visible] = useState(false);
   const [color3Visible, setColor3Visible] = useState(false);
 
+  //Carousel Controls:
+  const next = () => {
+    setCurrentSlide(currentSlide + 1);
+  };
+
+  const updateCurrentSlide = (index) => {
+    if (currentSlide !== index) {
+      setCurrentSlide(index);
+    }
+  };
+
   //   CHANGES
   const handleStyleChange = (event) => {
     setStyle(event.target.value);
@@ -26,8 +41,8 @@ const CarouselContainer = () => {
 
   const handleBudgetChange = (event) => {
     console.log(event.target.value);
-    parseInt(event.target.value);
-    setBudget(event.target.value);
+    let budgetValue = parseInt(event.target.value);
+    setBudget(budgetValue);
   };
 
   const handleRoomChange = (event) => {
@@ -35,19 +50,30 @@ const CarouselContainer = () => {
   };
 
   const handleColor1Change = (event) => {
-    parseInt(event.target.value);
-    setColor1(event.target.value);
+    let colorValue = parseInt(event.target.value);
+    setColor1(colorValue);
   };
 
   const handleColor2Change = (event) => {
-    parseInt(event.target.value);
-    setColor2(event.target.value);
+    let colorValue = parseInt(event.target.value);
+    setColor2(colorValue);
   };
 
   const handleColor3Change = (event) => {
-      parseInt(event.target.value);
-      setColor3(event.target.value);
-  }
+    let colorValue = parseInt(event.target.value);
+    setColor3(colorValue);
+  };
+
+  const handleAvoidChange = (event) => {
+    let index;
+    if (event.target.checked) {
+      let newValue = event.target.value;
+      avoidArray.push(newValue);
+    } else {
+      index = avoidArray.indexOf(event.target.value);
+      avoidArray.splice(index, 1);
+    }
+  };
 
   // SUBMITS
   const handleBudgetSubmit = (event) => {
@@ -80,17 +106,27 @@ const CarouselContainer = () => {
   };
 
   const handleColor3Submit = (event) => {
-      event.preventDefault();
-      localStorage.setItem("Color 3", color3);
-  }
+    event.preventDefault();
+    localStorage.setItem("Color 3", color3);
+  };
+
+  const handleAvoidSubmit = (event) => {
+    event.preventDefault();
+    localStorage.setItem("Avoid", avoidArray);
+  };
 
   return (
     <Carousel
       autoplay={false}
       showArrows={false}
       showThumbs={false}
+      showIndicators={false}
       interval={2200000}
       showStatus={false}
+      emulateTouch={false}
+      swipeable={false}
+      selectedItem={currentSlide}
+      onChange={updateCurrentSlide}
     >
       {/* BUDGET */}
       <div>
@@ -128,7 +164,9 @@ const CarouselContainer = () => {
               <label for="120">$120</label>
             </div>
           </div>
-          <button type="submit">Next</button>
+          <button type="submit" onClick={() => next()}>
+            Next
+          </button>
         </form>
       </div>
 
@@ -188,7 +226,9 @@ const CarouselContainer = () => {
               </div>
             </div>
           </div>
-          <button type="submit">Next</button>
+          <button type="submit" onClick={() => next()}>
+            Next
+          </button>
         </form>
       </div>
 
@@ -212,7 +252,9 @@ const CarouselContainer = () => {
           <input id="patio" type="radio" name="room" value="Patio" />
           <label for="patio">Patio</label>
 
-          <button type="submit">Next</button>
+          <button type="submit" onClick={() => next()}>
+            Next
+          </button>
         </form>
       </div>
 
@@ -261,35 +303,127 @@ const CarouselContainer = () => {
           <h3>Choose Your Second Color</h3>
           <div onChange={(event) => handleColor2Change(event)}>
             <form onSubmit={(event) => handleColor2Submit(event)}>
-              <input id="red" type="radio" name="color" value="1" />
-              <label for="red">Red</label>
+              <input
+                id="red"
+                type="radio"
+                name="color"
+                value="1"
+                className={color1 === 1 ? "hidden" : "active"}
+              />
+              <label for="red" className={color1 === 1 ? "hidden" : "active"}>
+                Red
+              </label>
 
-              <input id="blue" type="radio" name="color" value="2" />
-              <label for="blue">Blue</label>
+              <input
+                id="blue"
+                type="radio"
+                name="color"
+                value="2"
+                className={color1 === 2 ? "hidden" : "active"}
+              />
+              <label for="blue" className={color1 === 2 ? "hidden" : "active"}>
+                Blue
+              </label>
 
-              <input id="black" type="radio" name="color" value="3" />
-              <label for="black">Black</label>
+              <input
+                id="black"
+                type="radio"
+                name="color"
+                value="3"
+                className={color1 === 3 ? "hidden" : "active"}
+              />
+              <label for="black" className={color1 === 3 ? "hidden" : "active"}>
+                Black
+              </label>
 
-              <input id="white" type="radio" name="color" value="4" />
-              <label for="white">White</label>
+              <input
+                id="white"
+                type="radio"
+                name="color"
+                value="4"
+                className={color1 === 4 ? "hidden" : "active"}
+              />
+              <label for="white" className={color1 === 4 ? "hidden" : "active"}>
+                White
+              </label>
 
-              <input id="yellow" type="radio" name="color" value="5" />
-              <label for="yellow">Yellow</label>
+              <input
+                id="yellow"
+                type="radio"
+                name="color"
+                value="5"
+                className={color1 === 5 ? "hidden" : "active"}
+              />
+              <label
+                for="yellow"
+                className={color1 === 5 ? "hidden" : "active"}
+              >
+                Yellow
+              </label>
 
-              <input id="green" type="radio" name="color" value="6" />
-              <label for="green">Green</label>
+              <input
+                id="green"
+                type="radio"
+                name="color"
+                value="6"
+                className={color1 === 6 ? "hidden" : "active"}
+              />
+              <label for="green" className={color1 === 6 ? "hidden" : "active"}>
+                Green
+              </label>
 
-              <input id="purple" type="radio" name="color" value="7" />
-              <label for="purple">Purple</label>
+              <input
+                id="purple"
+                type="radio"
+                name="color"
+                value="7"
+                className={color1 === 7 ? "hidden" : "active"}
+              />
+              <label
+                for="purple"
+                className={color1 === 1 ? "hidden" : "active"}
+              >
+                Purple
+              </label>
 
-              <input id="orange" type="radio" name="color" value="8" />
-              <label for="orange">Orange</label>
+              <input
+                id="orange"
+                type="radio"
+                name="color"
+                value="8"
+                className={color1 === 8 ? "hidden" : "active"}
+              />
+              <label
+                for="orange"
+                className={color1 === 8 ? "hidden" : "active"}
+              >
+                Orange
+              </label>
 
-              <input id="gray" type="radio" name="color" value="10" />
-              <label for="gray">Gray</label>
+              <input
+                id="gray"
+                type="radio"
+                name="color"
+                value="10"
+                className={color1 === 10 ? "hidden" : "active"}
+              />
+              <label for="gray" className={color1 === 10 ? "hidden" : "active"}>
+                Gray
+              </label>
 
-              <input id="brown" type="radio" name="color" value="11" />
-              <label for="brown">Brown</label>
+              <input
+                id="brown"
+                type="radio"
+                name="color"
+                value="11"
+                className={color1 === 11 ? "hidden" : "active"}
+              />
+              <label
+                for="brown"
+                className={color1 === 11 ? "hidden" : "active"}
+              >
+                Brown
+              </label>
 
               <button type="submit">Next</button>
             </form>
@@ -301,37 +435,149 @@ const CarouselContainer = () => {
           <h3>Choose Your Third Color</h3>
           <div onChange={(event) => handleColor3Change(event)}>
             <form onSubmit={(event) => handleColor3Submit(event)}>
-              <input id="red" type="radio" name="color" value="1" />
-              <label for="red">Red</label>
+              <input
+                id="red"
+                type="radio"
+                name="color"
+                value="1"
+                className={color1 === 1 || color2 === 1 ? "hidden" : "active"}
+              />
+              <label
+                for="red"
+                className={color1 === 1 || color2 === 1 ? "hidden" : "active"}
+              >
+                Red
+              </label>
 
-              <input id="blue" type="radio" name="color" value="2" />
-              <label for="blue">Blue</label>
+              <input
+                id="blue"
+                type="radio"
+                name="color"
+                value="2"
+                className={color1 === 2 || color2 === 2 ? "hidden" : "active"}
+              />
+              <label
+                for="blue"
+                className={color1 === 2 || color2 === 2 ? "hidden" : "active"}
+              >
+                Blue
+              </label>
 
-              <input id="black" type="radio" name="color" value="3" />
-              <label for="black">Black</label>
+              <input
+                id="black"
+                type="radio"
+                name="color"
+                value="3"
+                className={color1 === 3 || color2 === 3 ? "hidden" : "active"}
+              />
+              <label
+                for="black"
+                className={color1 === 3 || color2 === 3 ? "hidden" : "active"}
+              >
+                Black
+              </label>
 
-              <input id="white" type="radio" name="color" value="4" />
-              <label for="white">White</label>
+              <input
+                id="white"
+                type="radio"
+                name="color"
+                value="4"
+                className={color1 === 4 || color2 === 4 ? "hidden" : "active"}
+              />
+              <label
+                for="white"
+                className={color1 === 4 || color2 === 4 ? "hidden" : "active"}
+              >
+                White
+              </label>
 
-              <input id="yellow" type="radio" name="color" value="5" />
-              <label for="yellow">Yellow</label>
+              <input
+                id="yellow"
+                type="radio"
+                name="color"
+                value="5"
+                className={color1 === 5 || color2 === 5 ? "hidden" : "active"}
+              />
+              <label
+                for="yellow"
+                className={color1 === 5 || color2 === 5 ? "hidden" : "active"}
+              >
+                Yellow
+              </label>
 
-              <input id="green" type="radio" name="color" value="6" />
-              <label for="green">Green</label>
+              <input
+                id="green"
+                type="radio"
+                name="color"
+                value="6"
+                className={color1 === 6 || color2 === 6 ? "hidden" : "active"}
+              />
+              <label
+                for="green"
+                className={color1 === 6 || color2 === 6 ? "hidden" : "active"}
+              >
+                Green
+              </label>
 
-              <input id="purple" type="radio" name="color" value="7" />
-              <label for="purple">Purple</label>
+              <input
+                id="purple"
+                type="radio"
+                name="color"
+                value="7"
+                className={color1 === 7 || color2 === 7 ? "hidden" : "active"}
+              />
+              <label
+                for="purple"
+                className={color1 === 7 || color2 === 7 ? "hidden" : "active"}
+              >
+                Purple
+              </label>
 
-              <input id="orange" type="radio" name="color" value="8" />
-              <label for="orange">Orange</label>
+              <input
+                id="orange"
+                type="radio"
+                name="color"
+                value="8"
+                className={color1 === 8 || color2 === 8 ? "hidden" : "active"}
+              />
+              <label
+                for="orange"
+                className={color1 === 8 || color2 === 8 ? "hidden" : "active"}
+              >
+                Orange
+              </label>
 
-              <input id="gray" type="radio" name="color" value="10" />
-              <label for="gray">Gray</label>
+              <input
+                id="gray"
+                type="radio"
+                name="color"
+                value="10"
+                className={color1 === 10 || color2 === 10 ? "hidden" : "active"}
+              />
+              <label
+                for="gray"
+                className={color1 === 10 || color2 === 10 ? "hidden" : "active"}
+              >
+                Gray
+              </label>
 
-              <input id="brown" type="radio" name="color" value="11" />
-              <label for="brown">Brown</label>
+              <input
+                id="brown"
+                type="radio"
+                name="color"
+                value="11"
+                className={color1 === 11 || color2 === 11 ? "hidden" : "active"}
+              />
+              <label
+                for="brown"
+                className={color1 === 11 || color2 === 11 ? "hidden" : "active"}
+              >
+                Brown
+              </label>
 
-              <button type="submit">Next</button>
+              <button type="submit" onClick={() => next()}>
+                Next
+              </button>
             </form>
           </div>
         </div>
@@ -340,6 +586,82 @@ const CarouselContainer = () => {
       {/* AVOID */}
       <div>
         <h3>Which items should we NOT send you?</h3>
+        <form onSubmit={(event) => handleAvoidSubmit(event)}>
+          <input
+            type="checkbox"
+            id="anything"
+            name="avoid"
+            value={null}
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="anything">Send me anything!</label>
+          <input
+            type="checkbox"
+            id="pillows"
+            name="avoid"
+            value="Pillow"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="pillows">Pillows</label>
+          <input
+            type="checkbox"
+            id="lamps"
+            name="avoid"
+            value="Lamp"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="lamps">Lamps</label>
+          <input
+            type="checkbox"
+            id="art"
+            name="avoid"
+            value="Art"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="art">Art</label>
+          <input
+            type="checkbox"
+            id="decor"
+            name="avoid"
+            value="Decor"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="decor">Decor</label>
+          <input
+            type="checkbox"
+            id="kitchenLinens"
+            name="avoid"
+            value="Kitchen Linens"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="kitchenLinens">Kitchen Linens</label>
+          <input
+            type="checkbox"
+            id="storage"
+            name="avoid"
+            value="Storage"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="storage">Storage</label>
+          <input
+            type="checkbox"
+            id="serverware"
+            name="avoid"
+            value="Serverware"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="serverware">Serverware</label>
+          <input
+            type="checkbox"
+            id="utensils"
+            name="avoid"
+            value="Utensils"
+            onChange={(event) => handleAvoidChange(event)}
+          />
+          <label for="utensils">Utensils</label>
+
+          <button type="submit">Submit</button>
+        </form>
       </div>
     </Carousel>
   );
