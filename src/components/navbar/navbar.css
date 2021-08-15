@@ -36,7 +36,7 @@ nav li {
 
 nav img {
     margin-left: 25px;
-    margin-bottom:5px;
+    margin-bottom: 5px;
 }
 
 .userProfileLink {
@@ -55,10 +55,9 @@ nav img {
     justify-content: space-between;
     width: 30px;
     height: 21px;
-    border:none;
-    background-color:white;
+    border: none;
+    background-color: white;
 }
-
 
 .toggle-button .bar {
     height: 3px;
@@ -72,10 +71,10 @@ nav img {
     width: 100%;
 }
 
+
 /* RESPONSIVENESS */
 
 @media screen and (max-width: 960px) {
-
     /* --- Hamburger Menu Styles --- */
     .toggle-button {
         margin-top: 18px;
@@ -101,24 +100,20 @@ nav img {
     .navbar-links.active {
         display: flex;
     }
-
     .userProfileLink {
         margin-left: 0;
     }
-
     .logo {
         width: 250px;
         margin-left: 5px;
-        
     }
-
-
-
 }
 
+
 /* Galaxy Fold */
-@media(max-width: 320px){ 
+
+@media(max-width: 320px) {
     .logo {
         width: 200px;
     }
-  }
+}

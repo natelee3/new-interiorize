@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logo from "./imgs/logo.png";
 import "./navbar.css";
+import shoppingCart from "./imgs/shoppingCart.png";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -19,7 +20,7 @@ const Navbar = () => {
         <div className={!!active ? "navbar-links active" : "navbar-links"}>
           <ul>
             <li>
-              <a href="/shop">Shop</a>
+              <a href="/shop-intro">Shop</a>
             </li>
             <li>
               <a href="/style-quiz">Style Quiz</a>
@@ -30,6 +31,9 @@ const Navbar = () => {
             <li className="userProfileLink">
               {/* If user is signed in show user Profile else show Login */}
               <a href="/user-profile">User Profile</a>
+            </li>
+            <li className="cartIcon">
+              <a href="/user-profile">  <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" /></a>
             </li>
           </ul>
         </div>
