@@ -1,65 +1,73 @@
 /* FONTS */
-@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&family=Open+Sans&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Abhaya+Libre:wght@600&family=Open+Sans&display=swap');
 body {
-  margin: 0;
-  font-family: 'Open Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #333;
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color: #333;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'Abhaya Libre', serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: 'Abhaya Libre', serif;
 }
 
-p, a, button {
-  font-family: 'Open Sans', sans-serif;
+p,
+a,
+button {
+    font-family: 'Open Sans', sans-serif;
 }
+
 
 /* BUTTONS */
 
 button {
-  cursor:pointer;
+    cursor: pointer;
 }
 
 .primaryBtn {
-  background-color: #244d4d;
-  border:none;
-  color: white;
-  letter-spacing: 1.5px;
-  padding: 10px;
-  font-weight:500;
-  font-size: 15px;
+    background-color: #244d4d;
+    border: none;
+    color: white;
+    letter-spacing: 1.5px;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 15px;
 }
 
 .primaryBtn:hover {
-  background-color: #477272;
+    background-color: #477272;
 }
+
 
 /* TEXT SIZE */
 
-
 @media (min-width: 640px) {
-  body {
-    font-size: 1rem;
-  }
+    body {
+        font-size: 1rem;
+    }
 }
 
 @media (min-width: 960px) {
-  body {
-    font-size: 1.1rem;
-  }
+    body {
+        font-size: 1.1rem;
+    }
 }
 
 @media (min-width: 1100px) {
-  body {
-    font-size: 1.1rem;
-  }
+    body {
+        font-size: 1.1rem;
+    }
 }
 
 
@@ -81,9 +89,13 @@ body {
     /* height of your footer */
 }
 
-footer {
+
+/* .footerContainer {
     position: absolute;
     bottom: 0;
     width: 100%;
     text-align: center;
-}
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+} */
