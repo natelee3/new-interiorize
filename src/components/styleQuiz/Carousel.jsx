@@ -111,10 +111,14 @@ const CarouselContainer = () => {
     event.preventDefault();
     localStorage.setItem("Avoid", avoidArray);
     submitQuizData();
+    if (localStorage.getItem("Avoid").length > 0) {
+      submitAvoidData();
+    }
   };
 
   const submitQuizData = async () => {
-    const url = `http://api.interiorize.design/quizzes/add`;
+    const localUrl = 'http://localhost:3333/quizzes/add';
+    const url = `https://api.interiorize.design/quizzes/add`;
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -131,6 +135,20 @@ const CarouselContainer = () => {
     const response = await fetch(url, requestOptions).then((response) =>
       console.log(response)
     );
+  };
+
+  const submitAvoidData = async () => {
+    const localUrl = 'http://localhost:3333/users/avoid/add';
+    const url = 'https://api.interiorize.design/users/avoid/add';
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: 2,
+        avoid_tags: localStorage.getItem('Avoid')
+      }),
+    };
+    const response = await fetch(url, requestOptions).then(response => console.log(response));
   };
 
   return (
@@ -774,7 +792,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="pillows"
             name="avoid"
-            value="Pillow"
+            value="7"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="pillows">Pillows</label>
@@ -782,7 +800,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="lamps"
             name="avoid"
-            value="Lamp"
+            value="3"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="lamps">Lamps</label>
@@ -790,7 +808,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="art"
             name="avoid"
-            value="Art"
+            value="4"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="art">Art</label>
@@ -798,7 +816,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="decor"
             name="avoid"
-            value="Decor"
+            value="5"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="decor">Decor</label>
@@ -806,7 +824,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="kitchenLinens"
             name="avoid"
-            value="Kitchen Linens"
+            value="9"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="kitchenLinens">Kitchen Linens</label>
@@ -814,7 +832,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="storage"
             name="avoid"
-            value="Storage"
+            value="11"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="storage">Storage</label>
@@ -822,7 +840,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="serverware"
             name="avoid"
-            value="Serverware"
+            value="13"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="serverware">Serverware</label>
@@ -830,7 +848,7 @@ const CarouselContainer = () => {
             type="checkbox"
             id="utensils"
             name="avoid"
-            value="Utensils"
+            value="14"
             onChange={(event) => handleAvoidChange(event)}
           />
           <label for="utensils">Utensils</label>
