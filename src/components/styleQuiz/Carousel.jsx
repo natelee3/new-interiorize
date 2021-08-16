@@ -114,7 +114,7 @@ const CarouselContainer = () => {
   };
 
   const submitQuizData = async () => {
-    const url = `https://api.interiorize.design/quizzes/add`;
+    const url = `http://api.interiorize.design/quizzes/add`;
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -287,26 +287,26 @@ const CarouselContainer = () => {
               id="livingRoom"
               type="radio"
               name="room"
-              value="Living Room"
+              value="1"
               required
             />
             <label for="livingRoom" className="livingRoom"></label>
             <p>Living Room</p>
           </div>
           <div className="roomCol">
-            <input id="bedroom" type="radio" name="room" value="Bedroom" />
+            <input id="bedroom" type="radio" name="room" value="2" />
             <label for="bedroom" className="bedroom"></label>
             <p>Bedroom</p>
           </div>
           <div className="roomCol">
-            <input id="bathroom" type="radio" name="room" value="Bathroom" />
+            <input id="bathroom" type="radio" name="room" value="3" />
             <label for="bathroom"></label>
             <p>Bathroom</p>
           </div>
-          <input id="kitchen" type="radio" name="room" value="Kitchen" />
+          <input id="kitchen" type="radio" name="room" value="4" />
           <label for="kitchen">Kitchen</label>
 
-          <input id="patio" type="radio" name="room" value="Patio" />
+          <input id="patio" type="radio" name="room" value="5" />
           <label for="patio">Patio</label>
 
           <button
