@@ -60,7 +60,7 @@ const ShopIntro = () => {
                             <div className="roomCard">
                                 <div className="patioCard">
                                     <div className="nameBox">
-                                        <h2 className="roomName">Outdoor/Patio</h2>
+                                        <h2 className="roomName">Patio</h2>
                                     </div>
                                 </div>
                             </div>
