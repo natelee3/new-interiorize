@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "./shop.css"
+import "./shop.css";
 // import shoppingCart from "./imgs/shoppingCart.png";
 
 
@@ -33,8 +33,8 @@ const Shop = (props) => {
                 <div className="sideBar">
                     <div className="sideContent">
                         <h3 className="detailTitle">Design Style</h3>
-
-                        <div>
+                        <div className="sideSection">
+                            <div>
                                 <input type="checkbox" name="style-check-1" value="style-check-1" id="style-check-1" />
                                 <label className="sideLabel" for="style-check-1">Bohemian</label>
                             </div>
@@ -50,6 +50,36 @@ const Shop = (props) => {
                                 <input type="checkbox" name="style-check-4" value="style-check-4" id="style-check-4" />
                                     <label className="sideLabel" for="style-check-4">Modern</label>
                             </div>
+                        </div>
+                        <hr />
+
+                        <h3 className="detailTitle">Room</h3>
+                        <div className="sideSection">
+                            <div>
+                                <input type="checkbox" name="room-check-1" value="room-check-1" id="room-check-1" />
+                                <label className="sideLabel" for="room-check-1">Bathroom</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="room-check-2" value="room-check-2" id="room-check-2" />
+                                <label className="sideLabel" for="room-check-2">Bedroom</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="room-check-3" value="room-check-3" id="room-check-3" />
+                                    <label className="sideLabel" for="room-check-3">Kitchen</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="room-check-4" value="room-check-4" id="room-check-4" />
+                                <label className="sideLabel" for="room-check-4">Living Room</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="room-check-5" value="room-check-5" id="room-check-5" />
+                                    <label className="sideLabel" for="room-check-5">Patio</label>
+                            </div>
+                            <div>
+                                <input type="checkbox" name="room-check-6" value="room-check-6" id="room-check-6" />
+                                    <label className="sideLabel" for="room-check-6">All Rooms</label>
+                            </div>
+                        </div>
                         <hr />
 
                         <h3 className="detailTitle">Color</h3>
@@ -104,6 +134,7 @@ const Shop = (props) => {
                                 <label className="sideLabel" for="price-check-3">$80 - $120</label>
                             </div>
                         </div>
+                        <hr />
                     </div>
                                     <button id="button1" onClick={() => {
                     getShopData();

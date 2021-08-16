@@ -37,7 +37,7 @@ const Homepage = () => {
                 </div>
                 <div className="lowerBoxes">
                 <img className="icons" src={truck} alt="Truck" />   
-                <h3 className="subTitles">2. Recieve Your Items</h3>
+                <h3 className="subTitles">2. Receive Your Items</h3>
                     <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
                 </div>
                 <div className="lowerBoxes">
