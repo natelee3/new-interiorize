@@ -123,6 +123,7 @@ const CarouselContainer = () => {
   };
 
   const submitQuizData = async () => {
+    const localUrl = "http://localhost:3333/quizzes/add";
     const url = `https://api.interiorize.design/quizzes/add`;
     const requestOptions = {
       method: "POST",
@@ -135,6 +136,22 @@ const CarouselContainer = () => {
         color_three_id: localStorage.getItem("Color 3"),
         category_id: localStorage.getItem("Room Choice"),
         style_id: localStorage.getItem("Style Category"),
+      }),
+    };
+    const response = await fetch(url, requestOptions).then((response) =>
+      console.log(response)
+    );
+  };
+
+  const submitAvoidData = async () => {
+    const localUrl = "http://localhost:3333/users/avoid/add";
+    const url = "https://api.interiorize.design/users/avoid/add";
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: 2,
+        avoid_tags: localStorage.getItem("Avoid"),
       }),
     };
     const response = await fetch(url, requestOptions).then((response) =>
@@ -948,7 +965,11 @@ const CarouselContainer = () => {
               <label for="serverware">Serverware</label>
             </div>
             <div className="avoidCol">
-            <img src={utensils} className="avoidIcon" alt="cooking utensils" />
+              <img
+                src={utensils}
+                className="avoidIcon"
+                alt="cooking utensils"
+              />
               <input
                 type="checkbox"
                 id="utensils"

@@ -297,6 +297,10 @@
   margin: 0 auto;
 }
 
+.avoidRow label {
+  margin: 0 auto;
+}
+
 .avoidCol .avoidIcon {
   background-size: contain;
   background-repeat: no-repeat;
