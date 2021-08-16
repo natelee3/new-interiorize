@@ -26,6 +26,32 @@
   width: 200px;
 }
 
+.carouselSlide {
+  background-color: #244d4d;
+  color: white;
+  padding: 10px;
+}
+
+.carouselSlide input {
+  box-shadow: none;
+}
+
+.secondaryBtn {
+  background-color: white;
+  border:none;
+  color: #244d4d;
+  letter-spacing: 1.5px;
+  padding: 10px 25px;
+  font-weight:500;
+  font-size: 15px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.secondaryBtn:hover{
+  background-color: rgb(233, 233, 233);
+}
+
 /* Style Images/Radio Buttons */
 .bohemian {
   background: url("./imgs/bohemian.jpeg");
@@ -76,5 +102,10 @@
 /* COLOR SELECTION + HIDDEN DIVS */
 
 .hidden {
-  display:none;
+  height: 0px;
+  width: 0px;
+}
+
+.active {
+  display:inline-block;
 }
