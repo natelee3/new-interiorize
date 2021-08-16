@@ -9,10 +9,7 @@
 }
 
 .quizContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width:1060px;
+  width: 1060px;
 }
 
 .row {
@@ -69,26 +66,29 @@
     background: url("./imgs/modern.jpeg");
 }
 
+.styleCol {
+  margin-left: 50px;
+}
+
 .styleImg {
   cursor: pointer;
   background-size: contain;
   background-repeat: no-repeat;
-  border: 6px hidden;
   height: 300px;
   width: 500px;
   -webkit-transition: all 100ms ease-in;
   -moz-transition: all 100ms ease-in;
   transition: all 100ms ease-in;
   display: block;
-  filter: brightness(1) grayscale(0.5) opacity(0.8);
+  filter: brightness(1) grayscale(0.6) opacity(0.8);
 }
 
 .styleCol input {
   margin: 0;
   padding: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
+  height: 0;
+  width: 0;
+  display:none;
 }
 
 .styleImg:hover {
@@ -97,6 +97,36 @@
 
 .styleCol input:checked + .styleImg {
   filter: none;
+}
+
+/* ROOMS */
+
+.livingRoom {
+  background: url("./imgs/livingRoom.png");
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.bedroom {
+  background: url("./imgs/bedroom.png");
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 100px;
+  width: 100px;
+  display: inline-block;
+}
+
+.roomCol input {
+  margin: 0;
+  padding: 0;
+  height: 0;
+  width: 0;
+  display:none;
 }
 
 /* COLOR SELECTION + HIDDEN DIVS */
