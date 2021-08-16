@@ -6,6 +6,7 @@ import UserProfile from "./components/userProfile/UserProfile";
 import Shop from "./components/shop/Shop";
 import ShopIntro from "./components/shop/ShopIntro";
 import ItemDetails from "./components/shop/ItemDetails";
+import Footer from "./footer/Footer";
 
 function App() {
     return ( 
@@ -35,10 +36,11 @@ function App() {
                 <Redirect to = "/"/>
               </Route> 
             </Switch> 
-          </Router> 
-          <footer>
+          <Footer />
+        </Router> 
+          {/* <footer>
             <p> Interiorize Footer </p> 
-          </footer> 
+          </footer>  */}
         </div>
     );
 }

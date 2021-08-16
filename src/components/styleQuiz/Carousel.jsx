@@ -888,7 +888,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="pillows"
                 name="avoid"
-                value="Pillow"
+                value="7"
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="pillows">Pillows</label>
@@ -899,7 +899,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="lamps"
                 name="avoid"
-                value="Lamp"
+                value="3"
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="lamps">Lamps</label>
@@ -912,7 +912,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="art"
                 name="avoid"
-                value="Art"
+                value="4"
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="art">Art</label>
@@ -923,7 +923,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="decor"
                 name="avoid"
-                value="Decor"
+                value="5"
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="decor">Decor</label>
@@ -934,7 +934,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="kitchenLinens"
                 name="avoid"
-                value="Kitchen Linens"
+                value="9"
                 onChange={(event) => handleAvoidChange(event)}
               />
 
@@ -948,7 +948,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="storage"
                 name="avoid"
-                value="Storage"
+                value="11"
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="storage">Storage</label>
@@ -959,7 +959,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="serverware"
                 name="avoid"
-                value="Serverware"
+                value="13"
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="serverware">Serverware</label>
@@ -974,7 +974,7 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="utensils"
                 name="avoid"
-                value="Utensils"
+                value="14"
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="utensils">Utensils</label>

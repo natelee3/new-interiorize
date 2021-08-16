@@ -298,7 +298,7 @@
 }
 
 .avoidRow label {
-  margin: 0 auto;
+  margin: 0 auto !important;
 }
 
 .avoidCol .avoidIcon {
