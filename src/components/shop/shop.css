@@ -16,6 +16,7 @@
     width: 15vw;
     min-width: 140px;
     max-width: 215px;
+    margin-left: 30px;
     justify-content: center;
     flex-direction: column;
     /* background-color: #244d42;
@@ -73,11 +74,11 @@
 
 .itemCard a {
     background-color: #244d4d;
-    border:none;
+    border: none;
     color: white;
     letter-spacing: 1.5px;
     padding: 10px;
-    font-weight:500;
+    font-weight: 500;
     font-size: 15px;
     text-decoration: none;
 }
@@ -172,16 +173,16 @@
 
 /* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-@media screen and (max-width: 640px) {}
+@media screen and (max-width: 640px) {
+    .mainContainer1 {
+        flex-direction: column;
+    }
+    .itemContainer {
+        width: 100vw;
+        margin-left: 0;
+    }
+}
 
 @media screen and (min-width: 641px) and (max-width: 1040px) {}
 
-@media screen and (min-width: 1041px) and (max-width: 1179px) {}
-
-@media screen and (min-width: 1180px) and (max-width: 1500px) {}
-
-@media screen and (min-width: 1501px) and (max-width: 1685px) {}
-
-@media screen and (min-width: 1686px) and (max-width: 1900px) {}
-
-@media screen and (min-width: 1901px) {}
+@media screen and (min-width: 1041px) and (max-width: 1155px) {}

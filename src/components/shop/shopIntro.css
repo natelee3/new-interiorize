@@ -10,6 +10,7 @@
     margin: auto;
     flex-wrap: wrap;
     width: 100%;
+    max-width: 1700px;
 }
 
 .shopRoomLinks {
@@ -19,6 +20,7 @@
 .roomCard {
     height: 375px;
     width: 33vw;
+    max-width: 555px;
     display: flex;
     margin: 0;
     text-align: center;
@@ -96,3 +98,63 @@
     width: 33.33vw;
     display: flex;
 }
+
+
+/* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media screen and (min-width: 280px) and (max-width: 640px) {
+    html {
+        min-width: 280px;
+    }
+    .shopList {
+        height: auto;
+    }
+    .shopRoomLinks {
+        width: 50%;
+    }
+    .roomCard {
+        margin-right: 0;
+        width: 100%;
+        height: 200px;
+    }
+    .livingCard {
+        width: 100%;
+        height: 100%;
+    }
+    .bedroomCard {
+        width: 100%;
+        height: 100%;
+    }
+    .bathCard {
+        width: 100%;
+        height: 100%;
+    }
+    .kitchenCard {
+        width: 100%;
+        height: 100%;
+    }
+    .patioCard {
+        width: 100%;
+        height: 100%;
+    }
+    .allRoomCard {
+        width: 100%;
+        height: 100%;
+    }
+    .nameBox {
+        width: 45%;
+        font-size: .55rem;
+    }
+}
+
+@media screen and (min-width: 641px) and (max-width: 1040px) {}
+
+@media screen and (min-width: 1041px) and (max-width: 1179px) {}
+
+@media screen and (min-width: 1180px) and (max-width: 1500px) {}
+
+@media screen and (min-width: 1501px) and (max-width: 1685px) {}
+
+@media screen and (min-width: 1686px) and (max-width: 1900px) {}
+
+@media screen and (min-width: 1901px) {}
