@@ -307,7 +307,7 @@ const CarouselContainer = () => {
                 id="livingRoom"
                 type="radio"
                 name="room"
-                value="Living Room"
+                value="1"
                 aria-label="Living Room"
                 required
               />
@@ -319,7 +319,7 @@ const CarouselContainer = () => {
                 id="bedroom"
                 type="radio"
                 name="room"
-                value="Bedroom"
+                value="2"
                 aria-label="Bedroom"
               />
               <label for="bedroom" className="bedroom roomIcon"></label>
@@ -330,7 +330,7 @@ const CarouselContainer = () => {
                 id="bathroom"
                 type="radio"
                 name="room"
-                value="Bathroom"
+                value="3"
                 aria-label="Bathroom"
               />
               <label for="bathroom" className="bathroom roomIcon"></label>
@@ -344,7 +344,7 @@ const CarouselContainer = () => {
                 id="kitchen"
                 type="radio"
                 name="room"
-                value="Kitchen"
+                value="4"
                 aria-label="Kitchen"
               />
               <label for="kitchen" className="kitchen roomIcon"></label>
@@ -355,7 +355,7 @@ const CarouselContainer = () => {
                 id="patio"
                 type="radio"
                 name="room"
-                value="Patio"
+                value="5"
                 aria-label="Patio"
               />
               <label for="patio" className="patio roomIcon"></label>
