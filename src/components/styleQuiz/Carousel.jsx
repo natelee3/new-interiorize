@@ -37,7 +37,7 @@ const CarouselContainer = () => {
 
   //   CHANGES
   const handleStyleChange = (event) => {
-    setStyle(event.target.value);
+    setStyle(parseInt(event.target.value));
   };
 
   const handleBudgetChange = (event) => {
@@ -51,22 +51,20 @@ const CarouselContainer = () => {
   };
 
   const handleColor1Change = (event) => {
-    let colorValue = parseInt(event.target.value);
-    setColor1(colorValue);
+    setColor1(parseInt(event.target.value));
   };
 
   const handleColor2Change = (event) => {
-    let colorValue = parseInt(event.target.value);
-    setColor2(colorValue);
+    setColor2(parseInt(event.target.value));
   };
 
   const handleColor3Change = (event) => {
-    let colorValue = parseInt(event.target.value);
-    setColor3(colorValue);
+    setColor3(parseInt(event.target.value));
   };
 
   const handleAvoidChange = (event) => {
     let index;
+    console.log("AVOID ARRAY:", avoidArray);
     if (event.target.checked) {
       let newValue = event.target.value;
       avoidArray.push(newValue);
@@ -112,7 +110,27 @@ const CarouselContainer = () => {
   const handleAvoidSubmit = (event) => {
     event.preventDefault();
     localStorage.setItem("Avoid", avoidArray);
-    //Post to the API!
+    submitQuizData();
+  };
+
+  const submitQuizData = async () => {
+    const url = `https://api.interiorize.design/quizzes/add`;
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: 2,
+        budget: localStorage.getItem("Budget"),
+        color_one_id: localStorage.getItem("Color 1"),
+        color_two_id: localStorage.getItem("Color 2"),
+        color_three_id: localStorage.getItem("Color 3"),
+        category_id: localStorage.getItem("Room Choice"),
+        style_id: localStorage.getItem("Style Category"),
+      }),
+    };
+    const response = await fetch(url, requestOptions).then((response) =>
+      console.log(response)
+    );
   };
 
   return (
@@ -186,14 +204,14 @@ const CarouselContainer = () => {
                 id="bohemian"
                 type="radio"
                 name="style"
-                value="Bohemian"
+                value="18"
                 onChange={(event) => handleStyleChange(event)}
                 required
               />
 
               <label className="styleImg bohemian" for="bohemian"></label>
 
-              <h3>Bohemian</h3>
+              <p>Bohemian</p>
             </div>
             <div>
               <div className="styleCol">
@@ -201,13 +219,13 @@ const CarouselContainer = () => {
                   id="farmhouse"
                   type="radio"
                   name="style"
-                  value="Farmhouse"
+                  value="16"
                   onChange={(event) => handleStyleChange(event)}
                 />
 
                 <label className="styleImg farmhouse" for="farmhouse"></label>
 
-                <h3>Farmhouse</h3>
+                <p>Farmhouse</p>
               </div>
             </div>
           </div>
@@ -218,7 +236,7 @@ const CarouselContainer = () => {
                   id="contemporary"
                   type="radio"
                   name="style"
-                  value="Contemporary"
+                  value="17"
                   onChange={(event) => handleStyleChange(event)}
                 />
 
@@ -227,7 +245,7 @@ const CarouselContainer = () => {
                   for="contemporary"
                 ></label>
 
-                <h3>Contemporary</h3>
+                <p>Contemporary</p>
               </div>
             </div>
             <div>
@@ -236,13 +254,13 @@ const CarouselContainer = () => {
                   id="modern"
                   type="radio"
                   name="style"
-                  value="Modern"
+                  value="15"
                   onChange={(event) => handleStyleChange(event)}
                 />
 
                 <label className="styleImg modern" for="modern"></label>
 
-                <h3>Modern</h3>
+                <p>Modern</p>
               </div>
             </div>
           </div>
@@ -264,21 +282,27 @@ const CarouselContainer = () => {
       >
         <h3>Which room would you like to focus on first?</h3>
         <form onSubmit={(event) => handleRoomSubmit(event)}>
-          <input
-            id="livingRoom"
-            type="radio"
-            name="room"
-            value="Living Room"
-            required
-          />
-          <label for="livingRoom">Living Room</label>
-
-          <input id="bedroom" type="radio" name="room" value="Bedroom" />
-          <label for="bedroom">Bedroom</label>
-
-          <input id="bathroom" type="radio" name="room" value="Bathroom" />
-          <label for="bathroom">Bathroom</label>
-
+          <div className="roomCol">
+            <input
+              id="livingRoom"
+              type="radio"
+              name="room"
+              value="Living Room"
+              required
+            />
+            <label for="livingRoom" className="livingRoom"></label>
+            <p>Living Room</p>
+          </div>
+          <div className="roomCol">
+            <input id="bedroom" type="radio" name="room" value="Bedroom" />
+            <label for="bedroom" className="bedroom"></label>
+            <p>Bedroom</p>
+          </div>
+          <div className="roomCol">
+            <input id="bathroom" type="radio" name="room" value="Bathroom" />
+            <label for="bathroom"></label>
+            <p>Bathroom</p>
+          </div>
           <input id="kitchen" type="radio" name="room" value="Kitchen" />
           <label for="kitchen">Kitchen</label>
 
@@ -392,7 +416,11 @@ const CarouselContainer = () => {
               />
               <label for="brown">Brown</label>
 
-              <button type="submit" className="secondaryBtn" onClick={color1 !== "" ? () => next() : null}>
+              <button
+                type="submit"
+                className="secondaryBtn"
+                onClick={color1 !== "" ? () => next() : null}
+              >
                 Next
               </button>
             </form>
@@ -438,7 +466,10 @@ const CarouselContainer = () => {
                 className={color1 === 3 ? "hidden" : "active"}
                 onChange={(event) => handleColor2Change(event)}
               />
-              <label for="black2" className={color1 === 3 ? "hidden" : "active"}>
+              <label
+                for="black2"
+                className={color1 === 3 ? "hidden" : "active"}
+              >
                 Black
               </label>
 
@@ -450,7 +481,10 @@ const CarouselContainer = () => {
                 className={color1 === 4 ? "hidden" : "active"}
                 onChange={(event) => handleColor2Change(event)}
               />
-              <label for="white2" className={color1 === 4 ? "hidden" : "active"}>
+              <label
+                for="white2"
+                className={color1 === 4 ? "hidden" : "active"}
+              >
                 White
               </label>
 
@@ -477,7 +511,10 @@ const CarouselContainer = () => {
                 className={color1 === 6 ? "hidden" : "active"}
                 onChange={(event) => handleColor2Change(event)}
               />
-              <label for="green2" className={color1 === 6 ? "hidden" : "active"}>
+              <label
+                for="green2"
+                className={color1 === 6 ? "hidden" : "active"}
+              >
                 Green
               </label>
 
@@ -519,7 +556,10 @@ const CarouselContainer = () => {
                 className={color1 === 10 ? "hidden" : "active"}
                 onChange={(event) => handleColor2Change(event)}
               />
-              <label for="gray2" className={color1 === 10 ? "hidden" : "active"}>
+              <label
+                for="gray2"
+                className={color1 === 10 ? "hidden" : "active"}
+              >
                 Gray
               </label>
 
@@ -538,14 +578,18 @@ const CarouselContainer = () => {
                 Brown
               </label>
 
-              <button type="submit" className="secondaryBtn" onClick={color2 !== "" ? () => next() : null}>
+              <button
+                type="submit"
+                className="secondaryBtn"
+                onClick={color2 !== "" ? () => next() : null}
+              >
                 Next
               </button>
             </form>
           </div>
         </div>
       </div>
-        {/* COLOR SELECTION 3 */}
+      {/* COLOR SELECTION 3 */}
       <div className="carouselSlide">
         <div className="colorContainer">
           <h3>Choose Your Third Color</h3>
