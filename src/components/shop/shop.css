@@ -10,6 +10,10 @@
 
 /* Sidebar ~~~~~~~~~~~~~~~~~~~~~~~ */
 
+.navbar1 {
+    width: 15%;
+}
+
 .sideBar {
     display: flex;
     height: max-content;
@@ -176,6 +180,10 @@
 @media screen and (max-width: 640px) {
     .mainContainer1 {
         flex-direction: column;
+    }
+    .navbar1 {
+        width: 15vw;
+        position: absolute;
     }
     .itemContainer {
         width: 100vw;

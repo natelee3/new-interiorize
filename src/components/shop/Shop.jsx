@@ -33,7 +33,7 @@ const Shop = (props) => {
     return (
         <>
             {/* <Menu /> */}
-
+        <div className="mainContainer1">
             <nav className="navbar1">
                 <button onClick={() => setActive1(!active1)} className="toggle-button1">
                 <span className="bar1"></span>
@@ -159,7 +159,7 @@ const Shop = (props) => {
                 </div>
             </nav>
 
-            <div className="mainContainer1">
+            
                 {/* <div className="sideBar">
                     <div className="sideContent">
                         <h3 className="detailTitle">Design Style</h3>
