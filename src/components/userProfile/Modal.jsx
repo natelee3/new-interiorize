@@ -16,6 +16,8 @@ const Modal = () => {
     window.scrollTo(0, 0);
   };
 
+  // Still need to add an onSubmit function
+
   return (
     <>
       <button
