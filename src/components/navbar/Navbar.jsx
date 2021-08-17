@@ -2,9 +2,12 @@ import { useState } from "react";
 import logo from "./imgs/logo.png";
 import "./navbar.css";
 import shoppingCart from "./imgs/shoppingCart.png";
+import ItemDetails from "../shop/ItemDetails";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
+
+  const [cart, setCart] = useState([]);
 
   return (
     <>
@@ -33,7 +36,7 @@ const Navbar = () => {
               <a href="/user-profile">User Profile</a>
             </li>
             <li className="cartIcon">
-              <a href="/#"> 
+              <a href="/shopping-cart"> 
               <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" /></a>
             </li>
           </ul>

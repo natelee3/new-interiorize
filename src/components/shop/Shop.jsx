@@ -6,11 +6,10 @@ import "./menu.css";
 // import Menu from './Menu';
 // import shoppingCart from "./imgs/shoppingCart.png";
 
-
 const Shop = (props) => {
 
     const [shopData, setShopData] = useState([]);
-    const [active1, setActive1] = useState(false)
+    const [active1, setActive1] = useState(false);
 
     const getShopData = () => {
         axios({
