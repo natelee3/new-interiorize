@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import logo from "./imgs/logo.png";
 import "./navbar.css";
 import shoppingCart from "./imgs/shoppingCart.png";
@@ -24,21 +25,21 @@ const Navbar = () => {
         <div className={!!active ? "navbar-links active" : "navbar-links"}>
           <ul>
             <li>
-              <a href="/shop-intro">Shop</a>
+              <Link to="/shop-intro">Shop</Link>
             </li>
             <li>
-              <a href="/style-quiz">Style Quiz</a>
+              <Link to="/style-quiz">Style Quiz</Link>
             </li>
             <li>
-              <a href="#">Register</a>
+              <Link to="#">Register</Link>
             </li>
             <li className="userProfileLink">
               {/* If user is signed in show user Profile else show Login */}
-              <a href="/user-profile">User Profile</a>
+              <Link to="/user-profile">User Profile</Link>
             </li>
             <li className="cartIcon">
-              <a href="/shopping-cart"> 
-              <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" style={localStorage.getItem("Added To Cart") !==null ? { backgroundColor: "red" } : null  } /></a>
+              <Link to="/shopping-cart"> 
+              <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" style={localStorage.getItem("Added To Cart") !==null ? { backgroundColor: "red" } : null  } /></Link>
             </li>
           </ul>
         </div>

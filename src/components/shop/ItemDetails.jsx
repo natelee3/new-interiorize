@@ -3,32 +3,18 @@ import { useParams } from "react-router-dom";
 import StateContext from "../../context";
 import "./itemDetails.css";
 
-// const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
-
 const ItemDetails = () => {
   const [itemData, setItemData] = useState(null);
 
   const [value, dispatch] = useContext(StateContext);
-  const { cart } = value
 
   const _handleClick = () => {
     console.log("Clicked: ", value);
     dispatch({
       type: "ACTION_ADD_TO_CART",
-      cart: [itemData, ...value],
+      payload: itemData,
     });
   };
-
-
-  // const addToCart = (itemData) => {
-  //   console.log("added to cart", itemData);
-  //   localStorage.setItem("Added To Cart", itemData);
-  //   setCart([...cart, itemData]);
-  //   setTimeout(() => {
-  //     console.log("Cart Before: ", cart);
-  //   }, 3000);
-  // };
- 
 
   //Get item by id from our lovely api
   let { id } = useParams();
@@ -52,13 +38,9 @@ const ItemDetails = () => {
     getItemInfo(id);
   }, []);
 
-  // useEffect(() => {
-  //   localStorage.setItem("cart", cart);
-  // }, [cart]);
-
   return (
     <>
-    {value.length > 0 ? (<p>Cart has an entry</p>) : (<p>Cart has no entries</p>)}
+    {value.cart.length > 0 ? (<p>Cart has an entry</p>) : (<p>Cart has no entries</p>)}
       {itemData !== null ? (
         <div className="detailsContainer">
           <div className="imgBox">

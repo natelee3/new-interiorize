@@ -14,17 +14,16 @@ import Footer from "./footer/Footer";
 
 function App() {
 
-  const initialState = [];
+  const initialState = {cart: []};
 
   const contextReducer = (state, action) => {
     console.log("Action then State: ",action, state)
-    const {type, cart} = action;
-    switch (type) {
+    
+    switch (action.type) {
         case 'ACTION_ADD_TO_CART':
-            return [
-                ...state,
-                cart,
-            ];
+            return {
+                cart: [...state.cart, action.payload],
+            };
         case 'ACTION_REMOVE':
             return {
                 ...state,

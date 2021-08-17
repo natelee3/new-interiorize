@@ -3,33 +3,20 @@ import StateContext from '../../context';
 import "./shoppingCart.css";
 import bohKitchen from "./imgs/bohKitchen.jpg";
 
-// const cart = [
-//     {item_name: "mirror",
-//     price: "51",
-//     img_src: "3_piece_dima_mirror_set.jpeg"}
-// ]
-
-
 const ShoppingCart = () => {
 
-    const [value, dispatch] = useContext(StateContext);
-    const { cart } = value;
+    const [value] = useContext(StateContext);
     console.log("Value: ", value)
 
     return (
         <>
 
-
-
         <div className="cartContainer">
 
-        {cart}
-
-
         {/* <button type="button" onClick={() => createOrder()}>Create Order</button> */}
-        {/* <ul> 
-        {cart.length > 0 ?(
-            cart.map((item, props, id) => (
+        <ul> 
+        {value.cart.length > 0 ?(
+            value.cart.map((item, props, id) => (
                 <>
                     <div>
                         <ul>
@@ -43,10 +30,7 @@ const ShoppingCart = () => {
                 </>
             ))
         ): <></>}
-        </ul> */}
-
-
-
+        </ul>
 
 
             <div className="itemsInCart">
