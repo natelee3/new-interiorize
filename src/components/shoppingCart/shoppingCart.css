@@ -1,0 +1,72 @@
+.cartContainer {
+    display: flex;
+    margin: auto;
+    width: 75vw;
+    height: 75vh;
+    justify-content: space-between;
+}
+
+
+/* Items In Cart Area ~~~~~~~~~~~~~~~~ */
+
+.cartTitle {
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.itemsInCart {
+    width: 60%;
+}
+
+.cartCard {
+    display: flex;
+    margin: auto;
+    background-color: gray;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 95%;
+    height: 200px;
+}
+
+.cartItemImg {
+    display: flex;
+    width: 200px;
+    height: 100%;
+    background-color: green;
+}
+
+.photo {
+    display: flex;
+    width: 100%;
+    margin: 0;
+}
+
+.itemDetails {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+}
+
+.itemTitle {
+    display: flex;
+}
+
+
+/* Cost Area ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+.costBox {
+    width: 30%;
+}
+
+.cartLine {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.checkoutBtn {
+    display: flex;
+    margin: auto;
+}

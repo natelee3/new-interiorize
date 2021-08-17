@@ -6,6 +6,7 @@ import UserProfile from "./components/userProfile/UserProfile";
 import Shop from "./components/shop/Shop";
 import ShopIntro from "./components/shop/ShopIntro";
 import ItemDetails from "./components/shop/ItemDetails";
+import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Footer from "./footer/Footer";
 
 function App() {
@@ -31,6 +32,9 @@ function App() {
               </Route> 
               <Route exact path = "/user-profile">
                 <UserProfile />
+              </Route> 
+              <Route exact path = "/shopping-cart">
+                <ShoppingCart />
               </Route> 
               <Route path = "*">
                 <Redirect to = "/"/>
