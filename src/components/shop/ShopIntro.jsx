@@ -1,7 +1,7 @@
 // import React, { useState } from 'react'
-// import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./shopIntro.css"
-// import Shop from "./Shop"
+
 
 const ShopIntro = () => {
 
@@ -16,7 +16,7 @@ const ShopIntro = () => {
                 <div className="shopNav">
                     <div className="shopList">
 
-                        <a className="shopRoomLinks" href="/shop-intro/shop">
+                        <Link className="shopRoomLinks" to="/shop-intro/shop">
                             <div className="roomCard">
                                 <div className="livingCard">
                                     <div className="nameBox">
@@ -24,9 +24,9 @@ const ShopIntro = () => {
                                     </div>
                                 </div>
                             </div>
-                        </a>        
+                        </Link>        
                         
-                        <a className="shopRoomLinks" href="/shop-intro/shop">
+                        <Link className="shopRoomLinks" to="/shop-intro/shop">
                             <div className="roomCard">
                                 <div className="bedroomCard">
                                     <div className="nameBox">
@@ -34,9 +34,9 @@ const ShopIntro = () => {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a className="shopRoomLinks" href="/shop-intro/shop">
+                        <Link className="shopRoomLinks" to="/shop-intro/shop">
                             <div className="roomCard">
                                 <div className="bathCard">
                                     <div className="nameBox">
@@ -44,9 +44,9 @@ const ShopIntro = () => {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a className="shopRoomLinks" href="/shop">
+                        <Link className="shopRoomLinks" to="/shop">
                             <div className="roomCard">
                                 <div className="kitchenCard">
                                     <div className="nameBox">
@@ -54,9 +54,9 @@ const ShopIntro = () => {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a className="shopRoomLinks" href="/shop-intro/shop">
+                        <Link className="shopRoomLinks" to="/shop-intro/shop">
                             <div className="roomCard">
                                 <div className="patioCard">
                                     <div className="nameBox">
@@ -64,9 +64,9 @@ const ShopIntro = () => {
                                     </div>
                                 </div>
                             </div>
-                        </a>
+                        </Link>
 
-                        <a className="shopRoomLinks" href="/shop-intro/shop">
+                        <Link className="shopRoomLinks" to="/shop-intro/shop">
                             <div className="roomCard">
                                 <div className="allRoomCard">
                                     <div className="nameBox">
@@ -74,17 +74,11 @@ const ShopIntro = () => {
                                     </div>
                                 </div>
                             </div>
-                        </a>
-
-                    </div>
-                </div>
-                <div className="shoppingCart">
-                    <div className="cartButton">
+                        </Link>
 
                     </div>
                 </div>
             </div>
-     
         </>
         )
     }
