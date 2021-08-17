@@ -1,7 +1,4 @@
 import { useState, useEffect } from "react";
-//To do:
-//Connect to db, submit new values to the user's table
-//Need to store all values in state. Add an onChange and onSubmit.
 
 const Modal = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -35,6 +32,7 @@ const Modal = () => {
             .then(results => {
               setAvoidArray([...results])
             })
+            
       })()
   },[]);
 
@@ -59,12 +57,14 @@ const Modal = () => {
 
   const handleAvoidChange = (event) => {
     if (event.target.checked && !avoidArray.includes(event.target.value)) {
-      setAvoidArray([...avoidArray, event.target.value]);
+      setAvoidArray([...avoidArray, parseInt(event.target.value)]);
     } else {
-      let filteredAry = avoidArray.filter((e) => e !== event.target.value);
+      let filteredAry = avoidArray.filter((e) => parseInt(e) !== parseInt(event.target.value));
       setAvoidArray(filteredAry);
     }
   };
+
+  //convert to arrays with parse int first.
 
   const handleSubmit = (event) => {
     event.preventDefault();
