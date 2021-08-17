@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar";
 import Homepage from "./components/homepage/Homepage";
 import StyleQuiz from "./components/styleQuiz/StyleQuiz";
@@ -7,6 +7,7 @@ import Shop from "./components/shop/Shop";
 import ShopIntro from "./components/shop/ShopIntro";
 import ItemDetails from "./components/shop/ItemDetails";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
+import Redirect404 from "./components/404/Redirect404";
 import Footer from "./footer/Footer";
 
 function App() {
@@ -37,7 +38,7 @@ function App() {
                 <ShoppingCart />
               </Route> 
               <Route path = "*">
-                <Redirect to = "/"/>
+                <Redirect404/>
               </Route> 
             </Switch> 
           <Footer />
