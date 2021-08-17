@@ -1,16 +1,57 @@
-import React from 'react';
+import  React, { useContext } from 'react';
+import StateContext from '../../context';
 import "./shoppingCart.css";
 import bohKitchen from "./imgs/bohKitchen.jpg";
 
+// const cart = [
+//     {item_name: "mirror",
+//     price: "51",
+//     img_src: "3_piece_dima_mirror_set.jpeg"}
+// ]
+
+
 const ShoppingCart = () => {
 
+    const [value, dispatch] = useContext(StateContext);
+    const { cart } = value;
+    console.log("Value: ", value)
+
     return (
+        <>
+
+
+
         <div className="cartContainer">
-            
+
+        {cart}
+
+
+        {/* <button type="button" onClick={() => createOrder()}>Create Order</button> */}
+        {/* <ul> 
+        {cart.length > 0 ?(
+            cart.map((item, props, id) => (
+                <>
+                    <div>
+                        <ul>
+                            <li key={id}>
+                            <img className="itemImg" src={`https://api.interiorize.design/images/${item.img_src}`} alt="Img of Item" />
+                            <p className="itemName">{item.item_name}</p>
+                            <p className="itemPrice">${item.price}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </>
+            ))
+        ): <></>}
+        </ul> */}
+
+
+
+
+
             <div className="itemsInCart">
                 <h1 className="cartTitle">Cart</h1>
                 <hr />
-
 
                 <div className="cartCard">
                     <div className="cartItemImg">
@@ -48,6 +89,7 @@ const ShoppingCart = () => {
                 <button className="checkoutBtn" type="button">Proceed to Checkout</button>
             </div>
         </div>
+        </>
     )
 }
 

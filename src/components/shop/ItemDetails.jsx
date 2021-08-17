@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import StateContext from "../../context";
 import "./itemDetails.css";
 
 // const cartFromLocalStorage = JSON.parse(localStorage.getItem("cart") || "[]")
@@ -7,7 +8,27 @@ import "./itemDetails.css";
 const ItemDetails = () => {
   const [itemData, setItemData] = useState(null);
 
-  const [cart, setCart] = useState([]);
+  const [value, dispatch] = useContext(StateContext);
+  const { cart } = value
+
+  const _handleClick = () => {
+    console.log("Clicked: ", value);
+    dispatch({
+      type: "ACTION_ADD_TO_CART",
+      cart: [itemData, ...value],
+    });
+  };
+
+
+  // const addToCart = (itemData) => {
+  //   console.log("added to cart", itemData);
+  //   localStorage.setItem("Added To Cart", itemData);
+  //   setCart([...cart, itemData]);
+  //   setTimeout(() => {
+  //     console.log("Cart Before: ", cart);
+  //   }, 3000);
+  // };
+ 
 
   //Get item by id from our lovely api
   let { id } = useParams();
@@ -31,22 +52,13 @@ const ItemDetails = () => {
     getItemInfo(id);
   }, []);
 
-  useEffect(() => {
-    localStorage.setItem("cart", cart);
-  }, [cart]);
-
-
-  const addToCart = (itemData) => {
-    console.log("added to cart", itemData)
-    localStorage.setItem("Added To Cart", itemData);
-    console.log("Cart Before: ", cart)
-    setCart(itemData);
-    console.log("Cart After: ", cart);
-  }
-
+  // useEffect(() => {
+  //   localStorage.setItem("cart", cart);
+  // }, [cart]);
 
   return (
     <>
+    {value.length > 0 ? (<p>Cart has an entry</p>) : (<p>Cart has no entries</p>)}
       {itemData !== null ? (
         <div className="detailsContainer">
           <div className="imgBox">
@@ -73,10 +85,10 @@ const ItemDetails = () => {
             </h3>
             <h3 className="inStock">In Stock!</h3>
             <br />
-            <button className="addToCartButton" onClick={() => addToCart(itemData)} type="button">
+            <button className="addToCartButton" onClick={() => _handleClick()} type="button">
               Add To Cart
             </button>
-            <div className="addedToCart" >Notification modal pops up?</div>
+            <div className="addedToCart">Notification modal pops up?</div>
           </div>
         </div>
       ) : (

@@ -3,6 +3,7 @@ import logo from "./imgs/logo.png";
 import "./navbar.css";
 import shoppingCart from "./imgs/shoppingCart.png";
 import ItemDetails from "../shop/ItemDetails";
+import { Redirect } from "react-router-dom";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
@@ -37,7 +38,7 @@ const Navbar = () => {
             </li>
             <li className="cartIcon">
               <a href="/shopping-cart"> 
-              <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" /></a>
+              <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" style={localStorage.getItem("Added To Cart") !==null ? { backgroundColor: "red" } : null  } /></a>
             </li>
           </ul>
         </div>
