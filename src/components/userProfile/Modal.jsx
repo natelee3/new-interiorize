@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //To do:
 //Connect to db, submit new values to the user's table
 //Need to store all values in state. Add an onChange and onSubmit.
@@ -14,6 +14,30 @@ const Modal = () => {
     room: "",
   });
   const [avoidArray, setAvoidArray] = useState([]);
+
+  useEffect (() => {
+      (async () => {
+        const localurl = 'http://localhost:3333/quizzes/2';
+        const storedQuizData = await fetch(localurl)
+          .then(response => response.json())
+          .then(data => {
+            setState({
+              budget: data.budget,
+              color1: data.colors[0][0],
+              color2: data.colors[0][1],
+              color3: data.colors[0][2],
+              style: data.style_id,
+              room: data.category_id
+            })
+          });
+          const storedAvoidData = await fetch('http://localhost:3333/users/avoid/2')
+            .then(response => response.json())
+            .then(results => {
+              setAvoidArray([...results])
+            })
+      })()
+  },[]);
+
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -34,7 +58,7 @@ const Modal = () => {
   };
 
   const handleAvoidChange = (event) => {
-    if (event.target.checked) {
+    if (event.target.checked && !avoidArray.includes(event.target.value)) {
       setAvoidArray([...avoidArray, event.target.value]);
     } else {
       let filteredAry = avoidArray.filter((e) => e !== event.target.value);
@@ -45,6 +69,45 @@ const Modal = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     //post info to the api
+    updateQuizData();
+    updateAvoidData();
+  };
+
+  const updateQuizData = async () => {
+    const localurl = 'http://localhost:3333/quizzes/update';
+    const url = 'https://api.interiorize.design/quizzes/update';
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: 2,
+        budget: state.budget,
+        color_one_id: state.color1,
+        color_two_id: state.color2,
+        color_three_id: state.color3,
+        category_id: state.room,
+        style_id: state.style,
+      }),
+    };  
+    const response = await fetch(localurl, requestOptions).then(response => {
+      console.log(response)
+    });
+  };
+
+  const updateAvoidData = async () => {
+    const localurl = 'http://localhost:3333/users/avoid/update';
+    const url = 'https://api.interiorize.design/users/avoid/update';
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: 2,
+        avoid_tags: avoidArray
+      }),
+    };
+    const response = await fetch(localurl, requestOptions).then(response => {
+      console.log(response)
+    });
   };
 
   return (
@@ -71,7 +134,10 @@ const Modal = () => {
             <label>
               Budget
               <br />
-              <select name="budget" onChange={(event) => handleChange(event)}>
+              <select 
+                name="budget" 
+                value={state.budget}
+                onChange={(event) => handleChange(event)}>
                 <option value="40">$40</option>
                 <option value="80">$80</option>
                 <option value="120">$120</option>
@@ -82,7 +148,10 @@ const Modal = () => {
               <label>
                 Color 1
                 <br />
-                <select name="color1" onChange={(event) => handleChange(event)}>
+                <select 
+                  name="color1" 
+                  value={state.color1}
+                  onChange={(event) => handleChange(event)}>
                   <option value="">Select a Color</option>
                   <option value="1">Red</option>
                   <option value="2">Blue</option>
@@ -99,7 +168,10 @@ const Modal = () => {
               <label>
                 Color 2
                 <br />
-                <select name="color2" onChange={(event) => handleChange(event)}>
+                <select 
+                  name="color2" 
+                  value={state.color2}
+                  onChange={(event) => handleChange(event)}>
                   <option value="">Select a Color</option>
                   <option value="1">Red</option>
                   <option value="2">Blue</option>
@@ -116,7 +188,10 @@ const Modal = () => {
               <label>
                 Color 3
                 <br />
-                <select name="color3" onChange={(event) => handleChange(event)}>
+                <select 
+                  name="color3" 
+                  value={state.color3}
+                  onChange={(event) => handleChange(event)}>
                   <option value="">Select a Color</option>
                   <option value="1">Red</option>
                   <option value="2">Blue</option>
@@ -134,7 +209,10 @@ const Modal = () => {
             <label>
               Style
               <br />
-              <select name="style" onChange={(event) => handleChange(event)}>
+              <select 
+                name="style" 
+                value={state.style}
+                onChange={(event) => handleChange(event)}>
                 <option value="18">Bohemian</option>
                 <option value="15">Modern</option>
                 <option value="16">Farmhouse</option>
@@ -144,7 +222,10 @@ const Modal = () => {
             <label>
               Choose Your Primary Room to Style
               <br />
-              <select name="room" onChange={(event) => handleChange(event)}>
+              <select 
+                name="room" 
+                value={state.room}
+                onChange={(event) => handleChange(event)}>
                 <option value="1">Living Room</option>
                 <option value="2">Bedroom</option>
                 <option value="3">Bathroom</option>
@@ -159,6 +240,7 @@ const Modal = () => {
                 type="checkbox"
                 name="pillows"
                 value="7"
+                checked={!!avoidArray.includes(7)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="pillows">Pillows</label>
@@ -166,6 +248,7 @@ const Modal = () => {
                 type="checkbox"
                 name="rug"
                 value="2"
+                checked={!!avoidArray.includes(2)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="rug">Rugs</label>
@@ -173,6 +256,7 @@ const Modal = () => {
                 type="checkbox"
                 name="lamp"
                 value="3"
+                checked={!!avoidArray.includes(3)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="lamp">Lamps</label>
@@ -180,6 +264,7 @@ const Modal = () => {
                 type="checkbox"
                 name="art"
                 value="4"
+                checked={!!avoidArray.includes(4)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="art">Art</label>
@@ -187,6 +272,7 @@ const Modal = () => {
                 type="checkbox"
                 name="decor"
                 value="5"
+                checked={!!avoidArray.includes(5)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="decor">Decor</label>
@@ -194,6 +280,7 @@ const Modal = () => {
                 type="checkbox"
                 name="kitchenLinens"
                 value="9"
+                checked={!!avoidArray.includes(9)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="kitchenLinens">Kitchen Linens</label>
@@ -201,6 +288,7 @@ const Modal = () => {
                 type="checkbox"
                 name="mirror"
                 value="19"
+                checked={!!avoidArray.includes(19)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="mirror">Mirrors</label>
@@ -208,6 +296,7 @@ const Modal = () => {
                 type="checkbox"
                 name="towel"
                 value="20"
+                checked={!!avoidArray.includes(20)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="towel">Towels</label>
@@ -215,6 +304,7 @@ const Modal = () => {
                 type="checkbox"
                 name="storage"
                 value="11"
+                checked={!!avoidArray.includes(11)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="storage">Storage</label>
@@ -222,6 +312,7 @@ const Modal = () => {
                 type="checkbox"
                 name="serverware"
                 value="13"
+                checked={!!avoidArray.includes(13)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="serverware">Serverware</label>
@@ -229,6 +320,7 @@ const Modal = () => {
                 type="checkbox"
                 name="utensils"
                 value="14"
+                checked={!!avoidArray.includes(14)}
                 onChange={(event) => handleAvoidChange(event)}
               />
               <label for="utensils">Utensils</label>
