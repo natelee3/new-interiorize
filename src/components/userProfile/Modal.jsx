@@ -66,9 +66,7 @@ const Modal = () => {
 
   //convert to arrays with parse int first.
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    //post info to the api
+  const handleSubmit = () => {
     updateQuizData();
     updateAvoidData();
   };
@@ -130,7 +128,7 @@ const Modal = () => {
           </button>
 
           <h1>Edit Your Preferences</h1>
-          <form onSubmit={(event) => handleSubmit(event)}>
+          <form onSubmit={() => handleSubmit()}>
             <label>
               Budget
               <br />

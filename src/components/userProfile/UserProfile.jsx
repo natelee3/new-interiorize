@@ -1,14 +1,33 @@
-import ProductCard from './ProductCard';
-import Modal from './Modal';
+import { useState, useEffect } from "react";
+import ProductCard from "./ProductCard";
+import Modal from "./Modal";
 import "./userprofile.css";
 
 //To do:
-// map through real data and send to productCards and previous orders.
-//Add ternary statements once we have data
-// Fill out userpreferences with real data.
-// Review functionality is backlogged - just have placeholder rn
+//1. grab the order data based on user
+//2. Get the most recent order id
+//3. Use that id to get the most recent order details
+//4. map that data to the productCards
+//5. Map the data for the other orders for the previous orders
+
 
 const UserProfile = () => {
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    const fetchUserData = async () => {
+      //url to be swapped later
+      const localUrl = "http://localhost:3333/quizzes/2";
+      const response = await fetch(localUrl).then((response) =>
+        response.json()
+      );
+      console.log("User Response is: ", response);
+      setUserData(response);
+    };
+
+    fetchUserData();
+  }, []);
+
   return (
     <>
       <div className="wrapper">
@@ -20,9 +39,9 @@ const UserProfile = () => {
             <p>You've got items on the way! </p>
             <div className="shipmentContainer">
               {/* Fake data rn later on we will do a map and send the right information to each productCard */}
-              <ProductCard/>
-              <ProductCard/>
-              <ProductCard/>
+              <ProductCard />
+              <ProductCard />
+              <ProductCard />
             </div>
             <button type="button" className="primaryBtn">
               Schedule An Order
@@ -66,23 +85,28 @@ const UserProfile = () => {
           </div>
           <div className="userPreferencesCol">
             <h2>Your Style Preferences</h2>
-            <div className="preferencesRow">
-              <div>
-                <h3>Budget</h3>
-                <p>$80</p>
-                <h3>Color Palette</h3>
-                <p>White, blue, red</p>
-                <h3>Style</h3>
-                <p>Bohemian</p>
+            {userData !== null ? (
+              <div className="preferencesRow">
+                <div>
+                  <h3>Budget</h3>
+                  <p>${userData.budget}</p>
+                  <h3>Color Palette</h3>
+                  <p>{userData.color1}, {userData.color2}, {userData.color3}</p>
+                  <h3>Style</h3>
+                  <p>{userData.style_name}</p>
+                </div>
+                <div className="stylesCol">
+                  <h3>Room</h3>
+                  <p>{userData.category_name}</p>
+                  <h3>Avoid</h3>
+                  <p>Animal print, paisley</p>
+                </div>
               </div>
-              <div className="stylesCol">
-                <h3>Room</h3>
-                <p>Living Room</p>
-                <h3>Avoid</h3>
-                <p>Animal print, paisley</p>
-              </div>
-            </div>
-            <Modal/>
+            ) : (
+              <p>Loading your style preferences...</p>
+            )}
+
+            <Modal />
           </div>
         </div>
       </div>
