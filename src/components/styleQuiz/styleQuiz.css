@@ -10,10 +10,10 @@
 
 .quizContainer {
   width: 1060px;
-  box-shadow: 0 4px 2px -2px rgb(126, 126, 126);
 }
 
-.row, .budgetRow {
+.row,
+.budgetRow {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -28,6 +28,7 @@
   background-color: #244d4d;
   color: white;
   padding: 10px;
+  margin-bottom: 50px;
 }
 
 .carouselSlide input {
@@ -36,28 +37,28 @@
 
 .secondaryBtn {
   background-color: white;
-  border:none;
+  border: none;
   color: #244d4d;
   letter-spacing: 1.5px;
   padding: 10px 25px;
-  font-weight:500;
+  font-weight: 500;
   font-size: 15px;
   margin-top: 15px;
   margin-bottom: 15px;
 }
 
-.secondaryBtn:hover{
+.secondaryBtn:hover {
   background-color: rgb(233, 233, 233);
 }
 
 /* BUDGET */
 
-.budgetRow input{
+.budgetRow input {
   margin: 0;
   padding: 0;
   height: 0;
   width: 0;
-  display:none;
+  display: none;
 }
 
 .budgetIcon:hover {
@@ -67,7 +68,6 @@
 .budgetRow input:checked + .budgetIcon {
   border: 2px solid white;
 }
-
 
 .firstTier {
   background: url("./imgs/shoppingbag.png");
@@ -87,7 +87,7 @@
   background-repeat: no-repeat;
   height: 100px;
   width: 100px;
-  padding:15px;
+  padding: 15px;
   display: inline-block;
 }
 
@@ -101,11 +101,11 @@
 }
 
 .contemporary {
-    background: url("./imgs/contemporary.jpeg");
+  background: url("./imgs/contemporary.jpeg");
 }
 
 .modern {
-    background: url("./imgs/modern.jpeg");
+  background: url("./imgs/modern.jpeg");
 }
 
 .styleCol {
@@ -130,11 +130,11 @@
   padding: 0;
   height: 0;
   width: 0;
-  display:none;
+  display: none;
 }
 
 .styleImg:hover {
-    filter: brightness(1) grayscale(0.2) opacity(0.9);
+  filter: brightness(1) grayscale(0.2) opacity(0.9);
 }
 
 .styleCol input:checked + .styleImg {
@@ -144,8 +144,8 @@
 /* ROOMS */
 
 .roomContainer {
-  display:flex;
-  justify-content:center;
+  display: flex;
+  justify-content: center;
 }
 
 .roomCol {
@@ -158,7 +158,7 @@
   background-repeat: no-repeat;
   height: 100px;
   width: 100px;
-  padding:15px;
+  padding: 15px;
   display: inline-block;
 }
 
@@ -171,7 +171,6 @@
   border: 2px solid white;
 }
 
-
 .livingRoom {
   background: url("./imgs/livingRoom.png");
 }
@@ -182,7 +181,6 @@
 
 .bathroom {
   background: url("./imgs/bathroom.png");
-
 }
 
 .kitchen {
@@ -198,7 +196,6 @@
   padding: 0;
   height: 0;
   width: 0;
-  
 }
 
 /* COLOR SELECTION + HIDDEN DIVS */
@@ -209,11 +206,11 @@
 }
 
 .active {
-  display:inline-block;
+  display: inline-block;
 }
 
 .colorRow {
-  display:flex;
+  display: flex;
   justify-content: center;
   margin: 0 auto;
 }
@@ -264,7 +261,7 @@
   background-repeat: no-repeat;
   height: 50px;
   width: 50px;
-  padding:15px;
+  padding: 15px;
   display: inline-block;
 }
 
@@ -273,13 +270,11 @@
   padding: 0;
   height: 0;
   width: 0;
-  
 }
 
 .colorCol {
   margin-right: 25px;
 }
-
 
 .colorIcon:hover {
   border: 2px solid white;
@@ -289,10 +284,9 @@
   border: 2px solid white;
 }
 
-
 /* AVOID ROW AND STYLES */
 .avoidRow {
-  display:flex;
+  display: flex;
   justify-content: center;
   margin: 0 auto;
 }
@@ -304,9 +298,9 @@
 .avoidCol .avoidIcon {
   background-size: contain;
   background-repeat: no-repeat;
-  padding:15px;
+  padding: 15px;
   display: block;
-  width:100px  !important;
+  width: auto !important;
   margin: 0 auto;
 }
 
@@ -317,9 +311,13 @@
 /* MEDIA QUERIES */
 
 @media screen and (max-width: 960px) {
+  .carouselSlide {
+    margin-bottom: 30px;
+  }
+
   .quizContainer {
     width: 300px;
-    margin:0 auto;
+    margin: 0 auto;
   }
 
   .row {
@@ -354,4 +352,80 @@
     margin-left: 10px;
   }
 
+  .avoidCol .avoidIcon {
+    height: 80px;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1124px) {
+  .quizContainer {
+    width: 600px;
+  }
+
+  .row {
+    flex-direction: row;
+  }
+
+  .styleCol {
+    margin: 0;
+    padding: 5px;
+  }
+
+  .roomCol {
+    width: 200px;
+  }
+}
+
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 1.5) {
+  .quizContainer {
+    width: 800px;
+  }
+
+  .styleImg {
+    height: 200px;
+    width: 310px;
+  }
+
+  .styleCol {
+    margin: 0;
+    padding: 5px;
+  }
+}
+
+/* GALAXY FOLD */
+
+@media (max-width: 320px) {
+  body {
+    font-size: .85rem;
+  }
+
+  .quizContainer {
+    width: 250px;
+  }
+  .styleImg {
+    height: 100px;
+    width: 150px;
+  }
+
+  .roomIcon {
+    height: 45px;
+    width: 45px;
+  }
+
+  .colorIcon {
+    height: 35px;
+  }
+
+  .colorCol {
+    margin-right: 0px;
+  }
+
+  .avoidCol {
+    margin-right: 0px;
+  }
+
+  .avoidCol .avoidIcon {
+    height: 80px;
+  }
 }

@@ -157,7 +157,11 @@ input {
   font-weight: 400;
 }
 
-.avoidRow label {
+.avoidRow2 {
+  display:block;
+}
+
+.avoidRow2 label {
   display: inline-block;
   font-weight: 400;
   margin-right: 22px;
@@ -216,7 +220,7 @@ input {
     font-size: 14px;
   }
 
-  .avoidRow label {
+  .avoidRow2 label {
     margin-right: 2px;
   }
 }
