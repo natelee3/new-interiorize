@@ -30,7 +30,7 @@ function App() {
         case 'ACTION_REMOVE':
             return {
                 ...state,
-                cart: 'remove from cart',
+                cart: state.cart.filter((c) => c.id !== action.payload.id),
             };
         default:
             return state;
