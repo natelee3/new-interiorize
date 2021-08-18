@@ -45,7 +45,7 @@ h1 {
 }
 
 .stylesCol {
-  margin-left: 30px;
+  width: 290px;
 }
 
 .shipmentContainer {
@@ -112,7 +112,7 @@ h1 {
   padding: 16px;
   position: relative;
   width: 600px;
-  height: 600px;
+  height: 630px;
   border-radius: 20px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.233);
 }
@@ -298,10 +298,14 @@ input {
 @media(max-width: 320px){ 
   .modal__content {
       width: 280px;
-      height: 800px;
+      height: 820px;
   }
 
   .colorSelectRow {
     flex-direction: column;
+  }
+  .stylesCol {
+    width: 240px;
+    margin-right:10px;
   }
 }
