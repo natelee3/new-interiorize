@@ -1,14 +1,3 @@
-/* [hidden],
-template {
-    display: none
-}
-
-table {
-    border-collapse: collapse;
-    border-spacing: 0
-} */
-
-
 /* Button */
 
 a {
@@ -43,9 +32,6 @@ a:active {
     background: transparent;
     color: #244d4d;
 }
-
-
-/* change color ^ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 .timer {
     font-size: 16px;
@@ -142,12 +128,6 @@ a:active {
 }
 
 
-/* h1 {
-    font-size: 30px;
-    margin: 0 auto;
-} */
-
-
 /* Desktop only */
 
 @media (min-width: 481px) {
@@ -158,7 +138,7 @@ a:active {
         top: 48%;
         width: 400px;
         margin-left: -230px;
-        height: 440px;
+        height: fit-content;
         margin-top: -250px;
         font-size: 20px;
         background-color: white;
@@ -170,9 +150,8 @@ a:active {
     }
 }
 
-.iconModal {
-    background: url() no-repeat center center;
+.truckIcon {
     height: 128px;
     margin: auto;
-    width: 90px;
+    width: 100px;
 }
