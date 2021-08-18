@@ -14,9 +14,8 @@ const Homepage = () => {
     useEffect(() => {
         console.log({isAuthenticated})
         const userCheck = async () => {
-            const user_sub = user.sub.slice(6);
-            console.log(user_sub)
-            const url = `http://localhost:3333/users/${user_sub}`
+            console.log(user.sub)
+            const url = `http://localhost:3333/users/${user.sub}`
             try {
                 const response = await fetch(url)
                 .then(response => response.json());
@@ -30,7 +29,7 @@ const Homepage = () => {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({
-                          user_sub: user_sub,
+                          user_sub: user.sub,
                           nickname: user.nickname,
                           email: user.email
                         }),

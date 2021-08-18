@@ -1,32 +1,12 @@
-[hidden],
+/* [hidden],
 template {
     display: none
-}
-
-button,
-input,
-optgroup,
-select,
-textarea {
-    color: inherit;
-    font: inherit;
-    margin: 0
-}
-
-button {
-    overflow: visible
-}
-
-button::-moz-focus-inner,
-input::-moz-focus-inner {
-    border: 0;
-    padding: 0
 }
 
 table {
     border-collapse: collapse;
     border-spacing: 0
-}
+} */
 
 
 /* Button */
@@ -51,17 +31,17 @@ a:active {
     display: block;
     margin: 30px auto;
     padding: 10px;
-    border: 2px solid #333;
+    border: 2px solid #244d4d;
     text-transform: uppercase;
     font-weight: bold;
-    background: #333;
+    background: #244d4d;
     color: #fff;
     width: 60%;
 }
 
 .btn:hover {
     background: transparent;
-    color: #333;
+    color: #244d4d;
 }
 
 
@@ -157,13 +137,15 @@ a:active {
 
 .logo-box {
     text-align: center;
+    background-color: white;
     padding: 30px;
 }
 
-h1 {
+
+/* h1 {
     font-size: 30px;
     margin: 0 auto;
-}
+} */
 
 
 /* Desktop only */
@@ -179,16 +161,17 @@ h1 {
         height: 440px;
         margin-top: -250px;
         font-size: 20px;
+        background-color: white;
         border: 3px solid #999;
-        box-shadow: 6px 6px 0px #333;
+        box-shadow: 6px 6px 0px #244d4d;
     }
     h1 {
         font-size: 36px;
     }
 }
 
-.icon {
-    background: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4NDEuOSAxMTkwLjYiPjxwYXRoIGQ9Ik01NzMuMiAzNzMuNmwtMTguOS0xOC45TDM5Ni41IDUxNGwtODItODJMMjk3LjIgNDUxbDk5LjQgOTkuM0w1NzMuMiAzNzMuNnpNNzA1LjcgNDU1LjdWMTgyLjdIMTM3Ljh2MjcyLjlMOC40IDUwOS4zdjQ5OC41aDgyNS4xVjUwOS4zTDcwNS43IDQ1NS43ek03OTQuMSA1MjAuM2wtODguMyA1NS4ydi05MS41TDc5NC4xIDUyMC4zek02ODAuNCAyMDkuNnYzODMuM0w0MjEuNyA3NTMuOCAxNjMgNTkyLjlWMjA5LjZINjgwLjR6TTEzNy44IDU3NS42bC04OC40LTU1LjIgODguMy0zNi4zTDEzNy44IDU3NS42IDEzNy44IDU3NS42ek0zNS4zIDk4Mi41VjU0MC45bDM4Ni41IDI0NC41IDM4Ni40LTI0M3Y0NDEuN0gzNS4zVjk4Mi41ek0xMy40IDk5OC42bDQwOC40LTIxMi4yTTQyMi42IDc4Ni41TDgzMSA5OTguNyIgc3R5bGU9InN0cm9rZS13aWR0aDoyMDtzdHJva2U6IzAwMCIvPjwvc3ZnPg==) no-repeat center center;
+.iconModal {
+    background: url() no-repeat center center;
     height: 128px;
     margin: auto;
     width: 90px;
