@@ -37,6 +37,7 @@ const Homepage = () => {
                       const newUser = fetch(newUrl, requestOptions)
                         .then(response => response.json())
                         .then(user => localStorage.setItem('user_id', user.id))
+                        return newUser
                     }
             } catch (error) {
                 console.error(error.message);

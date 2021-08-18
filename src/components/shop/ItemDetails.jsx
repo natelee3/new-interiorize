@@ -61,7 +61,7 @@ const ItemDetails = () => {
           <div className="imgBox">
             <img
               src={`https://api.interiorize.design/images/${itemData.img_src}`}
-              alt="product image"
+              alt="product"
               className="productDetailsImage"
             />
           </div>
