@@ -15,8 +15,9 @@ const Modal = () => {
   useEffect(() => {
     (async () => {
       const user_id = localStorage.getItem('user_id');
-      const localurl = `http://localhost:3333/quizzes/${user_id}`;
-      const storedQuizData = await fetch(localurl)
+      const url = `https://api.interiorize.design/quizzes/${user_id}`;
+      //const localurl = `http://localhost:3333/quizzes/${user_id}`;
+      const storedQuizData = await fetch(url)
         .then((response) => response.json())
         .then((data) => {
           setState({
@@ -28,7 +29,7 @@ const Modal = () => {
             room: data.category_id,
           });
         });
-      const storedAvoidData = await fetch(`http://localhost:3333/users/avoid/${user_id}`)
+      const storedAvoidData = await fetch(`https://api.interiorize.design/users/avoid/${user_id}`)
         .then((response) => response.json())
         .then((results) => {
           if(results !== null) {
@@ -88,7 +89,7 @@ const Modal = () => {
         style_id: state.style,
       }),
     };
-    const response = await fetch(localurl, requestOptions).then((response) => {
+    const response = await fetch(url, requestOptions).then((response) => {
       console.log(response);
     });
   };
@@ -104,7 +105,7 @@ const Modal = () => {
         avoid_tags: avoidArray,
       }),
     };
-    const response = await fetch(localurl, requestOptions).then((response) => {
+    const response = await fetch(url, requestOptions).then((response) => {
       console.log(response);
     });
   };
