@@ -49,7 +49,8 @@ const Navbar = () => {
                 </li>
                 <li className="cartIcon">
                   <Link to="/shopping-cart"> 
-                  <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" style={localStorage.getItem("Added To Cart") !==null ? { backgroundColor: "red" } : null  } /></Link>
+                    <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" />
+                  </Link>
                 </li>
               </>
             )}

@@ -12,30 +12,28 @@ const Modal = () => {
   });
   const [avoidArray, setAvoidArray] = useState([]);
 
-  useEffect (() => {
-      (async () => {
-        const localurl = 'http://localhost:3333/quizzes/2';
-        const storedQuizData = await fetch(localurl)
-          .then(response => response.json())
-          .then(data => {
-            setState({
-              budget: data.budget,
-              color1: data.colors[0][0],
-              color2: data.colors[0][1],
-              color3: data.colors[0][2],
-              style: data.style_id,
-              room: data.category_id
-            })
+  useEffect(() => {
+    (async () => {
+      const localurl = "http://localhost:3333/quizzes/2";
+      const storedQuizData = await fetch(localurl)
+        .then((response) => response.json())
+        .then((data) => {
+          setState({
+            budget: data.budget,
+            color1: data.colors[0][0],
+            color2: data.colors[0][1],
+            color3: data.colors[0][2],
+            style: data.style_id,
+            room: data.category_id,
           });
-          const storedAvoidData = await fetch('http://localhost:3333/users/avoid/2')
-            .then(response => response.json())
-            .then(results => {
-              setAvoidArray([...results])
-            })
-            
-      })()
-  },[]);
-
+        });
+      const storedAvoidData = await fetch("http://localhost:3333/users/avoid/2")
+        .then((response) => response.json())
+        .then((results) => {
+          setAvoidArray([...results]);
+        });
+    }) ();
+  }, []);
 
   const handleClick = (event) => {
     event.preventDefault();
@@ -59,21 +57,21 @@ const Modal = () => {
     if (event.target.checked && !avoidArray.includes(event.target.value)) {
       setAvoidArray([...avoidArray, parseInt(event.target.value)]);
     } else {
-      let filteredAry = avoidArray.filter((e) => parseInt(e) !== parseInt(event.target.value));
+      let filteredAry = avoidArray.filter(
+        (e) => parseInt(e) !== parseInt(event.target.value)
+      );
       setAvoidArray(filteredAry);
     }
   };
 
-  //convert to arrays with parse int first.
-
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     updateQuizData();
     updateAvoidData();
   };
 
   const updateQuizData = async () => {
-    const localurl = 'http://localhost:3333/quizzes/update';
-    const url = 'https://api.interiorize.design/quizzes/update';
+    const localurl = "http://localhost:3333/quizzes/update";
+    const url = "https://api.interiorize.design/quizzes/update";
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -86,25 +84,25 @@ const Modal = () => {
         category_id: state.room,
         style_id: state.style,
       }),
-    };  
-    const response = await fetch(localurl, requestOptions).then(response => {
-      console.log(response)
+    };
+    const response = await fetch(localurl, requestOptions).then((response) => {
+      console.log(response);
     });
   };
 
   const updateAvoidData = async () => {
-    const localurl = 'http://localhost:3333/users/avoid/update';
-    const url = 'https://api.interiorize.design/users/avoid/update';
+    const localurl = "http://localhost:3333/users/avoid/update";
+    const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: 2,
-        avoid_tags: avoidArray
+        avoid_tags: avoidArray,
       }),
     };
-    const response = await fetch(localurl, requestOptions).then(response => {
-      console.log(response)
+    const response = await fetch(localurl, requestOptions).then((response) => {
+      console.log(response);
     });
   };
 
@@ -128,14 +126,15 @@ const Modal = () => {
           </button>
 
           <h1>Edit Your Preferences</h1>
-          <form onSubmit={() => handleSubmit()}>
+          <form onSubmit={(event) => handleSubmit(event)}>
             <label>
               Budget
               <br />
-              <select 
-                name="budget" 
+              <select
+                name="budget"
                 value={state.budget}
-                onChange={(event) => handleChange(event)}>
+                onChange={(event) => handleChange(event)}
+              >
                 <option value="40">$40</option>
                 <option value="80">$80</option>
                 <option value="120">$120</option>
@@ -146,10 +145,11 @@ const Modal = () => {
               <label>
                 Color 1
                 <br />
-                <select 
-                  name="color1" 
+                <select
+                  name="color1"
                   value={state.color1}
-                  onChange={(event) => handleChange(event)}>
+                  onChange={(event) => handleChange(event)}
+                >
                   <option value="">Select a Color</option>
                   <option value="1">Red</option>
                   <option value="2">Blue</option>
@@ -166,10 +166,11 @@ const Modal = () => {
               <label>
                 Color 2
                 <br />
-                <select 
-                  name="color2" 
+                <select
+                  name="color2"
                   value={state.color2}
-                  onChange={(event) => handleChange(event)}>
+                  onChange={(event) => handleChange(event)}
+                >
                   <option value="">Select a Color</option>
                   <option value="1">Red</option>
                   <option value="2">Blue</option>
@@ -186,10 +187,11 @@ const Modal = () => {
               <label>
                 Color 3
                 <br />
-                <select 
-                  name="color3" 
+                <select
+                  name="color3"
                   value={state.color3}
-                  onChange={(event) => handleChange(event)}>
+                  onChange={(event) => handleChange(event)}
+                >
                   <option value="">Select a Color</option>
                   <option value="1">Red</option>
                   <option value="2">Blue</option>
@@ -207,10 +209,11 @@ const Modal = () => {
             <label>
               Style
               <br />
-              <select 
-                name="style" 
+              <select
+                name="style"
                 value={state.style}
-                onChange={(event) => handleChange(event)}>
+                onChange={(event) => handleChange(event)}
+              >
                 <option value="18">Bohemian</option>
                 <option value="15">Modern</option>
                 <option value="16">Farmhouse</option>
@@ -220,10 +223,11 @@ const Modal = () => {
             <label>
               Choose Your Primary Room to Style
               <br />
-              <select 
-                name="room" 
+              <select
+                name="room"
                 value={state.room}
-                onChange={(event) => handleChange(event)}>
+                onChange={(event) => handleChange(event)}
+              >
                 <option value="1">Living Room</option>
                 <option value="2">Bedroom</option>
                 <option value="3">Bathroom</option>
