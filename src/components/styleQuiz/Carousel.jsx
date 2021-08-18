@@ -111,6 +111,7 @@ const CarouselContainer = () => {
     event.preventDefault();
     localStorage.setItem("Avoid", avoidArray);
     submitQuizData();
+    generateOrder();
     if (localStorage.getItem("Avoid").length > 0) {
       submitAvoidData();
     }
@@ -133,6 +134,21 @@ const CarouselContainer = () => {
       }),
     };
     const response = await fetch(url, requestOptions).then((response) =>
+      console.log(response)
+    );
+  };
+
+  const generateOrder = async () => {
+    const localUrl = 'http://localhost:3333/items/generate-order';
+    const url = `https://api.interiorize.design/items/generate-order`;
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: 1
+      }),
+    };
+    const response = await fetch(localUrl, requestOptions).then((response) =>
       console.log(response)
     );
   };
