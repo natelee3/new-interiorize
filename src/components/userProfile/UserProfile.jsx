@@ -148,10 +148,7 @@ const UserProfile = () => {
               <p>Loading your style preferences...</p>
             )}
 
-            <Modal 
-            isSubmitted={isSubmitted}
-            handleFormSubmit={handleFormSubmit}
-            />
+            <Modal/>
           </div>
         </div>
       </div>

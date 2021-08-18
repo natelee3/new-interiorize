@@ -70,20 +70,19 @@ const Modal = ({isSubmitted, handleFormSubmit}) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    handleFormSubmit();
-    console.log(isSubmitted)
     updateQuizData();
     updateAvoidData();
+    setIsVisible(false);
   };
 
   const updateQuizData = async () => {
-    const localurl = "http://localhost:3333/quizzes/update";
+    // const localurl = "http://localhost:3333/quizzes/update";
     const url = "https://api.interiorize.design/quizzes/update";
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: 2,
+        user_id: localStorage.getItem('user_id'),
         budget: state.budget,
         color_one_id: state.color1,
         color_two_id: state.color2,
@@ -98,13 +97,13 @@ const Modal = ({isSubmitted, handleFormSubmit}) => {
   };
 
   const updateAvoidData = async () => {
-    const localurl = "http://localhost:3333/users/avoid/update";
+    // const localurl = "http://localhost:3333/users/avoid/update";
     const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: 2,
+        user_id: localStorage.getItem('user_id'),
         avoid_tags: avoidArray,
       }),
     };
