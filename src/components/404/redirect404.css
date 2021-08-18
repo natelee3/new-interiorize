@@ -1,0 +1,47 @@
+.errorContainer {
+    width: 1060px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.errorContainer a {
+    background-color: #244d4d;
+    border: none;
+    color: white;
+    letter-spacing: 1.5px;
+    padding: 10px;
+    font-weight: 500;
+    font-size: 15px;
+    text-decoration: none;
+    margin-top: 15px;
+    display: block;
+    width: 150px;
+    margin: 0 auto;
+}
+
+.errorContainer a:hover {
+    background-color: #477272;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1124px) {
+    .errorContainer {
+        width: auto;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .errorContainer {
+        width: auto;
+    }
+
+    .errorContainer img {
+        height: 300px;
+        margin-bottom: 20px;
+    }
+}
+
+@media (max-width: 320px) {
+    .errorContainer img {
+        height: 250px;
+    }
+}

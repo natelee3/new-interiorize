@@ -1,9 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
+import StateContext from "../../context";
 import "./itemDetails.css";
 
 const ItemDetails = () => {
   const [itemData, setItemData] = useState(null);
+
+  const [value, dispatch] = useContext(StateContext);
+
+  const _handleClick = () => {
+    console.log("Clicked: ", value);
+    dispatch({
+      type: "ACTION_ADD_TO_CART",
+      payload: itemData,
+    });
+  };
 
   //Get item by id from our lovely api
   let { id } = useParams();
@@ -15,7 +26,7 @@ const ItemDetails = () => {
         const response = await fetch(
           `https://api.interiorize.design/items/single/${id}`
         ).then((response) => response.json());
-        console.log("RESPONSE", response[0]);
+        // console.log("RESPONSE", response[0]);
         let item = response[0];
         setItemData(item);
         console.log("ITEM DATA IS:", itemData);
@@ -29,6 +40,7 @@ const ItemDetails = () => {
 
   return (
     <>
+    {value.cart.length > 0 ? (<p>Cart has an entry</p>) : (<p>Cart has no entries</p>)}
       {itemData !== null ? (
         <div className="detailsContainer">
           <div className="imgBox">
@@ -55,7 +67,7 @@ const ItemDetails = () => {
             </h3>
             <h3 className="inStock">In Stock!</h3>
             <br />
-            <button className="addToCartButton" type="button">
+            <button className="addToCartButton" onClick={() => _handleClick()} type="button">
               Add To Cart
             </button>
             <div className="addedToCart">Notification modal pops up?</div>

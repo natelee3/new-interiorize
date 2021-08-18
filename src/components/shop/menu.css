@@ -1,0 +1,63 @@
+/* Hamburger Menu */
+
+.toggle-button1 {
+    position: absolute;
+    top: .75rem;
+    right: 1rem;
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    border: none;
+    background-color: white;
+}
+
+.toggle-button1 .bar1 {
+    height: 3px;
+    width: 100%;
+    background-color: rgb(187, 187, 187);
+    border-radius: 10px;
+}
+
+.navbar-links1 {
+    display: flex;
+    width: 100%;
+}
+
+
+/* RESPONSIVENESS */
+
+@media screen and (max-width: 960px) {
+    /* --- Hamburger Menu Styles --- */
+    .toggle-button1 {
+        margin-top: 95px;
+        left: 5px;
+        display: flex;
+        width: 40px;
+    }
+    .navbar-links1 {
+        display: none;
+        width: 100%
+    }
+    .navbar1 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar1 ul {
+        flex-direction: column;
+        width: 100%;
+        align-items: flex-start;
+    }
+    .navbar-links1 li {
+        padding: .5rem;
+    }
+    .navbar-links1.active1 {
+        display: flex;
+    }
+}
+
+
+/* Galaxy Fold */
+
+@media(max-width: 320px) {}
