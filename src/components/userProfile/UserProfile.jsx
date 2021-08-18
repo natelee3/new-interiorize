@@ -143,7 +143,7 @@ const UserProfile = () => {
               <p>Loading your style preferences...</p>
             )}
 
-            <Modal />
+            <Modal/>
           </div>
         </div>
       </div>
