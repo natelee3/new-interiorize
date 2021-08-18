@@ -1,12 +1,16 @@
 import { useEffect, useState, useContext } from "react";
+import { useHistory } from "react-router";
 import { useParams } from "react-router-dom";
 import StateContext from "../../context";
+import CartModal from '../shoppingCart/CartModal';
 import "./itemDetails.css";
 
 const ItemDetails = () => {
   const [itemData, setItemData] = useState(null);
-
   const [value, dispatch] = useContext(StateContext);
+  const [isVisible, setIsVisible] = useState(false);
+
+  const history = useHistory();
 
   const _handleClick = () => {
     console.log("Clicked: ", value);
@@ -14,6 +18,7 @@ const ItemDetails = () => {
       type: "ACTION_ADD_TO_CART",
       payload: itemData,
     });
+    setIsVisible(!isVisible);
   };
 
   //Get item by id from our lovely api
@@ -37,6 +42,16 @@ const ItemDetails = () => {
 
     getItemInfo(id);
   }, []);
+
+  const goBack = () => {
+    history.goBack();
+  }
+
+  //We will pass this function down to the modal so it can change the state when we press the close button.
+  const closeModal = (event) => {
+    event.preventDefault();
+    setIsVisible(!isVisible);
+  }
 
   return (
     <>
@@ -71,13 +86,17 @@ const ItemDetails = () => {
               Add To Cart
             </button>
             <div className="addedToCart">Notification modal pops up?</div>
+            <CartModal
+            isVisible={isVisible}
+            closeModal={closeModal}
+            />
           </div>
         </div>
       ) : (
         <p>Loading Product information...</p>
       )}
       <div className="goBack">
-        <button type="button" className="goBackButton">
+        <button type="button" className="goBackButton" onClick={goBack}>
           Back To Results
         </button>
       </div>
