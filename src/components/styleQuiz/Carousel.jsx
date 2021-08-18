@@ -143,7 +143,7 @@ const CarouselContainer = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: 2,
+        user_id: localStorage.getItem('user_id'),
         budget: localStorage.getItem("Budget"),
         color_one_id: localStorage.getItem("Color 1"),
         color_two_id: localStorage.getItem("Color 2"),
@@ -168,7 +168,7 @@ const CarouselContainer = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: 1
+        user_id: localStorage.getItem('user_id')
       }),
     };
     const response = await fetch(localUrl, requestOptions).then((response) =>
@@ -183,7 +183,7 @@ const CarouselContainer = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: 2,
+        user_id: localStorage.getItem('user_id'),
         avoid_tags: localStorage.getItem("Avoid"),
       }),
     };

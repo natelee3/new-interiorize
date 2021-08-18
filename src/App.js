@@ -16,7 +16,6 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
   const { user, } = useAuth0();
-  console.log({user});
   const initialState = {cart: []};
 
   const contextReducer = (state, action) => {
@@ -73,10 +72,6 @@ function App() {
             <Footer />
           </Router>
         </StateProvider> 
-
-          {/* <footer>
-            <p> Interiorize Footer </p> 
-          </footer>  */}
         </div>
     );
 }
