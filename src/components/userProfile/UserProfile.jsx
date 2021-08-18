@@ -14,7 +14,7 @@ const UserProfile = () => {
     const fetchUserData = async () => {
       //url to be swapped later
       const user_id = localStorage.getItem('user_id');
-      const localUrl = `http://localhost:3333/quizzes/${user_id}`;
+      const localUrl = `https://api.interiorize.design/quizzes/${user_id}`;
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
@@ -23,7 +23,7 @@ const UserProfile = () => {
     };
     const fetchAvoidArray = async () => {
       const user_id = localStorage.getItem('user_id');
-      const localUrl = `http://localhost:3333/users/avoid/string/${user_id}`;
+      const localUrl = `https://api.interiorize.design/users/avoid/string/${user_id}`;
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
@@ -35,7 +35,7 @@ const UserProfile = () => {
 
     const fetchOrders = async () => {
       const user_id = localStorage.getItem('user_id');
-      const localUrl = `http://localhost:3333/orders/${user_id}`;
+      const localUrl = `https://api.interiorize.design/orders/${user_id}`;
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
@@ -54,7 +54,7 @@ const UserProfile = () => {
   }, []);
 
   const fetchRecentOrder = async (recentOrderId) => {
-    const localUrl = `http://localhost:3333/items/byid/${recentOrderId}`;
+    const localUrl = `https://api.interiorize.design/items/byid/${recentOrderId}`;
     const response = await fetch(localUrl).then((response) => response.json());
     console.log("SINGLE ORDER: ", response);
     setRecentOrder(response);
@@ -71,7 +71,7 @@ const UserProfile = () => {
     //need to somehow push each array into an object to map through?
     for (const order of pastOrders) {
       let orderId = order.id;
-      const localUrl = `http://localhost:3333/items/byid/${orderId}`;
+      const localUrl = `https://api.interiorize.design/items/byid/${orderId}`;
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );

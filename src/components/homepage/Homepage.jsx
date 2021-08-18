@@ -15,7 +15,8 @@ const Homepage = () => {
         console.log({isAuthenticated})
         const userCheck = async () => {
             console.log(user.sub)
-            const url = `http://localhost:3333/users/${user.sub}`
+            //const localURL = `http://localhost:3333/users/${user.sub}`;
+            const url = `https://api.interiorize.design/users/${user.sub}`;
             try {
                 const response = await fetch(url)
                 .then(response => response.json());
@@ -24,7 +25,8 @@ const Homepage = () => {
                     console.log('Already have this user', response[0].id)
                     localStorage.setItem('user_id', response[0].id)
                 } else {
-                    let newUrl = 'http://localhost:3333/users/add';
+                    //let newLocalUrl = 'http://localhost:3333/users/add';
+                    let newUrl = `https://api.interiorize.design/users/add`;
                     const requestOptions = {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
