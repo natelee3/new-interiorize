@@ -24,7 +24,6 @@ const ShoppingCart = () => {
           setTimeout("countDown()", 1000);
           window.location.href = redirect;
         }
-    
 
     const _createOrder = async () => {
         const localUrl = "http://localhost:3333/orders/add";
@@ -42,6 +41,15 @@ const ShoppingCart = () => {
         );
       };
 
+      const _removeClick = () => {
+        console.log("Remove clicked: ", value);
+        dispatch({
+          type: "ACTION_REMOVE",
+          payload: value,
+        });
+        // setIsVisible(!isVisible);
+      };
+
     // const [value] = useContext(StateContext);
     // console.log("Value: ", value)
 
@@ -56,9 +64,7 @@ const ShoppingCart = () => {
         <>
             <div className="cartContainer">
                 <div className="itemsInCart">
-                    <h1 className="cartTitle">Cart</h1>
-                    
-                    
+                    <h1 className="cartTitle">Cart</h1> 
                     {value.cart.length > 0 ?(
                         value.cart.map((item, props, id) => (
                             <>
@@ -106,9 +112,12 @@ const ShoppingCart = () => {
                             <button className="checkoutBtn" type="button" onClick={() => _createOrder()}>Submit Order</button>
                         </Link>
                     </div>
-                    
-
-                    
+                    <div className="buttonBox2">
+                        <Link to='/shop-intro/shop'>
+                            <button className="checkoutBtn" type="button">&larr; Shop</button>
+                        </Link>
+                    </div>
+                     
                     <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
                         <div className="modal__content">
                             <div className="master-wrap">
@@ -127,10 +136,6 @@ const ShoppingCart = () => {
                             </div>
                         </div>
                     </div>
-
-
-
-
                 </div>
             </div>
         </>
