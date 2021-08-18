@@ -24,26 +24,28 @@ const Homepage = () => {
                 </div>
                 
             </div>
-            <div className="lowerTitle">
-                <div className="lowerTitleContent">
-                    <h1>How it Works</h1>
+            <div className="allLowerContainer">
+                <div className="lowerTitle">
+                    <div className="lowerTitleContent">
+                        <h1>How it Works</h1>
+                    </div>
                 </div>
-            </div>
-            <div className="lowerContainer">
-                <div className="lowerBoxes">
-                    <img className="icons" src={check} alt="Checkbox" />
-                    <h3 className="subTitles">1. Take Your Style Quiz</h3>
-                    <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
-                </div>
-                <div className="lowerBoxes">
-                <img className="icons" src={truck} alt="Truck" />   
-                <h3 className="subTitles">2. Receive Your Items</h3>
-                    <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
-                </div>
-                <div className="lowerBoxes">
-                <img className="icons" src={box} alt="Box" /> 
-                <h3 className="subTitles">3. Send Back What You Dont Like</h3>
-                    <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
+                <div className="lowerContainer">
+                    <div className="lowerBoxes">
+                        <img className="icons" src={check} alt="Checkbox" />
+                        <h3 className="subTitles">1. Take Your Style Quiz</h3>
+                        <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
+                    </div>
+                    <div className="lowerBoxes">
+                    <img className="icons" src={truck} alt="Truck" />   
+                    <h3 className="subTitles">2. Receive Your Items</h3>
+                        <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
+                    </div>
+                    <div className="lowerBoxes">
+                    <img className="icons" src={box} alt="Box" /> 
+                    <h3 className="subTitles">3. Send Back What You Dont Like</h3>
+                        <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
+                    </div>
                 </div>
             </div>
 
