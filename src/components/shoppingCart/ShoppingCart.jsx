@@ -5,8 +5,9 @@ import "./shoppingCart.css";
 import CartModal from './CartModal';
 
 const ShoppingCart = () => {
-
+    const [value, dispatch] = useContext(StateContext);
     const [isVisible, setIsVisible] = useState(false);
+
     const handleClick = (event) => {
         setIsVisible(!isVisible);
         scrollToTop();
@@ -23,20 +24,7 @@ const ShoppingCart = () => {
           setTimeout("countDown()", 1000);
           window.location.href = redirect;
         }
-      
-
-
-
-
-
-
-
-
-
-
-
     
-    const [value, dispatch] = useContext(StateContext);
 
     const _createOrder = async () => {
         const localUrl = "http://localhost:3333/orders/add";
@@ -56,6 +44,13 @@ const ShoppingCart = () => {
 
     // const [value] = useContext(StateContext);
     // console.log("Value: ", value)
+
+    const removeItem = (itemId) => {
+        dispatch({
+            type: "ACTION_REMOVE",
+            payload: itemId,
+          });
+    }
 
     return (
         <>
@@ -77,9 +72,8 @@ const ShoppingCart = () => {
                                             <hr className="cartHr" />
                                             <p className="itemPrice">Qty: 1</p>
                                             <p className="itemPrice">${item.price}</p>
-                                            {/* Need to make this button work properly */}
                                             <div className="buttonBox">
-                                                <button className="removeBtn" type="button">Remove</button> 
+                                                <button className="removeBtn" type="button" onClick={() => removeItem(item.id)}>Remove</button> 
                                             </div>
                                         </div>
                                     </li>
