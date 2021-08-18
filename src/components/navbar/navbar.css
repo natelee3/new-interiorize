@@ -1,127 +1,154 @@
 .logo {
-    width: 270px;
+  width: 270px;
 }
 
 nav {
-    display: flex;
-    width: 100%;
-    margin-bottom: 50px;
-    margin-top: 14px;
-    border-bottom: 1px solid rgb(175, 175, 175);
-    box-shadow: 0 4px 2px -2px rgb(236, 236, 236);
-    color: #636363;
-    font-size: 16px;
+  display: flex;
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 14px;
+  border-bottom: 1px solid rgb(175, 175, 175);
+  box-shadow: 0 4px 2px -2px rgb(236, 236, 236);
+  color: #636363;
+  font-size: 16px;
 }
 
 nav ul {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
 }
 
 nav a {
-    text-decoration: none;
-    color: #636363;
+  text-decoration: none;
+  color: #636363;
 }
 
 nav a:hover {
-    color: rgb(148, 148, 148);
+  color: rgb(148, 148, 148);
 }
 
 nav li {
-    list-style-type: none;
-    margin-right: 2rem;
+  list-style-type: none;
+  margin-right: 2rem;
 }
 
 nav img {
-    margin-left: 25px;
-    margin-bottom: 5px;
+  margin-left: 25px;
+  margin-bottom: 5px;
 }
 
 .userProfileLink {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .cartIcon {
-    height: 30px;
+  height: 30px;
+  position: relative;
 }
 
+nav button {
+  text-decoration: none;
+  color: #636363;
+  border: none;
+  background-color: white;
+}
+
+nav button:hover {
+  color: rgb(148, 148, 148);
+}
+
+.notification {
+  position: absolute;
+  left: 84.5%;
+  min-width: 0.5rem;
+  height: 0.75rem;
+  padding-right: 0.25em;
+  padding-left: 0.25em;
+  background-color: #244d4d;
+  border-radius: 1rem;
+  color: #000;
+  font-size: 0.5625rem;
+  font-weight: 700;
+}
 
 /* Hamburger Menu */
 
 .toggle-button {
-    position: absolute;
-    top: .75rem;
-    right: 1rem;
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 21px;
-    border: none;
-    background-color: white;
+  position: absolute;
+  top: 0.75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  border: none;
+  background-color: white;
 }
 
 .toggle-button .bar {
-    height: 3px;
-    width: 100%;
-    background-color: rgb(187, 187, 187);
-    border-radius: 10px;
+  height: 3px;
+  width: 100%;
+  background-color: rgb(187, 187, 187);
+  border-radius: 10px;
 }
 
 .navbar-links {
-    display: flex;
-    width: 100%;
+  display: flex;
+  width: 100%;
 }
-
 
 /* RESPONSIVENESS */
 
 @media screen and (max-width: 960px) {
-    /* --- Hamburger Menu Styles --- */
-    .toggle-button {
-        margin-top: 18px;
-        display: flex;
-        width: 40px;
-    }
-    .navbar-links {
-        display: none;
-        width: 100%
-    }
-    .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    .navbar ul {
-        flex-direction: column;
-        width: 100%;
-        align-items: flex-start;
-    }
-    .navbar-links li {
-        padding: .5rem;
-    }
-    .navbar-links.active {
-        display: flex;
-    }
-    .userProfileLink {
-        margin-left: 0;
-    }
-    .logo {
-        width: 250px;
-        margin-left: 5px;
-    }
+  /* --- Hamburger Menu Styles --- */
+  .toggle-button {
+    margin-top: 18px;
+    display: flex;
+    width: 40px;
+  }
+  .navbar-links {
+    display: none;
+    width: 100%;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar ul {
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+  }
+  .navbar-links li {
+    padding: 0.5rem;
+  }
+  .navbar-links.active {
+    display: flex;
+  }
+  .userProfileLink {
+    margin-left: 0;
+  }
+  .logo {
+    width: 250px;
+    margin-left: 5px;
+  }
 
-    .cartIcon {
-        margin-left: -4px;
-    }
+  .cartIcon {
+    margin-left: -4px;
+  }
+
+  .notification {
+      left: 62.5%;
+  }
 }
-
 
 /* Galaxy Fold */
 
-@media(max-width: 320px) {
-    .logo {
-        width: 200px;
-    }
+@media (max-width: 320px) {
+  .logo {
+    width: 200px;
+  }
 }

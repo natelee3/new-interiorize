@@ -119,16 +119,26 @@ const CarouselContainer = () => {
   const handleAvoidSubmit = (event) => {
     event.preventDefault();
     localStorage.setItem("Avoid", avoidArray);
-    submitQuizData();
-    generateOrder();
-    if (localStorage.getItem("Avoid").length > 0) {
-      submitAvoidData();
-    }
+    doneAlready();
   };
 
-  const submitQuizData = async () => {
-    const localUrl = "http://localhost:3333/quizzes/add";
-    const url = `https://api.interiorize.design/quizzes/add`;
+  const doneAlready = async () => {
+    const checkUser = await fetch('http://localhost:3333/quizzes/3')
+    .then(response => response.json())
+    .then(data => {
+      if (data.user_id !== undefined) {
+        let localUrl = 'http://localhost:3333/quizzes/update';
+        let url = 'https://api.interiorize.design/quizzes/update';
+        submitQuizData(localUrl)
+      } else {
+        let localUrl = 'http://localhost:3333/quizzes/add';
+        let url = 'https://api.interiorize.design/quizzes/add';
+        submitQuizData(localUrl)   
+      }
+    })
+  };
+
+  const submitQuizData = async (theUrl) => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -142,9 +152,13 @@ const CarouselContainer = () => {
         style_id: localStorage.getItem("Style Category"),
       }),
     };
-    const response = await fetch(url, requestOptions).then((response) =>
+    const response = await fetch(theUrl, requestOptions).then((response) =>
       console.log(response)
     );
+    if (localStorage.getItem("Avoid").length > 0) {
+      submitAvoidData(theUrl)
+    };
+    generateOrder();
   };
 
   const generateOrder = async () => {

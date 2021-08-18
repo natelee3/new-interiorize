@@ -25,8 +25,10 @@ const UserProfile = () => {
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
-      let commaSeparated = response.join(", ");
-      setAvoidArray(commaSeparated);
+      if (response !== null) {
+        let commaSeparated = response.join(", ");
+        setAvoidArray(commaSeparated);
+      }
     };
 
     const fetchOrders = async () => {
@@ -131,7 +133,7 @@ const UserProfile = () => {
                   <h3>Room</h3>
                   <p>{userData.category_name}</p>
                   <h3>Avoid</h3>
-                  <p>{avoidArray}</p>
+                  {avoidArray.length > 0 ? (<p>{avoidArray}</p>) : (<p>No avoid preferences</p>)}
                 </div>
               </div>
             ) : (
