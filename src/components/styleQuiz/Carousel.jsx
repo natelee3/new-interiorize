@@ -650,7 +650,7 @@ const CarouselContainer = () => {
 
                 <div className={color1 === 7 ? "hidden" : "colorCol"}>
                   <input
-                    id="purple7"
+                    id="purple2"
                     type="radio"
                     name="color2"
                     value="7"
