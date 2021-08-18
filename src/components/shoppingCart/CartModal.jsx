@@ -1,7 +1,6 @@
-// import { useState, useEffect } from "react";
-// import { Link } from "react-router-dom";
 import './cartModal.css';
 import { Link } from 'react-router-dom';
+import shoppingCart from './imgs/shoppingCart.png';
 
 const CartModal = ({isVisible, closeModal}) => {
 
@@ -17,6 +16,7 @@ const CartModal = ({isVisible, closeModal}) => {
                 </div>
 
                 <div className="notice animated fadeInUp">
+                  <img className="cartIcon1" src={shoppingCart} alt="Shopping Cart" />
                   <p className="lead">
                     This item has been added to the cart!
                   </p>
