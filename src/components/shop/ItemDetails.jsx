@@ -55,7 +55,6 @@ const ItemDetails = () => {
 
   return (
     <>
-    {/* {value.cart.length > 0 ? (<p>Cart has an entry</p>) : (<p>Cart has no entries</p>)} */}
       {itemData !== null ? (
         <div className="detailsContainer">
           <div className="imgBox">

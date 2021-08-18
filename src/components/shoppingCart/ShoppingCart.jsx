@@ -2,28 +2,13 @@ import  React, { useContext, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import StateContext from '../../context';
 import "./shoppingCart.css";
+import truck from './imgs/truck.gif';
 import CartModal from './CartModal';
 
 const ShoppingCart = () => {
+
     const [value, dispatch] = useContext(StateContext);
     const [isVisible, setIsVisible] = useState(false);
-
-    const handleClick = (event) => {
-        setIsVisible(!isVisible);
-        scrollToTop();
-      };
-    
-      const scrollToTop = () => {
-        countDown();
-        window.scrollTo(0, 0);
-      };
-
-      const redirect = "/"; 
-    
-      const countDown = () => {
-          setTimeout("countDown()", 1000);
-          window.location.href = redirect;
-        }
 
     const _createOrder = async () => {
         const localUrl = "http://localhost:3333/orders/add";
@@ -39,19 +24,8 @@ const ShoppingCart = () => {
         const response = await fetch(localUrl, requestOptions).then((response) =>
           console.log(response)
         );
+        setIsVisible(true);
       };
-
-      const _removeClick = () => {
-        console.log("Remove clicked: ", value);
-        dispatch({
-          type: "ACTION_REMOVE",
-          payload: value,
-        });
-        // setIsVisible(!isVisible);
-      };
-
-    // const [value] = useContext(StateContext);
-    // console.log("Value: ", value)
 
     const removeItem = (itemId) => {
         dispatch({
@@ -108,9 +82,11 @@ const ShoppingCart = () => {
                         <p className="totalCost">$220.95</p>
                     </div>
                     <div className="buttonBox2">
-                        <Link to='/'>
+                        {/* Change this button to open Modal and then give one option to go back to main page */}
+                    
                             <button className="checkoutBtn" type="button" onClick={() => _createOrder()}>Submit Order</button>
-                        </Link>
+        
+                        {/* should we have the cart be cleared after this button is pressed? */}
                     </div>
                     <div className="buttonBox2">
                         <Link to='/shop-intro/shop'>
@@ -119,7 +95,42 @@ const ShoppingCart = () => {
                     </div>
                      
                     <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
-                        <div className="modal__content">
+                    <div className="modal__content1">
+                        <div id="master-wrap">
+                            <div id="logo-box">
+                                <div className="animated fast fadeInUp">
+                                    <div className="iconModal">
+                                    <h1>Thank you</h1>
+                                    </div>
+
+                                    <div className="notice animated fadeInUp">
+                                    <img className="truckIcon" src={truck} alt="Truck Icon" />
+                                    <p className="lead">Your order has been submitted.</p>
+                                    <p>We will contact you soon with shipping details!</p>
+
+                                    <Link to='/shop-intro/shop'>
+                                        <button className="btn animation" type="button">
+                                        &larr; Back To Shop
+                                        </button>
+                                    </Link>
+
+                                    <Link to='/'>
+                                        <button className="btn animation" type="button">
+                                        &larr; Home
+                                        </button>
+                                    </Link>
+                                    </div>
+
+                                    <div class="footer animated slow fadeInUp">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                        
+                        
+                        
+                        {/* <div className="modal__content">
                             <div className="master-wrap">
                                 <div className="logo-box">
                                     <div className="animated fast fadeInUp">
@@ -128,13 +139,13 @@ const ShoppingCart = () => {
                                         </div>
 
                                         <div className="notice animated fadeInUp">
-                                            <p className="lead">Your message has been successfully sent. We will contact you very soon!</p>
-                                            {/* <Link class="btn animation" href="javascript:history.back()">&larr; Back</Link> */}
+                                            <p className="lead">Your order has been submitted. We will contact you very soon with shipping details!</p>
+                                            
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
