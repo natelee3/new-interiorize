@@ -21,7 +21,7 @@ const ShoppingCart = () => {
             items: "1, 4, 16",
           }),
         };
-        const response = await fetch(localUrl, requestOptions).then((response) =>
+        const response = await fetch(url, requestOptions).then((response) =>
           console.log(response)
         );
         setIsVisible(true);
