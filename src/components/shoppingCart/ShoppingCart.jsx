@@ -32,7 +32,7 @@ const ShoppingCart = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            user_id: 2,
+            user_id: localStorage.getItem('user_id'),
             items: "1, 4, 16",
           }),
         };
