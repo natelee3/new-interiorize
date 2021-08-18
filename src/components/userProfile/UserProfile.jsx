@@ -13,7 +13,8 @@ const UserProfile = () => {
   useEffect(() => {
     const fetchUserData = async () => {
       //url to be swapped later
-      const localUrl = "http://localhost:3333/quizzes/2";
+      const user_id = localStorage.getItem('user_id');
+      const localUrl = `http://localhost:3333/quizzes/${user_id}`;
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
@@ -21,7 +22,8 @@ const UserProfile = () => {
       setUserData(response);
     };
     const fetchAvoidArray = async () => {
-      const localUrl = "http://localhost:3333/users/avoid/string/2";
+      const user_id = localStorage.getItem('user_id');
+      const localUrl = `http://localhost:3333/users/avoid/string/${user_id}`;
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
@@ -32,7 +34,8 @@ const UserProfile = () => {
     };
 
     const fetchOrders = async () => {
-      const localUrl = "http://localhost:3333/orders/2";
+      const user_id = localStorage.getItem('user_id');
+      const localUrl = `http://localhost:3333/orders/${user_id}`;
       const response = await fetch(localUrl).then((response) =>
         response.json()
       );
