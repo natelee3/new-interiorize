@@ -24,7 +24,7 @@ const CarouselContainer = () => {
   const [color1, setColor1] = useState("");
   const [color2, setColor2] = useState("");
   const [color3, setColor3] = useState("");
-  const [avoidArray, setAvoidArray] = useState([]);
+  const [avoidArray] = useState([]);
   const [checkCount, setCheckCount] = useState(0);
 
   //Carousel Controls:
@@ -220,7 +220,7 @@ const CarouselContainer = () => {
                 aria-label="$40"
                 required
               />
-              <label for="40" className="firstTier budgetIcon"></label>
+              <label htmlFor="40" className="firstTier budgetIcon"></label>
               <p>$40</p>
             </div>
             <div className="col">
@@ -232,7 +232,7 @@ const CarouselContainer = () => {
                 onChange={(event) => handleBudgetChange(event)}
                 aria-label="$80"
               />
-              <label for="80" className="secondTier budgetIcon"></label>
+              <label htmlFor="80" className="secondTier budgetIcon"></label>
               <p>$80</p>
             </div>
             <div className="col">
@@ -244,7 +244,7 @@ const CarouselContainer = () => {
                 onChange={(event) => handleBudgetChange(event)}
                 aria-label="$120"
               />
-              <label for="120" className="thirdTier budgetIcon"></label>
+              <label htmlFor="120" className="thirdTier budgetIcon"></label>
               <p>$120</p>
             </div>
           </div>
@@ -275,7 +275,7 @@ const CarouselContainer = () => {
                 required
               />
 
-              <label className="styleImg bohemian" for="bohemian"></label>
+              <label className="styleImg bohemian" htmlFor="bohemian"></label>
 
               <p>Bohemian</p>
             </div>
@@ -290,7 +290,7 @@ const CarouselContainer = () => {
                   aria-label="farmhouse"
                 />
 
-                <label className="styleImg farmhouse" for="farmhouse"></label>
+                <label className="styleImg farmhouse" htmlFor="farmhouse"></label>
 
                 <p>Farmhouse</p>
               </div>
@@ -310,7 +310,7 @@ const CarouselContainer = () => {
 
                 <label
                   className="styleImg contemporary"
-                  for="contemporary"
+                  htmlFor="contemporary"
                 ></label>
 
                 <p>Contemporary</p>
@@ -327,7 +327,7 @@ const CarouselContainer = () => {
                   onChange={(event) => handleStyleChange(event)}
                 />
 
-                <label className="styleImg modern" for="modern"></label>
+                <label className="styleImg modern" htmlFor="modern"></label>
 
                 <p>Modern</p>
               </div>
@@ -361,7 +361,7 @@ const CarouselContainer = () => {
                 aria-label="Living Room"
                 required
               />
-              <label for="livingRoom" className="livingRoom roomIcon"></label>
+              <label htmlFor="livingRoom" className="livingRoom roomIcon"></label>
               <p>Living Room</p>
             </div>
             <div className="roomCol">
@@ -372,7 +372,7 @@ const CarouselContainer = () => {
                 value="2"
                 aria-label="Bedroom"
               />
-              <label for="bedroom" className="bedroom roomIcon"></label>
+              <label htmlFor="bedroom" className="bedroom roomIcon"></label>
               <p>Bedroom</p>
             </div>
             <div className="roomCol">
@@ -383,7 +383,7 @@ const CarouselContainer = () => {
                 value="3"
                 aria-label="Bathroom"
               />
-              <label for="bathroom" className="bathroom roomIcon"></label>
+              <label htmlFor="bathroom" className="bathroom roomIcon"></label>
               <p>Bathroom</p>
             </div>
           </div>
@@ -397,7 +397,7 @@ const CarouselContainer = () => {
                 value="4"
                 aria-label="Kitchen"
               />
-              <label for="kitchen" className="kitchen roomIcon"></label>
+              <label htmlFor="kitchen" className="kitchen roomIcon"></label>
               <p className="roomLabel">Kitchen</p>
             </div>
             <div className="roomCol">
@@ -408,7 +408,7 @@ const CarouselContainer = () => {
                 value="5"
                 aria-label="Patio"
               />
-              <label for="patio" className="patio roomIcon"></label>
+              <label htmlFor="patio" className="patio roomIcon"></label>
               <p>Patio</p>
             </div>
           </div>
@@ -440,7 +440,7 @@ const CarouselContainer = () => {
                     aria-label="red"
                     required
                   />
-                  <label for="red" className="red colorIcon"></label>
+                  <label htmlFor="red" className="red colorIcon"></label>
                   <p>Red</p>
                 </div>
                 <div className="colorCol">
@@ -452,7 +452,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="blue"
                   />
-                  <label for="blue" className="blue colorIcon"></label>
+                  <label htmlFor="blue" className="blue colorIcon"></label>
                   <p>Blue</p>
                 </div>
                 <div className="colorCol">
@@ -464,7 +464,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="black"
                   />
-                  <label for="black" className="black colorIcon"></label>
+                  <label htmlFor="black" className="black colorIcon"></label>
                   <p>Black</p>
                 </div>
                 <div className="colorCol">
@@ -476,7 +476,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="white"
                   />
-                  <label for="white" className="white colorIcon"></label>
+                  <label htmlFor="white" className="white colorIcon"></label>
                   <p>White</p>
                 </div>
                 <div className="colorCol">
@@ -488,7 +488,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="yellow"
                   />
-                  <label for="yellow" className="yellow colorIcon"></label>
+                  <label htmlFor="yellow" className="yellow colorIcon"></label>
                   <p>Yellow</p>
                 </div>
               </div>
@@ -502,7 +502,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="green"
                   />
-                  <label for="green" className="green colorIcon"></label>
+                  <label htmlFor="green" className="green colorIcon"></label>
                   <p>Green</p>
                 </div>
                 <div className="colorCol">
@@ -514,7 +514,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="purple"
                   />
-                  <label for="purple" className="purple colorIcon"></label>
+                  <label htmlFor="purple" className="purple colorIcon"></label>
                   <p>Purple</p>
                 </div>
                 <div className="colorCol">
@@ -526,7 +526,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="orange"
                   />
-                  <label for="orange" className="orange colorIcon"></label>
+                  <label htmlFor="orange" className="orange colorIcon"></label>
                   <p>Orange</p>
                 </div>
                 <div className="colorCol">
@@ -538,7 +538,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="gray"
                   />
-                  <label for="gray" className="gray colorIcon"></label>
+                  <label htmlFor="gray" className="gray colorIcon"></label>
                   <p>Gray</p>
                 </div>
                 <div className="colorCol">
@@ -550,7 +550,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor1Change(event)}
                     aria-label="brown"
                   />
-                  <label for="brown" className="brown colorIcon"></label>
+                  <label htmlFor="brown" className="brown colorIcon"></label>
                   <p>Brown</p>
                 </div>
               </div>
@@ -582,7 +582,7 @@ const CarouselContainer = () => {
                     aria-label="red"
                     required
                   />
-                  <label for="red2" className="red colorIcon"></label>
+                  <label htmlFor="red2" className="red colorIcon"></label>
                   <p>Red</p>
                 </div>
                 <div className={color1 === 2 ? "hidden" : "colorCol"}>
@@ -594,7 +594,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="blue"
                   />
-                  <label for="blue2" className="blue colorIcon"></label>
+                  <label htmlFor="blue2" className="blue colorIcon"></label>
                   <p>Blue</p>
                 </div>
                 <div className={color1 === 3 ? "hidden" : "colorCol"}>
@@ -606,7 +606,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="black"
                   />
-                  <label for="black2" className="black colorIcon"></label>
+                  <label htmlFor="black2" className="black colorIcon"></label>
                   <p>Black</p>
                 </div>
                 <div className={color1 === 4 ? "hidden" : "colorCol"}>
@@ -618,7 +618,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="white"
                   />
-                  <label for="white2" className="white colorIcon"></label>
+                  <label htmlFor="white2" className="white colorIcon"></label>
                   <p>White</p>
                 </div>
                 <div className={color1 === 5 ? "hidden" : "colorCol"}>
@@ -630,7 +630,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="yellow"
                   />
-                  <label for="yellow2" className="yellow colorIcon"></label>
+                  <label htmlFor="yellow2" className="yellow colorIcon"></label>
                   <p>Yellow</p>
                 </div>
               </div>
@@ -644,7 +644,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="green"
                   />
-                  <label for="green2" className="green colorIcon"></label>
+                  <label htmlFor="green2" className="green colorIcon"></label>
                   <p>Green</p>
                 </div>
 
@@ -657,7 +657,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="purple"
                   />
-                  <label for="purple2" className="purple colorIcon"></label>
+                  <label htmlFor="purple2" className="purple colorIcon"></label>
                   <p>Purple</p>
                 </div>
 
@@ -670,7 +670,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="orange"
                   />
-                  <label for="orange2" className="orange colorIcon"></label>
+                  <label htmlFor="orange2" className="orange colorIcon"></label>
                   <p>Orange</p>
                 </div>
                 <div className={color1 === 10 ? "hidden" : "colorCol"}>
@@ -682,7 +682,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="gray"
                   />
-                  <label for="gray2" className="gray colorIcon"></label>
+                  <label htmlFor="gray2" className="gray colorIcon"></label>
                   <p>Gray</p>
                 </div>
                 <div className={color1 === 11 ? "hidden" : "colorCol"}>
@@ -694,7 +694,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor2Change(event)}
                     aria-label="brown"
                   />
-                  <label for="brown2" className="brown colorIcon"></label>
+                  <label htmlFor="brown2" className="brown colorIcon"></label>
                   <p>Brown</p>
                 </div>
               </div>
@@ -730,7 +730,7 @@ const CarouselContainer = () => {
                     aria-label="red"
                     required
                   />
-                  <label for="red3" className="red colorIcon"></label>
+                  <label htmlFor="red3" className="red colorIcon"></label>
                   <p>Red</p>
                 </div>
                 <div
@@ -746,7 +746,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="blue"
                   />
-                  <label for="blue3" className="blue colorIcon"></label>
+                  <label htmlFor="blue3" className="blue colorIcon"></label>
                   <p>Blue</p>
                 </div>
 
@@ -763,7 +763,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="black"
                   />
-                  <label for="black3" className="black colorIcon"></label>
+                  <label htmlFor="black3" className="black colorIcon"></label>
                   <p>Black</p>
                 </div>
 
@@ -780,7 +780,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="white"
                   />
-                  <label for="white3" className="white colorIcon"></label>
+                  <label htmlFor="white3" className="white colorIcon"></label>
                   <p>White</p>
                 </div>
 
@@ -797,7 +797,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="yellow"
                   />
-                  <label for="yellow3" className="yellow colorIcon"></label>
+                  <label htmlFor="yellow3" className="yellow colorIcon"></label>
                   <p>Yellow</p>
                 </div>
               </div>
@@ -815,7 +815,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="green"
                   />
-                  <label for="green3" className="green colorIcon"></label>
+                  <label htmlFor="green3" className="green colorIcon"></label>
                   <p>Green</p>
                 </div>
                 <div
@@ -831,7 +831,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="purple"
                   />
-                  <label for="purple3" className="purple colorIcon"></label>
+                  <label htmlFor="purple3" className="purple colorIcon"></label>
                   <p>Purple</p>
                 </div>
                 <div
@@ -847,7 +847,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="orange"
                   />
-                  <label for="orange3" className="orange colorIcon"></label>
+                  <label htmlFor="orange3" className="orange colorIcon"></label>
                   <p>Orange</p>
                 </div>
                 <div
@@ -863,7 +863,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="gray"
                   />
-                  <label for="gray3" className="gray colorIcon"></label>
+                  <label htmlFor="gray3" className="gray colorIcon"></label>
                   <p>Gray</p>
                 </div>
                 <div
@@ -879,7 +879,7 @@ const CarouselContainer = () => {
                     onChange={(event) => handleColor3Change(event)}
                     aria-label="brown"
                   />
-                  <label for="brown3" className="brown colorIcon"></label>
+                  <label htmlFor="brown3" className="brown colorIcon"></label>
                   <p>Brown</p>
                 </div>
               </div>
@@ -910,10 +910,10 @@ const CarouselContainer = () => {
                 type="checkbox"
                 id="anything"
                 name="avoid"
-                value={null}
+                value=""
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="anything">Send me anything!</label>
+              <label htmlFor="anything">Send me anything!</label>
             </div>
             <div className="avoidCol">
               <img src={pillow} className="avoidIcon" alt="pillow" />
@@ -924,7 +924,7 @@ const CarouselContainer = () => {
                 value="7"
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="pillows">Pillows</label>
+              <label htmlFor="pillows">Pillows</label>
             </div>
             <div className="avoidCol">
               <img src={lamp} className="avoidIcon" alt="lamp" />
@@ -935,7 +935,7 @@ const CarouselContainer = () => {
                 value="3"
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="lamps">Lamps</label>
+              <label htmlFor="lamps">Lamps</label>
             </div>
           </div>
           <div className="avoidRow">
@@ -948,7 +948,7 @@ const CarouselContainer = () => {
                 value="4"
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="art">Art</label>
+              <label htmlFor="art">Art</label>
             </div>
             <div className="avoidCol">
               <img src={decor} className="avoidIcon" alt="house plant" />
@@ -959,7 +959,7 @@ const CarouselContainer = () => {
                 value="5"
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="decor">Decor</label>
+              <label htmlFor="decor">Decor</label>
             </div>
             <div className="avoidCol">
               <img src={linen} className="avoidIcon" alt="kitchen linens" />
@@ -971,7 +971,7 @@ const CarouselContainer = () => {
                 onChange={(event) => handleAvoidChange(event)}
               />
 
-              <label for="kitchenLinens">Kitchen Linens</label>
+              <label htmlFor="kitchenLinens">Kitchen Linens</label>
             </div>
           </div>
           <div className="avoidRow">
@@ -984,7 +984,7 @@ const CarouselContainer = () => {
                 value="11"
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="storage">Storage</label>
+              <label htmlFor="storage">Storage</label>
             </div>
             <div className="avoidCol">
               <img src={serverware} className="avoidIcon" alt="serving plate" />
@@ -995,7 +995,7 @@ const CarouselContainer = () => {
                 value="13"
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="serverware">Serverware</label>
+              <label htmlFor="serverware">Serverware</label>
             </div>
             <div className="avoidCol">
               <img
@@ -1010,7 +1010,7 @@ const CarouselContainer = () => {
                 value="14"
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="utensils">Utensils</label>
+              <label htmlFor="utensils">Utensils</label>
             </div>
           </div>
           {checkCount === 0 ? (
