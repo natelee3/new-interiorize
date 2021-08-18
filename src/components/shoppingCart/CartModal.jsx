@@ -12,7 +12,7 @@ const CartModal = ({isVisible, closeModal}) => {
           <div id="master-wrap">
             <div id="logo-box">
               <div className="animated fast fadeInUp">
-                <div className="icon">
+                <div className="iconModal">
                   <h1>Thank you</h1>
                 </div>
 
