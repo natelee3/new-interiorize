@@ -41,7 +41,7 @@ const ItemDetails = () => {
     };
 
     getItemInfo(id);
-  }, []);
+  }, [id, itemData]);
 
   const goBack = () => {
     history.goBack();

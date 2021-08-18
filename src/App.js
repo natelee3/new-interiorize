@@ -11,11 +11,9 @@ import ItemDetails from "./components/shop/ItemDetails";
 import ShoppingCart from "./components/shoppingCart/ShoppingCart";
 import Redirect404 from "./components/404/Redirect404";
 import Footer from "./footer/Footer";
-import { useAuth0 } from '@auth0/auth0-react';
 
 
 function App() {
-  const { user, } = useAuth0();
   const initialState = {cart: []};
 
   const contextReducer = (state, action) => {
