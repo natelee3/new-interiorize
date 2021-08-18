@@ -17,9 +17,9 @@ const Navbar = () => {
   return (
     <>
       <nav className="navbar">
-        <a href="/">
+        <Link to="/">
           <img src={logo} alt="interiorize logo" className="logo" />
-        </a>
+        </Link>
         <button onClick={() => setActive(!active)} className="toggle-button">
           <span className="bar"></span>
           <span className="bar"></span>

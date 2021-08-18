@@ -9,6 +9,7 @@ const UserProfile = () => {
   const [avoidArray, setAvoidArray] = useState([]);
   const [recentOrder, setRecentOrder] = useState([]);
   const [previousOrders, setPreviousOrders] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -51,7 +52,7 @@ const UserProfile = () => {
     fetchUserData();
     fetchAvoidArray();
     fetchOrders();
-  }, []);
+  }, [isSubmitted]);
 
   const fetchRecentOrder = async (recentOrderId) => {
     const localUrl = `https://api.interiorize.design/items/byid/${recentOrderId}`;
@@ -78,6 +79,10 @@ const UserProfile = () => {
       console.log("fetch response is:", response);
     }
   };
+
+  const handleFormSubmit = () => {
+    setIsSubmitted(!isSubmitted);
+  }
 
   return (
     <>
@@ -143,7 +148,10 @@ const UserProfile = () => {
               <p>Loading your style preferences...</p>
             )}
 
-            <Modal />
+            <Modal 
+            isSubmitted={isSubmitted}
+            handleFormSubmit={handleFormSubmit}
+            />
           </div>
         </div>
       </div>

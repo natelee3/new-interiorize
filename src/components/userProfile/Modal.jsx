@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Modal = () => {
+const Modal = ({isSubmitted, handleFormSubmit}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [state, setState] = useState({
     budget: "",
@@ -69,6 +69,9 @@ const Modal = () => {
   };
 
   const handleSubmit = (event) => {
+    event.preventDefault();
+    handleFormSubmit();
+    console.log(isSubmitted)
     updateQuizData();
     updateAvoidData();
   };
@@ -130,6 +133,7 @@ const Modal = () => {
           </button>
 
           <h1>Edit Your Preferences</h1>
+          {!!isSubmitted ? <p>Your preferences have been updated!</p> : null}
           <form onSubmit={(event) => handleSubmit(event)}>
             <label>
               Budget
