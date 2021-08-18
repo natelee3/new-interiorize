@@ -24,6 +24,8 @@ const ShoppingCart = () => {
           setTimeout("countDown()", 1000);
           window.location.href = redirect;
         }
+      
+
     
 
     const _createOrder = async () => {
@@ -40,6 +42,15 @@ const ShoppingCart = () => {
         const response = await fetch(localUrl, requestOptions).then((response) =>
           console.log(response)
         );
+      };
+
+      const _removeClick = () => {
+        console.log("Remove clicked: ", value);
+        dispatch({
+          type: "ACTION_REMOVE",
+          payload: value,
+        });
+        // setIsVisible(!isVisible);
       };
 
     // const [value] = useContext(StateContext);
@@ -104,6 +115,11 @@ const ShoppingCart = () => {
                     <div className="buttonBox2">
                         <Link to='/'>
                             <button className="checkoutBtn" type="button" onClick={() => _createOrder()}>Submit Order</button>
+                        </Link>
+                    </div>
+                    <div className="buttonBox2">
+                        <Link to='/shop-intro/shop'>
+                            <button className="checkoutBtn" type="button">&larr; Shop</button>
                         </Link>
                     </div>
                     

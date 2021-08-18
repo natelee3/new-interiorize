@@ -16,7 +16,7 @@ import { useAuth0 } from '@auth0/auth0-react';
 
 function App() {
   const { user, } = useAuth0();
-  console.log(user);
+  console.log({user});
   const initialState = {cart: []};
 
   const contextReducer = (state, action) => {
@@ -66,9 +66,9 @@ function App() {
                 <Route exact path = "/shopping-cart">
                   <ShoppingCart />
                 </Route> 
-                    <Route path = "*">
-                <Redirect404/>
-              </Route> 
+                <Route path = "*">
+                  <Redirect404/>
+                </Route> 
               </Switch> 
             <Footer />
           </Router>
