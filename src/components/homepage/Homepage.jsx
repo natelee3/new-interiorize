@@ -5,8 +5,51 @@ import truck from "./imgs/truck.png";
 import box from "./imgs/box.png";
 // import greenChairs from "./imgs/greenChairs.png";
 import editedPhoto from "./imgs/editedPhoto.png";
+import { useAuth0 } from "@auth0/auth0-react";
+import { useEffect } from "react";
 
 const Homepage = () => {
+    const { isAuthenticated, user } = useAuth0();
+
+    useEffect(() => {
+        console.log({isAuthenticated})
+        const userCheck = async () => {
+            const user_sub = user.sub.slice(6);
+            console.log(user_sub)
+            const url = `http://localhost:3333/users/${user_sub}`
+            try {
+                const response = await fetch(url)
+                .then(response => response.json());
+                console.log(response)
+                if (response.length > 0) {
+                    console.log('Already have this user', response[0].id)
+                    localStorage.setItem('user_id', response[0].id)
+                } else {
+                    let newUrl = 'http://localhost:3333/users/add';
+                    const requestOptions = {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          user_sub: user_sub,
+                          nickname: user.nickname,
+                          email: user.email
+                        }),
+                      };
+                      const newUser = fetch(newUrl, requestOptions)
+                        .then(response => response.json())
+                        .then(user => localStorage.setItem('user_id', user.id))
+                    }
+            } catch (error) {
+                console.error(error.message);
+            } 
+        };    
+        if (isAuthenticated) {
+            userCheck();
+        }
+
+    },[isAuthenticated])
+    
+
     return (
         <>
             <div className="homeMainContainer">
