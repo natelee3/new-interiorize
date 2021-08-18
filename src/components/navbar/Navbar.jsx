@@ -57,12 +57,12 @@ const Navbar = () => {
                   <Link to="/user-profile">User Profile</Link>
                 </li>
                 <li className="cartIcon">
-                  <Link to="/shopping-cart"> 
-                  <span className="notification">
+                <Link to="/shopping-cart">
                     <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" />
+                    <span className={value.cart.length > 0 ? "notification" : null}>
                     </span>
-                  </Link>
-                </li>
+                </Link>
+              </li>
               </>
             )}     
           </ul>
