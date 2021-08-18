@@ -127,13 +127,23 @@ const CarouselContainer = () => {
     .then(response => response.json())
     .then(data => {
       if (data.user_id !== undefined) {
-        let localUrl = 'http://localhost:3333/quizzes/update';
-        let url = 'https://api.interiorize.design/quizzes/update';
-        submitQuizData(localUrl)
+        // let localQuizUrl = 'http://localhost:3333/quizzes/update';
+        let quizUrl = 'https://api.interiorize.design/quizzes/update';
+        // let localAvoidUrl = 'http://localhost:3333/users/avoid/update';
+        let avoidUrl = 'https://api.interiorize.design/users/avoid/update';
+        submitQuizData(quizUrl);
+        if (localStorage.getItem("Avoid").length > 0) {
+          submitAvoidData(avoidUrl);
+        };
       } else {
-        let localUrl = 'http://localhost:3333/quizzes/add';
-        let url = 'https://api.interiorize.design/quizzes/add';
-        submitQuizData(localUrl)   
+        // let localQuizUrl = 'http://localhost:3333/quizzes/add';
+        let quizUrl = 'https://api.interiorize.design/quizzes/add';
+        // let localAvoidUrl = 'http://localhost:3333/users/avoid/add';
+        let avoidUrl = 'https://api.interiorize.design/users/avoid/add';
+        submitQuizData(quizUrl);
+        if (localStorage.getItem("Avoid").length > 0) {
+          submitAvoidData(avoidUrl);
+        };
       }
     })
   };
@@ -155,14 +165,12 @@ const CarouselContainer = () => {
     const response = await fetch(theUrl, requestOptions).then((response) =>
       console.log(response)
     );
-    if (localStorage.getItem("Avoid").length > 0) {
-      submitAvoidData(theUrl)
-    };
+    
     generateOrder();
   };
 
   const generateOrder = async () => {
-    const localUrl = 'http://localhost:3333/items/generate-order';
+    // const localUrl = 'http://localhost:3333/items/generate-order';
     const url = `https://api.interiorize.design/items/generate-order`;
     const requestOptions = {
       method: "POST",
@@ -171,14 +179,12 @@ const CarouselContainer = () => {
         user_id: localStorage.getItem('user_id')
       }),
     };
-    const response = await fetch(localUrl, requestOptions).then((response) =>
+    const response = await fetch(url, requestOptions).then((response) =>
       console.log(response)
     );
   };
 
-  const submitAvoidData = async () => {
-    const localUrl = "http://localhost:3333/users/avoid/add";
-    const url = "https://api.interiorize.design/users/avoid/add";
+  const submitAvoidData = async (url) => {
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
