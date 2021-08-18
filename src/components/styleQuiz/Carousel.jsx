@@ -1,16 +1,19 @@
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
+import anythingIcon from "./imgs/anything.png";
+import pillow from "./imgs/pillow.png";
+import lamp from "./imgs/lamp.png";
+import art from "./imgs/art.png";
+import decor from "./imgs/decor.png";
+import linen from "./imgs/linens.png";
+import storage from "./imgs/storage.png";
+import serverware from "./imgs/serverware.png";
+import utensils from "./imgs/utensils.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 
 //To do:
-//Post the locally stored variables to the API
-//Make it look like the mock-up
-//Mobile Responsiveness
-// For the style slide, add an onClick feature that takes them back to the top of the page
-//Add icons for each selection!
 //Display a message after submit saying thanks for your responses. Our team of experts will start putting together your first order as soon as possible.
 //Add a button after message to redirect to user profile
-//Add a message underneath Style Quiz briefly explaining why you have to take the quiz(helps our stylists determine the best items to send you)
 
 const CarouselContainer = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -33,6 +36,12 @@ const CarouselContainer = () => {
     if (currentSlide !== index) {
       setCurrentSlide(index);
     }
+  };
+
+  // Scroll to Top after Style Selection:
+  const handleStyleClick = () => {
+    window.scrollTo(0, 0);
+    next();
   };
 
   //   CHANGES
@@ -115,10 +124,11 @@ const CarouselContainer = () => {
     if (localStorage.getItem("Avoid").length > 0) {
       submitAvoidData();
     }
+
   };
 
   const submitQuizData = async () => {
-    const localUrl = 'http://localhost:3333/quizzes/add';
+    const localUrl = "http://localhost:3333/quizzes/add";
     const url = `https://api.interiorize.design/quizzes/add`;
     const requestOptions = {
       method: "POST",
@@ -154,17 +164,19 @@ const CarouselContainer = () => {
   };
 
   const submitAvoidData = async () => {
-    const localUrl = 'http://localhost:3333/users/avoid/add';
-    const url = 'https://api.interiorize.design/users/avoid/add';
+    const localUrl = "http://localhost:3333/users/avoid/add";
+    const url = "https://api.interiorize.design/users/avoid/add";
     const requestOptions = {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         user_id: 2,
-        avoid_tags: localStorage.getItem('Avoid')
+        avoid_tags: localStorage.getItem("Avoid"),
       }),
     };
-    const response = await fetch(url, requestOptions).then(response => console.log(response));
+    const response = await fetch(url, requestOptions).then((response) =>
+      console.log(response)
+    );
   };
 
   return (
@@ -182,9 +194,9 @@ const CarouselContainer = () => {
     >
       {/* BUDGET */}
       <div className="carouselSlide">
-        <h2>What's your budget?</h2>
+        <h2>What's your budget per shipment?</h2>
         <form onSubmit={(event) => handleBudgetSubmit(event)}>
-          <div className="row">
+          <div className="budgetRow">
             <div className="col">
               <input
                 id="40"
@@ -192,9 +204,11 @@ const CarouselContainer = () => {
                 name="budget"
                 value="40"
                 onChange={(event) => handleBudgetChange(event)}
+                aria-label="$40"
                 required
               />
-              <label for="40">$40</label>
+              <label for="40" className="firstTier budgetIcon"></label>
+              <p>$40</p>
             </div>
             <div className="col">
               <input
@@ -203,8 +217,10 @@ const CarouselContainer = () => {
                 name="budget"
                 value="80"
                 onChange={(event) => handleBudgetChange(event)}
+                aria-label="$80"
               />
-              <label for="80">$80</label>
+              <label for="80" className="secondTier budgetIcon"></label>
+              <p>$80</p>
             </div>
             <div className="col">
               <input
@@ -213,8 +229,10 @@ const CarouselContainer = () => {
                 name="budget"
                 value="120"
                 onChange={(event) => handleBudgetChange(event)}
+                aria-label="$120"
               />
-              <label for="120">$120</label>
+              <label for="120" className="thirdTier budgetIcon"></label>
+              <p>$120</p>
             </div>
           </div>
           <button
@@ -240,6 +258,7 @@ const CarouselContainer = () => {
                 name="style"
                 value="18"
                 onChange={(event) => handleStyleChange(event)}
+                aria-label="bohemian"
                 required
               />
 
@@ -255,6 +274,7 @@ const CarouselContainer = () => {
                   name="style"
                   value="16"
                   onChange={(event) => handleStyleChange(event)}
+                  aria-label="farmhouse"
                 />
 
                 <label className="styleImg farmhouse" for="farmhouse"></label>
@@ -271,6 +291,7 @@ const CarouselContainer = () => {
                   type="radio"
                   name="style"
                   value="17"
+                  aria-label="contemporary"
                   onChange={(event) => handleStyleChange(event)}
                 />
 
@@ -289,6 +310,7 @@ const CarouselContainer = () => {
                   type="radio"
                   name="style"
                   value="15"
+                  aria-label="modern"
                   onChange={(event) => handleStyleChange(event)}
                 />
 
@@ -300,7 +322,7 @@ const CarouselContainer = () => {
           </div>
           <button
             type="submit"
-            onClick={style !== "" ? () => next() : null}
+            onClick={style !== "" ? () => handleStyleClick() : null}
             className="secondaryBtn"
           >
             Next
@@ -314,34 +336,69 @@ const CarouselContainer = () => {
         className="carouselSlide"
         onChange={(event) => handleRoomChange(event)}
       >
-        <h3>Which room would you like to focus on first?</h3>
+        <h2>Which room would you like to focus on first?</h2>
         <form onSubmit={(event) => handleRoomSubmit(event)}>
-          <div className="roomCol">
-            <input
-              id="livingRoom"
-              type="radio"
-              name="room"
-              value="1"
-              required
-            />
-            <label for="livingRoom" className="livingRoom"></label>
-            <p>Living Room</p>
+          <div className="roomContainer">
+            <div className="roomCol">
+              <input
+                id="livingRoom"
+                type="radio"
+                name="room"
+                value="1"
+                aria-label="Living Room"
+                required
+              />
+              <label for="livingRoom" className="livingRoom roomIcon"></label>
+              <p>Living Room</p>
+            </div>
+            <div className="roomCol">
+              <input
+                id="bedroom"
+                type="radio"
+                name="room"
+                value="2"
+                aria-label="Bedroom"
+              />
+              <label for="bedroom" className="bedroom roomIcon"></label>
+              <p>Bedroom</p>
+            </div>
+            <div className="roomCol">
+              <input
+                id="bathroom"
+                type="radio"
+                name="room"
+                value="3"
+                aria-label="Bathroom"
+              />
+              <label for="bathroom" className="bathroom roomIcon"></label>
+              <p>Bathroom</p>
+            </div>
           </div>
-          <div className="roomCol">
-            <input id="bedroom" type="radio" name="room" value="2" />
-            <label for="bedroom" className="bedroom"></label>
-            <p>Bedroom</p>
-          </div>
-          <div className="roomCol">
-            <input id="bathroom" type="radio" name="room" value="3" />
-            <label for="bathroom"></label>
-            <p>Bathroom</p>
-          </div>
-          <input id="kitchen" type="radio" name="room" value="4" />
-          <label for="kitchen">Kitchen</label>
 
-          <input id="patio" type="radio" name="room" value="5" />
-          <label for="patio">Patio</label>
+          <div className="roomContainer">
+            <div className="roomCol">
+              <input
+                id="kitchen"
+                type="radio"
+                name="room"
+                value="4"
+                aria-label="Kitchen"
+              />
+              <label for="kitchen" className="kitchen roomIcon"></label>
+              <p className="roomLabel">Kitchen</p>
+            </div>
+            <div className="roomCol">
+              <input
+                id="patio"
+                type="radio"
+                name="room"
+                value="5"
+                aria-label="Patio"
+              />
+              <label for="patio" className="patio roomIcon"></label>
+              <p>Patio</p>
+            </div>
+          </div>
 
           <button
             className="secondaryBtn"
@@ -356,100 +413,134 @@ const CarouselContainer = () => {
       <div className="carouselSlide">
         {/* COLOR SELECTION */}
         <div className="colorContainer">
-          <h3>Choose Your First Color</h3>
+          <h2>Choose Your First Color</h2>
           <div>
             <form onSubmit={(event) => handleColor1Submit(event)}>
-              <input
-                id="red"
-                type="radio"
-                name="color"
-                value="1"
-                onChange={(event) => handleColor1Change(event)}
-                required
-              />
-              <label for="red">Red</label>
-
-              <input
-                id="blue"
-                type="radio"
-                name="color"
-                value="2"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="blue">Blue</label>
-
-              <input
-                id="black"
-                type="radio"
-                name="color"
-                value="3"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="black">Black</label>
-
-              <input
-                id="white"
-                type="radio"
-                name="color"
-                value="4"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="white">White</label>
-
-              <input
-                id="yellow"
-                type="radio"
-                name="color"
-                value="5"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="yellow">Yellow</label>
-
-              <input
-                id="green"
-                type="radio"
-                name="color"
-                value="6"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="green">Green</label>
-
-              <input
-                id="purple"
-                type="radio"
-                name="color"
-                value="7"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="purple">Purple</label>
-
-              <input
-                id="orange"
-                type="radio"
-                name="color"
-                value="8"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="orange">Orange</label>
-
-              <input
-                id="gray"
-                type="radio"
-                name="color"
-                value="10"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="gray">Gray</label>
-
-              <input
-                id="brown"
-                type="radio"
-                name="color"
-                value="11"
-                onChange={(event) => handleColor1Change(event)}
-              />
-              <label for="brown">Brown</label>
-
+              <div className="colorRow">
+                <div className="colorCol">
+                  <input
+                    id="red"
+                    type="radio"
+                    name="color"
+                    value="1"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="red"
+                    required
+                  />
+                  <label for="red" className="red colorIcon"></label>
+                  <p>Red</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="blue"
+                    type="radio"
+                    name="color"
+                    value="2"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="blue"
+                  />
+                  <label for="blue" className="blue colorIcon"></label>
+                  <p>Blue</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="black"
+                    type="radio"
+                    name="color"
+                    value="3"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="black"
+                  />
+                  <label for="black" className="black colorIcon"></label>
+                  <p>Black</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="white"
+                    type="radio"
+                    name="color"
+                    value="4"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="white"
+                  />
+                  <label for="white" className="white colorIcon"></label>
+                  <p>White</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="yellow"
+                    type="radio"
+                    name="color"
+                    value="5"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="yellow"
+                  />
+                  <label for="yellow" className="yellow colorIcon"></label>
+                  <p>Yellow</p>
+                </div>
+              </div>
+              <div className="colorRow">
+                <div className="colorCol">
+                  <input
+                    id="green"
+                    type="radio"
+                    name="color"
+                    value="6"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="green"
+                  />
+                  <label for="green" className="green colorIcon"></label>
+                  <p>Green</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="purple"
+                    type="radio"
+                    name="color"
+                    value="7"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="purple"
+                  />
+                  <label for="purple" className="purple colorIcon"></label>
+                  <p>Purple</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="orange"
+                    type="radio"
+                    name="color"
+                    value="8"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="orange"
+                  />
+                  <label for="orange" className="orange colorIcon"></label>
+                  <p>Orange</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="gray"
+                    type="radio"
+                    name="color"
+                    value="10"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="gray"
+                  />
+                  <label for="gray" className="gray colorIcon"></label>
+                  <p>Gray</p>
+                </div>
+                <div className="colorCol">
+                  <input
+                    id="brown"
+                    type="radio"
+                    name="color"
+                    value="11"
+                    onChange={(event) => handleColor1Change(event)}
+                    aria-label="brown"
+                  />
+                  <label for="brown" className="brown colorIcon"></label>
+                  <p>Brown</p>
+                </div>
+              </div>
               <button
                 type="submit"
                 className="secondaryBtn"
@@ -464,154 +555,136 @@ const CarouselContainer = () => {
       <div className="carouselSlide">
         {/* COLOR SELECTION 2  */}
         <div className="colorContainer">
-          <h3>Choose Your Second Color</h3>
+          <h2>Choose Your Second Color</h2>
           <div>
             <form onSubmit={(event) => handleColor2Submit(event)}>
-              <input
-                id="red2"
-                type="radio"
-                name="color2"
-                value="1"
-                className={color1 === 1 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-                required
-              />
-              <label for="red2" className={color1 === 1 ? "hidden" : "active"}>
-                Red
-              </label>
+              <div className="colorRow">
+                <div className={color1 === 1 ? "hidden" : "colorCol"}>
+                  <input
+                    id="red2"
+                    type="radio"
+                    name="color2"
+                    value="1"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="red"
+                    required
+                  />
+                  <label for="red2" className="red colorIcon"></label>
+                  <p>Red</p>
+                </div>
+                <div className={color1 === 2 ? "hidden" : "colorCol"}>
+                  <input
+                    id="blue2"
+                    type="radio"
+                    name="color2"
+                    value="2"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="blue"
+                  />
+                  <label for="blue2" className="blue colorIcon"></label>
+                  <p>Blue</p>
+                </div>
+                <div className={color1 === 3 ? "hidden" : "colorCol"}>
+                  <input
+                    id="black2"
+                    type="radio"
+                    name="color2"
+                    value="3"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="black"
+                  />
+                  <label for="black2" className="black colorIcon"></label>
+                  <p>Black</p>
+                </div>
+                <div className={color1 === 4 ? "hidden" : "colorCol"}>
+                  <input
+                    id="white2"
+                    type="radio"
+                    name="color2"
+                    value="4"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="white"
+                  />
+                  <label for="white2" className="white colorIcon"></label>
+                  <p>White</p>
+                </div>
+                <div className={color1 === 5 ? "hidden" : "colorCol"}>
+                  <input
+                    id="yellow2"
+                    type="radio"
+                    name="color2"
+                    value="5"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="yellow"
+                  />
+                  <label for="yellow2" className="yellow colorIcon"></label>
+                  <p>Yellow</p>
+                </div>
+              </div>
+              <div className="colorRow">
+                <div className={color1 === 6 ? "hidden" : "colorCol"}>
+                  <input
+                    id="green2"
+                    type="radio"
+                    name="color2"
+                    value="6"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="green"
+                  />
+                  <label for="green2" className="green colorIcon"></label>
+                  <p>Green</p>
+                </div>
 
-              <input
-                id="blue2"
-                type="radio"
-                name="color2"
-                value="2"
-                className={color1 === 2 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label for="blue2" className={color1 === 2 ? "hidden" : "active"}>
-                Blue
-              </label>
+                <div className={color1 === 7 ? "hidden" : "colorCol"}>
+                  <input
+                    id="purple7"
+                    type="radio"
+                    name="color2"
+                    value="7"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="purple"
+                  />
+                  <label for="purple2" className="purple colorIcon"></label>
+                  <p>Purple</p>
+                </div>
 
-              <input
-                id="black2"
-                type="radio"
-                name="color2"
-                value="3"
-                className={color1 === 3 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="black2"
-                className={color1 === 3 ? "hidden" : "active"}
-              >
-                Black
-              </label>
-
-              <input
-                id="white2"
-                type="radio"
-                name="color2"
-                value="4"
-                className={color1 === 4 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="white2"
-                className={color1 === 4 ? "hidden" : "active"}
-              >
-                White
-              </label>
-
-              <input
-                id="yellow2"
-                type="radio"
-                name="color2"
-                value="5"
-                className={color1 === 5 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="yellow2"
-                className={color1 === 5 ? "hidden" : "active"}
-              >
-                Yellow
-              </label>
-
-              <input
-                id="green2"
-                type="radio"
-                name="color2"
-                value="6"
-                className={color1 === 6 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="green2"
-                className={color1 === 6 ? "hidden" : "active"}
-              >
-                Green
-              </label>
-
-              <input
-                id="purple2"
-                type="radio"
-                name="color2"
-                value="7"
-                className={color1 === 7 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="purple2"
-                className={color1 === 7 ? "hidden" : "active"}
-              >
-                Purple
-              </label>
-
-              <input
-                id="orange2"
-                type="radio"
-                name="color2"
-                value="8"
-                className={color1 === 8 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="orange2"
-                className={color1 === 8 ? "hidden" : "active"}
-              >
-                Orange
-              </label>
-
-              <input
-                id="gray2"
-                type="radio"
-                name="color2"
-                value="10"
-                className={color1 === 10 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="gray2"
-                className={color1 === 10 ? "hidden" : "active"}
-              >
-                Gray
-              </label>
-
-              <input
-                id="brown2"
-                type="radio"
-                name="color2"
-                value="11"
-                className={color1 === 11 ? "hidden" : "active"}
-                onChange={(event) => handleColor2Change(event)}
-              />
-              <label
-                for="brown2"
-                className={color1 === 11 ? "hidden" : "active"}
-              >
-                Brown
-              </label>
-
+                <div className={color1 === 8 ? "hidden" : "colorCol"}>
+                  <input
+                    id="orange2"
+                    type="radio"
+                    name="color2"
+                    value="8"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="orange"
+                  />
+                  <label for="orange2" className="orange colorIcon"></label>
+                  <p>Orange</p>
+                </div>
+                <div className={color1 === 10 ? "hidden" : "colorCol"}>
+                  <input
+                    id="gray2"
+                    type="radio"
+                    name="color2"
+                    value="10"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="gray"
+                  />
+                  <label for="gray2" className="gray colorIcon"></label>
+                  <p>Gray</p>
+                </div>
+                <div className={color1 === 11 ? "hidden" : "colorCol"}>
+                  <input
+                    id="brown2"
+                    type="radio"
+                    name="color2"
+                    value="11"
+                    onChange={(event) => handleColor2Change(event)}
+                    aria-label="brown"
+                  />
+                  <label for="brown2" className="brown colorIcon"></label>
+                  <p>Brown</p>
+                </div>
+              </div>
               <button
                 type="submit"
                 className="secondaryBtn"
@@ -626,160 +699,177 @@ const CarouselContainer = () => {
       {/* COLOR SELECTION 3 */}
       <div className="carouselSlide">
         <div className="colorContainer">
-          <h3>Choose Your Third Color</h3>
+          <h2>Choose Your Third Color</h2>
           <div>
             <form onSubmit={(event) => handleColor3Submit(event)}>
-              <input
-                id="red3"
-                type="radio"
-                name="color3"
-                value="1"
-                className={color1 === 1 || color2 === 1 ? "hidden" : "active"}
-                onChange={(event) => handleColor3Change(event)}
-                required
-              />
-              <label
-                for="red3"
-                className={color1 === 1 || color2 === 1 ? "hidden" : "active"}
-              >
-                Red
-              </label>
+              <div className="colorRow">
+                <div
+                  className={
+                    color1 === 1 || color2 === 1 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="red3"
+                    type="radio"
+                    name="color3"
+                    value="1"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="red"
+                    required
+                  />
+                  <label for="red3" className="red colorIcon"></label>
+                  <p>Red</p>
+                </div>
+                <div
+                  className={
+                    color1 === 2 || color2 === 2 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="blue3"
+                    type="radio"
+                    name="color3"
+                    value="2"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="blue"
+                  />
+                  <label for="blue3" className="blue colorIcon"></label>
+                  <p>Blue</p>
+                </div>
 
-              <input
-                id="blue3"
-                type="radio"
-                name="color3"
-                value="2"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 2 || color2 === 2 ? "hidden" : "active"}
-              />
-              <label
-                for="blue3"
-                className={color1 === 2 || color2 === 2 ? "hidden" : "active"}
-              >
-                Blue
-              </label>
+                <div
+                  className={
+                    color1 === 3 || color2 === 3 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="black3"
+                    type="radio"
+                    name="color3"
+                    value="3"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="black"
+                  />
+                  <label for="black3" className="black colorIcon"></label>
+                  <p>Black</p>
+                </div>
 
-              <input
-                id="black3"
-                type="radio"
-                name="color3"
-                value="3"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 3 || color2 === 3 ? "hidden" : "active"}
-              />
-              <label
-                for="black3"
-                className={color1 === 3 || color2 === 3 ? "hidden" : "active"}
-              >
-                Black
-              </label>
+                <div
+                  className={
+                    color1 === 4 || color2 === 4 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="white3"
+                    type="radio"
+                    name="color3"
+                    value="4"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="white"
+                  />
+                  <label for="white3" className="white colorIcon"></label>
+                  <p>White</p>
+                </div>
 
-              <input
-                id="white3"
-                type="radio"
-                name="color3"
-                value="4"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 4 || color2 === 4 ? "hidden" : "active"}
-              />
-              <label
-                for="white3"
-                className={color1 === 4 || color2 === 4 ? "hidden" : "active"}
-              >
-                White
-              </label>
-
-              <input
-                id="yellow3"
-                type="radio"
-                name="color3"
-                value="5"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 5 || color2 === 5 ? "hidden" : "active"}
-              />
-              <label
-                for="yellow3"
-                className={color1 === 5 || color2 === 5 ? "hidden" : "active"}
-              >
-                Yellow
-              </label>
-
-              <input
-                id="green3"
-                type="radio"
-                name="color3"
-                value="6"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 6 || color2 === 6 ? "hidden" : "active"}
-              />
-              <label
-                for="green3"
-                className={color1 === 6 || color2 === 6 ? "hidden" : "active"}
-              >
-                Green
-              </label>
-
-              <input
-                id="purple3"
-                type="radio"
-                name="color3"
-                value="7"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 7 || color2 === 7 ? "hidden" : "active"}
-              />
-              <label
-                for="purple3"
-                className={color1 === 7 || color2 === 7 ? "hidden" : "active"}
-              >
-                Purple
-              </label>
-
-              <input
-                id="orange3"
-                type="radio"
-                name="color3"
-                value="8"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 8 || color2 === 8 ? "hidden" : "active"}
-              />
-              <label
-                for="orange3"
-                className={color1 === 8 || color2 === 8 ? "hidden" : "active"}
-              >
-                Orange
-              </label>
-
-              <input
-                id="gray3"
-                type="radio"
-                name="color3"
-                value="10"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 10 || color2 === 10 ? "hidden" : "active"}
-              />
-              <label
-                for="gray3"
-                className={color1 === 10 || color2 === 10 ? "hidden" : "active"}
-              >
-                Gray
-              </label>
-
-              <input
-                id="brown3"
-                type="radio"
-                name="color3"
-                value="11"
-                onChange={(event) => handleColor3Change(event)}
-                className={color1 === 11 || color2 === 11 ? "hidden" : "active"}
-              />
-              <label
-                for="brown3"
-                className={color1 === 11 || color2 === 11 ? "hidden" : "active"}
-              >
-                Brown
-              </label>
-
+                <div
+                  className={
+                    color1 === 5 || color2 === 5 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="yellow3"
+                    type="radio"
+                    name="color3"
+                    value="5"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="yellow"
+                  />
+                  <label for="yellow3" className="yellow colorIcon"></label>
+                  <p>Yellow</p>
+                </div>
+              </div>
+              <div className="colorRow">
+                <div
+                  className={
+                    color1 === 6 || color2 === 6 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="green3"
+                    type="radio"
+                    name="color3"
+                    value="6"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="green"
+                  />
+                  <label for="green3" className="green colorIcon"></label>
+                  <p>Green</p>
+                </div>
+                <div
+                  className={
+                    color1 === 7 || color2 === 7 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="purple3"
+                    type="radio"
+                    name="color3"
+                    value="7"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="purple"
+                  />
+                  <label for="purple3" className="purple colorIcon"></label>
+                  <p>Purple</p>
+                </div>
+                <div
+                  className={
+                    color1 === 8 || color2 === 8 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="orange3"
+                    type="radio"
+                    name="color3"
+                    value="8"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="orange"
+                  />
+                  <label for="orange3" className="orange colorIcon"></label>
+                  <p>Orange</p>
+                </div>
+                <div
+                  className={
+                    color1 === 10 || color2 === 10 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="gray3"
+                    type="radio"
+                    name="color3"
+                    value="10"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="gray"
+                  />
+                  <label for="gray3" className="gray colorIcon"></label>
+                  <p>Gray</p>
+                </div>
+                <div
+                  className={
+                    color1 === 11 || color2 === 11 ? "hidden" : "colorCol"
+                  }
+                >
+                  <input
+                    id="brown3"
+                    type="radio"
+                    name="color3"
+                    value="11"
+                    onChange={(event) => handleColor3Change(event)}
+                    aria-label="brown"
+                  />
+                  <label for="brown3" className="brown colorIcon"></label>
+                  <p>Brown</p>
+                </div>
+              </div>
               <button
                 className="secondaryBtn"
                 type="submit"
@@ -794,80 +884,122 @@ const CarouselContainer = () => {
 
       {/* AVOID */}
       <div className="carouselSlide">
-        <h3>Which items should we NOT send you?</h3>
+        <h2>Which items should we NOT send you?</h2>
         <form onSubmit={(event) => handleAvoidSubmit(event)}>
-          <input
-            type="checkbox"
-            id="anything"
-            name="avoid"
-            value={null}
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="anything">Send me anything!</label>
-          <input
-            type="checkbox"
-            id="pillows"
-            name="avoid"
-            value="7"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="pillows">Pillows</label>
-          <input
-            type="checkbox"
-            id="lamps"
-            name="avoid"
-            value="3"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="lamps">Lamps</label>
-          <input
-            type="checkbox"
-            id="art"
-            name="avoid"
-            value="4"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="art">Art</label>
-          <input
-            type="checkbox"
-            id="decor"
-            name="avoid"
-            value="5"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="decor">Decor</label>
-          <input
-            type="checkbox"
-            id="kitchenLinens"
-            name="avoid"
-            value="9"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="kitchenLinens">Kitchen Linens</label>
-          <input
-            type="checkbox"
-            id="storage"
-            name="avoid"
-            value="11"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="storage">Storage</label>
-          <input
-            type="checkbox"
-            id="serverware"
-            name="avoid"
-            value="13"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="serverware">Serverware</label>
-          <input
-            type="checkbox"
-            id="utensils"
-            name="avoid"
-            value="14"
-            onChange={(event) => handleAvoidChange(event)}
-          />
-          <label for="utensils">Utensils</label>
+          <div className="avoidRow">
+            <div className="avoidCol">
+              <img
+                src={anythingIcon}
+                className="avoidIcon"
+                alt="dolly with two boxes"
+              />
+              <input
+                type="checkbox"
+                id="anything"
+                name="avoid"
+                value={null}
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="anything">Send me anything!</label>
+            </div>
+            <div className="avoidCol">
+              <img src={pillow} className="avoidIcon" alt="pillow" />
+              <input
+                type="checkbox"
+                id="pillows"
+                name="avoid"
+                value="7"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="pillows">Pillows</label>
+            </div>
+            <div className="avoidCol">
+              <img src={lamp} className="avoidIcon" alt="lamp" />
+              <input
+                type="checkbox"
+                id="lamps"
+                name="avoid"
+                value="3"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="lamps">Lamps</label>
+            </div>
+          </div>
+          <div className="avoidRow">
+            <div className="avoidCol">
+              <img src={art} className="avoidIcon" alt="frame" />
+              <input
+                type="checkbox"
+                id="art"
+                name="avoid"
+                value="4"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="art">Art</label>
+            </div>
+            <div className="avoidCol">
+              <img src={decor} className="avoidIcon" alt="house plant" />
+              <input
+                type="checkbox"
+                id="decor"
+                name="avoid"
+                value="5"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="decor">Decor</label>
+            </div>
+            <div className="avoidCol">
+              <img src={linen} className="avoidIcon" alt="kitchen linens" />
+              <input
+                type="checkbox"
+                id="kitchenLinens"
+                name="avoid"
+                value="9"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+
+              <label for="kitchenLinens">Kitchen Linens</label>
+            </div>
+          </div>
+          <div className="avoidRow">
+            <div className="avoidCol">
+              <img src={storage} className="avoidIcon" alt="cookie jar" />
+              <input
+                type="checkbox"
+                id="storage"
+                name="avoid"
+                value="11"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="storage">Storage</label>
+            </div>
+            <div className="avoidCol">
+              <img src={serverware} className="avoidIcon" alt="serving plate" />
+              <input
+                type="checkbox"
+                id="serverware"
+                name="avoid"
+                value="13"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="serverware">Serverware</label>
+            </div>
+            <div className="avoidCol">
+              <img
+                src={utensils}
+                className="avoidIcon"
+                alt="cooking utensils"
+              />
+              <input
+                type="checkbox"
+                id="utensils"
+                name="avoid"
+                value="14"
+                onChange={(event) => handleAvoidChange(event)}
+              />
+              <label for="utensils">Utensils</label>
+            </div>
+          </div>
           {checkCount === 0 ? (
             <p>Please Choose at Least One Option</p>
           ) : (

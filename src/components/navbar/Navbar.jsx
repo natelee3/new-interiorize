@@ -1,10 +1,19 @@
 import { useState } from "react";
+import { Link } from 'react-router-dom';
 import logo from "./imgs/logo.png";
 import "./navbar.css";
 import shoppingCart from "./imgs/shoppingCart.png";
+import ItemDetails from "../shop/ItemDetails";
+import { Redirect } from "react-router-dom";
+import LoginButton from "../auth0/LoginButton";
+import LogoutButton from "../auth0/LogoutButton";
+import { useAuth0 } from '@auth0/auth0-react';
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
+  const [cart, setCart] = useState([]);
+
+  const { isAuthenticated } = useAuth0();
 
   return (
     <>
@@ -19,23 +28,34 @@ const Navbar = () => {
         </button>
         <div className={!!active ? "navbar-links active" : "navbar-links"}>
           <ul>
-            <li>
-              <a href="/shop-intro">Shop</a>
-            </li>
-            <li>
-              <a href="/style-quiz">Style Quiz</a>
-            </li>
-            <li>
-              <a href="#">Register</a>
-            </li>
-            <li className="userProfileLink">
-              {/* If user is signed in show user Profile else show Login */}
-              <a href="/user-profile">User Profile</a>
-            </li>
-            <li className="cartIcon">
-              <a href="/#"> 
-              <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" /></a>
-            </li>
+            {!isAuthenticated ? (
+              <li>
+                <LoginButton />
+              </li>
+            ) : (
+              <>
+                <li>
+                  <Link to="/shop-intro">Shop</Link>
+                </li>
+                <li>
+                  <Link to="/style-quiz">Style Quiz</Link>
+                </li>
+                <li>
+                  <LogoutButton />
+                </li>
+                <li className="userProfileLink">
+                  {/* If user is signed in show user Profile else show Login */}
+                  <Link to="/user-profile">User Profile</Link>
+                </li>
+                <li className="cartIcon">
+                  <Link to="/shopping-cart"> 
+                  <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" style={localStorage.getItem("Added To Cart") !==null ? { backgroundColor: "red" } : null  } /></Link>
+                </li>
+              </>
+            )}
+
+            
+            
           </ul>
         </div>
       </nav>
