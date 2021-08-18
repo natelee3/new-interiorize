@@ -30,7 +30,9 @@ const Modal = () => {
       const storedAvoidData = await fetch("http://localhost:3333/users/avoid/2")
         .then((response) => response.json())
         .then((results) => {
-          setAvoidArray([...results]);
+          if(results !== null) {
+            setAvoidArray([...results]);
+          }
         });
     }) ();
   }, []);

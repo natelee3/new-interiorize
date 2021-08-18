@@ -39,7 +39,7 @@ const UserProfile = () => {
 
       console.log("FETCH ORDERS RESPONSE", response);
       const allOrders = response;
-      const newestOrder = response.shift();
+      const newestOrder = response.orderHistory.shift();
       const recentOrderId = newestOrder.id;
       fetchRecentOrder(recentOrderId);
       fetchPreviousOrders(allOrders);
@@ -61,9 +61,9 @@ const UserProfile = () => {
     console.log("ALL ORDERS: ", allOrders);
     let pastOrders;
     if (allOrders.length > 3) {
-      pastOrders = allOrders.slice(1, 4);
+      pastOrders = allOrders.orderHistory.slice(1, 4);
     } else {
-      pastOrders = allOrders;
+      pastOrders = allOrders.orderHistory;
     }
     //need to somehow push each array into an object to map through?
     for (const order of pastOrders) {
