@@ -247,7 +247,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(7)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="pillows">Pillows</label>
+              <label htmlFor="pillows">Pillows</label>
               <input
                 type="checkbox"
                 name="rug"
@@ -255,7 +255,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(2)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="rug">Rugs</label>
+              <label htmlFor="rug">Rugs</label>
               <input
                 type="checkbox"
                 name="lamp"
@@ -263,7 +263,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(3)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="lamp">Lamps</label>
+              <label htmlFor="lamp">Lamps</label>
               <input
                 type="checkbox"
                 name="art"
@@ -271,7 +271,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(4)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="art">Art</label>
+              <label htmlFor="art">Art</label>
               <input
                 type="checkbox"
                 name="decor"
@@ -279,7 +279,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(5)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="decor">Decor</label>
+              <label htmlFor="decor">Decor</label>
               <input
                 type="checkbox"
                 name="kitchenLinens"
@@ -287,7 +287,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(9)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="kitchenLinens">Kitchen Linens</label>
+              <label htmlFor="kitchenLinens">Kitchen Linens</label>
               <input
                 type="checkbox"
                 name="mirror"
@@ -295,7 +295,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(19)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="mirror">Mirrors</label>
+              <label htmlFor="mirror">Mirrors</label>
               <input
                 type="checkbox"
                 name="towel"
@@ -303,7 +303,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(20)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="towel">Towels</label>
+              <label htmlFor="towel">Towels</label>
               <input
                 type="checkbox"
                 name="storage"
@@ -311,7 +311,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(11)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="storage">Storage</label>
+              <label htmlFor="storage">Storage</label>
               <input
                 type="checkbox"
                 name="serverware"
@@ -319,7 +319,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(13)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="serverware">Serverware</label>
+              <label htmlFor="serverware">Serverware</label>
               <input
                 type="checkbox"
                 name="utensils"
@@ -327,7 +327,7 @@ const Modal = () => {
                 checked={!!avoidArray.includes(14)}
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label for="utensils">Utensils</label>
+              <label htmlFor="utensils">Utensils</label>
             </div>
             <button type="submit" className="primaryBtn">
               Save Changes
