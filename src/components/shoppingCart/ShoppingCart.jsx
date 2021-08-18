@@ -18,7 +18,24 @@ const ShoppingCart = () => {
     window.scrollTo(0, 0);
   };
 
+
   const redirect = "/";
+    const _createOrder = async () => {
+        const localUrl = "http://localhost:3333/orders/add";
+        const url = `https://api.interiorize.design/orders/add`;
+        const requestOptions = {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            user_id: localStorage.getItem('user_id'),
+            items: "1, 4, 16",
+          }),
+        };
+        const response = await fetch(localUrl, requestOptions).then((response) =>
+          console.log(response)
+        );
+      };
+
 
   const countDown = () => {
     setTimeout("countDown()", 1000);

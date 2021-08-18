@@ -14,7 +14,8 @@ const Modal = () => {
 
   useEffect(() => {
     (async () => {
-      const localurl = "http://localhost:3333/quizzes/2";
+      const user_id = localStorage.getItem('user_id');
+      const localurl = `http://localhost:3333/quizzes/${user_id}`;
       const storedQuizData = await fetch(localurl)
         .then((response) => response.json())
         .then((data) => {
@@ -27,7 +28,7 @@ const Modal = () => {
             room: data.category_id,
           });
         });
-      const storedAvoidData = await fetch("http://localhost:3333/users/avoid/2")
+      const storedAvoidData = await fetch(`http://localhost:3333/users/avoid/${user_id}`)
         .then((response) => response.json())
         .then((results) => {
           if(results !== null) {
