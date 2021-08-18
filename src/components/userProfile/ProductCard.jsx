@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactCardFlip from "react-card-flip";
 
-const ProductCard = () => {
+const ProductCard = ({index, description, img, name}) => {
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleClick = (event) => {
@@ -12,20 +12,18 @@ const ProductCard = () => {
   return (
     <>
       <ReactCardFlip isFlipped={isFlipped} flipDirection="vertical">
-        <div className="productContainer" onClick={(event) => handleClick(event)}>
+        <div className="productContainer" onClick={(event) => handleClick(event)} key={`${index}_front`}>
           <img
-            src="https://api.interiorize.design/images/2_piece_cement_metal_table_vase_set.jpg"
+            src={`https://api.interiorize.design/images/${img}`}
             alt="item on the way"
             className="productImage"
           />
           <button>View More</button>
         </div>
-        <div className="productContainer" onClick={(event) => handleClick(event)}>
-          <h3>Product Name Goes Here</h3>
+        <div className="productContainer" onClick={(event) => handleClick(event)} key={`${index}_back`}>
+          <h3>{name}</h3>
           <p>
-            Product Description: Lorem ipsum dolor sit amet, consectetur
-            adipiscing elit. Quisque eget sapien ipsum. Suspendisse eget aliquet
-            quam, vel venenatis elit. Etiam lacinia sit amet urna vel semper.
+           {description}
           </p>
           <button>View Less</button>
         </div>

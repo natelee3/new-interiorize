@@ -1,18 +1,14 @@
 import { useState, useEffect } from "react";
 import ProductCard from "./ProductCard";
+import PreviousOrderCard from "./PreviousOrderCard";
 import Modal from "./Modal";
 import "./userprofile.css";
 
-//To do:
-//1. grab the order data based on user
-//2. Get the most recent order id
-//3. Use that id to get the most recent order details
-//4. map that data to the productCards
-//5. Map the data for the other orders for the previous orders
-
-
 const UserProfile = () => {
   const [userData, setUserData] = useState({});
+  const [avoidArray, setAvoidArray] = useState([]);
+  const [recentOrder, setRecentOrder] = useState([]);
+  const [previousOrders, setPreviousOrders] = useState({});
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -24,9 +20,59 @@ const UserProfile = () => {
       console.log("User Response is: ", response);
       setUserData(response);
     };
+    const fetchAvoidArray = async () => {
+      const localUrl = "http://localhost:3333/users/avoid/string/2";
+      const response = await fetch(localUrl).then((response) =>
+        response.json()
+      );
+      let commaSeparated = response.join(", ");
+      setAvoidArray(commaSeparated);
+    };
+
+    const fetchOrders = async () => {
+      const localUrl = "http://localhost:3333/orders/2";
+      const response = await fetch(localUrl).then((response) =>
+        response.json()
+      );
+
+      console.log("FETCH ORDERS RESPONSE", response);
+      const allOrders = response;
+      const newestOrder = response.shift();
+      const recentOrderId = newestOrder.id;
+      fetchRecentOrder(recentOrderId);
+      fetchPreviousOrders(allOrders);
+    };
 
     fetchUserData();
+    fetchAvoidArray();
+    fetchOrders();
   }, []);
+
+  const fetchRecentOrder = async (recentOrderId) => {
+    const localUrl = `http://localhost:3333/items/byid/${recentOrderId}`;
+    const response = await fetch(localUrl).then((response) => response.json());
+    console.log("SINGLE ORDER: ", response);
+    setRecentOrder(response);
+  };
+
+  const fetchPreviousOrders = async (allOrders) => {
+    console.log("ALL ORDERS: ", allOrders);
+    let pastOrders;
+    if (allOrders.length > 3) {
+      pastOrders = allOrders.slice(1, 4);
+    } else {
+      pastOrders = allOrders;
+    }
+    //need to somehow push each array into an object to map through?
+    for (const order of pastOrders) {
+      let orderId = order.id;
+      const localUrl = `http://localhost:3333/items/byid/${orderId}`;
+      const response = await fetch(localUrl).then((response) =>
+        response.json()
+      );
+      console.log("fetch response is:", response);
+    }
+  };
 
   return (
     <>
@@ -35,71 +81,57 @@ const UserProfile = () => {
           <div className="shipmentCol">
             <h1>Your Account</h1>
             <h2>Recent Shipment</h2>
-            {/* Ternary statement Displays: 'you've got items on the way' or 'schedule an order!' based on status */}
             <p>You've got items on the way! </p>
             <div className="shipmentContainer">
-              {/* Fake data rn later on we will do a map and send the right information to each productCard */}
-              <ProductCard />
-              <ProductCard />
-              <ProductCard />
+              {recentOrder.length > 0 ? (
+                recentOrder.map((order, index) => (
+                  <ProductCard
+                    index={index}
+                    description={order.description}
+                    img={order.img_src}
+                    name={order.item_name}
+                  />
+                ))
+              ) : (
+                <p>
+                  You don't have any recent shipments, place your first order
+                  today!
+                </p>
+              )}
             </div>
             <button type="button" className="primaryBtn">
               Schedule An Order
             </button>
             <h2>Past Deliveries</h2>
-            {/* Add a ternary for if they have no past deliveries - 'You don't have any past deliveries or just don't show the past deliveries div at all. */}
             <div className="shipmentContainer">
-              <div className="productContainer">
-                <img
-                  src="https://api.interiorize.design/images/farmhouse_wall-mounted_chalkboard.jpeg"
-                  alt="item on the way"
-                  className="productImage"
-                />
-                <button>Leave a Review</button>
-              </div>
-              <div className="productContainer">
-                <img
-                  src="https://api.interiorize.design/images/coronita_southwestern_area_rug.jpeg"
-                  alt="item on the way"
-                  className="productImage"
-                />
-                <button>Leave a Review</button>
-              </div>
-              <div className="productContainer">
-                <img
-                  src="https://api.interiorize.design/images/cowie_18_table_lamp.jpeg"
-                  alt="item on the way"
-                  className="productImage"
-                />
-                <button>Leave a Review</button>
-              </div>
-              <div className="productContainer">
-                <img
-                  src="https://api.interiorize.design/images/2_piece_cement_metal_table_vase_set.jpg"
-                  alt="item on the way"
-                  className="productImage"
-                />
-                <button>Leave a Review</button>
-              </div>
+              {previousOrders.length > 0 ? (
+                previousOrders.map((order, index) => (
+                  <PreviousOrderCard index={index} img={order.img_src} />
+                ))
+              ) : (
+                <p>You don't have any previous shipments.</p>
+              )}
             </div>
           </div>
           <div className="userPreferencesCol">
             <h2>Your Style Preferences</h2>
             {userData !== null ? (
               <div className="preferencesRow">
-                <div>
+                <div className="stylesCol">
                   <h3>Budget</h3>
                   <p>${userData.budget}</p>
                   <h3>Color Palette</h3>
-                  <p>{userData.color1}, {userData.color2}, {userData.color3}</p>
+                  <p>
+                    {userData.color1}, {userData.color2}, {userData.color3}
+                  </p>
                   <h3>Style</h3>
                   <p>{userData.style_name}</p>
                 </div>
-                <div className="stylesCol">
+                <div>
                   <h3>Room</h3>
                   <p>{userData.category_name}</p>
                   <h3>Avoid</h3>
-                  <p>Animal print, paisley</p>
+                  <p>{avoidArray}</p>
                 </div>
               </div>
             ) : (

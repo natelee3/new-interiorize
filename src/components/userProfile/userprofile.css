@@ -45,7 +45,7 @@ h1 {
 }
 
 .stylesCol {
-  margin-left: 30px;
+  width: 290px;
 }
 
 .shipmentContainer {
@@ -303,5 +303,9 @@ input {
 
   .colorSelectRow {
     flex-direction: column;
+  }
+  .stylesCol {
+    width: 240px;
+    margin-right:10px;
   }
 }
