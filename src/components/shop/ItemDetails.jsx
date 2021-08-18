@@ -55,7 +55,7 @@ const ItemDetails = () => {
 
   return (
     <>
-    {value.cart.length > 0 ? (<p>Cart has an entry</p>) : (<p>Cart has no entries</p>)}
+    {/* {value.cart.length > 0 ? (<p>Cart has an entry</p>) : (<p>Cart has no entries</p>)} */}
       {itemData !== null ? (
         <div className="detailsContainer">
           <div className="imgBox">
@@ -75,17 +75,16 @@ const ItemDetails = () => {
               <br />
               {itemData.description}
             </p>
-            <h3 className="itemCategory">Category: {itemData.category_name}</h3>
-            <h3 className="itemColor">Color: {itemData.color_name}</h3>
+            <h3 className="itemCategory"><strong>Category:</strong> {itemData.category_name}</h3>
+            <h3 className="itemColor"><strong>Color:</strong> {itemData.color_name}</h3>
             <h3 className="itemTags">
               Tags: {itemData.tags[0]}, {itemData.tags[1]}
             </h3>
-            <h3 className="inStock">In Stock!</h3>
+            <h3 className="inStock"><strong>In Stock!</strong></h3>
             <br />
             <button className="addToCartButton" onClick={() => _handleClick()} type="button">
               Add To Cart
             </button>
-            <div className="addedToCart">Notification modal pops up?</div>
             <CartModal
             isVisible={isVisible}
             closeModal={closeModal}

@@ -25,16 +25,6 @@ const ShoppingCart = () => {
         }
       
 
-
-
-
-
-
-
-
-
-
-
     
     const [value, dispatch] = useContext(StateContext);
 
@@ -52,6 +42,15 @@ const ShoppingCart = () => {
         const response = await fetch(localUrl, requestOptions).then((response) =>
           console.log(response)
         );
+      };
+
+      const _removeClick = () => {
+        console.log("Remove clicked: ", value);
+        dispatch({
+          type: "ACTION_REMOVE",
+          payload: value,
+        });
+        // setIsVisible(!isVisible);
       };
 
     // const [value] = useContext(StateContext);
@@ -79,7 +78,9 @@ const ShoppingCart = () => {
                                             <p className="itemPrice">${item.price}</p>
                                             {/* Need to make this button work properly */}
                                             <div className="buttonBox">
-                                                <button className="removeBtn" type="button">Remove</button> 
+                                                <button className="removeBtn" 
+                                                    type="button" 
+                                                    onClick={() => {_removeClick()}} >Remove</button> 
                                             </div>
                                         </div>
                                     </li>
@@ -110,6 +111,11 @@ const ShoppingCart = () => {
                     <div className="buttonBox2">
                         <Link to='/'>
                             <button className="checkoutBtn" type="button" onClick={() => _createOrder()}>Submit Order</button>
+                        </Link>
+                    </div>
+                    <div className="buttonBox2">
+                        <Link to='/shop-intro/shop'>
+                            <button className="checkoutBtn" type="button">&larr; Shop</button>
                         </Link>
                     </div>
                     
