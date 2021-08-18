@@ -1,19 +1,18 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from 'react-router-dom';
-import logo from "./imgs/logo.png";
-import "./navbar.css";
 import shoppingCart from "./imgs/shoppingCart.png";
-import ItemDetails from "../shop/ItemDetails";
-import { Redirect } from "react-router-dom";
 import LoginButton from "../auth0/LoginButton";
 import LogoutButton from "../auth0/LogoutButton";
+import StateContext from '../../context';
 import { useAuth0 } from '@auth0/auth0-react';
+import logo from "./imgs/logo.png";
+import "./navbar.css";
 
 const Navbar = () => {
   const [active, setActive] = useState(false);
-  const [cart, setCart] = useState([]);
-
   const { isAuthenticated } = useAuth0();
+
+  const [value] = useContext(StateContext);
 
   return (
     <>
@@ -29,9 +28,20 @@ const Navbar = () => {
         <div className={!!active ? "navbar-links active" : "navbar-links"}>
           <ul>
             {!isAuthenticated ? (
+              <>
               <li>
                 <LoginButton />
               </li>
+              {/* Temporary shoppingCart for style testing until login/reg is sorted out */}
+                <li className="cartIcon">
+                <Link to="/shopping-cart"> 
+                    <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" />
+                    <span className={value.cart.length > 0 ? "notification" : null}>
+                    </span>
+                </Link>
+              </li>
+              </>
+              
             ) : (
               <>
                 <li>
@@ -44,19 +54,17 @@ const Navbar = () => {
                   <LogoutButton />
                 </li>
                 <li className="userProfileLink">
-                  {/* If user is signed in show user Profile else show Login */}
                   <Link to="/user-profile">User Profile</Link>
                 </li>
                 <li className="cartIcon">
                   <Link to="/shopping-cart"> 
+                  <span className="notification">
                     <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" />
+                    </span>
                   </Link>
                 </li>
               </>
-            )}
-
-            
-            
+            )}     
           </ul>
         </div>
       </nav>
