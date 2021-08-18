@@ -9,7 +9,9 @@
 .cartHr {
     width: 100%;
 }
-
+.emptyCartBtn {
+    margin: 0 auto;
+}
 
 /* Items In Cart Area ~~~~~~~~~~~~~~~~ */
 

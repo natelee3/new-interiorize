@@ -13,7 +13,7 @@ const ItemDetails = () => {
   const history = useHistory();
 
   const _handleClick = () => {
-    console.log("Clicked: ", value);
+    console.log("Item Data", itemData);
     dispatch({
       type: "ACTION_ADD_TO_CART",
       payload: itemData,
@@ -31,7 +31,6 @@ const ItemDetails = () => {
         const response = await fetch(
           `https://api.interiorize.design/items/single/${id}`
         ).then((response) => response.json());
-        // console.log("RESPONSE", response[0]);
         let item = response[0];
         setItemData(item);
         console.log("ITEM DATA IS:", itemData);
