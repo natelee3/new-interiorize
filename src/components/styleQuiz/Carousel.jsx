@@ -123,7 +123,8 @@ const CarouselContainer = () => {
   };
 
   const doneAlready = async () => {
-    const checkUser = await fetch('http://localhost:3333/quizzes/3')
+    const user_id = localStorage.getItem('user_id');
+    const checkUser = await fetch(`http://localhost:3333/quizzes/${user_id}`)
     .then(response => response.json())
     .then(data => {
       if (data.user_id !== undefined) {
