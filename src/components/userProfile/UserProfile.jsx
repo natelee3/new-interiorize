@@ -9,12 +9,12 @@ const UserProfile = () => {
   const [avoidArray, setAvoidArray] = useState([]);
   const [recentOrder, setRecentOrder] = useState([]);
   const [previousOrders, setPreviousOrders] = useState({});
-  const token = localStorage.getItem('token');
+  const [isFormSubmitted, setIsSubmitted] = useState(false);
   
   useEffect(() => {
-    
+     const token = localStorage.getItem('token');
+    console.log("An effect has occured")
     const fetchUserData = async () => {
-      //url to be swapped later
       const user_id = localStorage.getItem('user_id');
       const localUrl = `https://api.interiorize.design/quizzes/${user_id}`;
       const response = await fetch(localUrl, {
@@ -26,6 +26,7 @@ const UserProfile = () => {
       );
       console.log("User Response is: ", response);
       setUserData(response);
+    
     };
     const fetchAvoidArray = async () => {
       const user_id = localStorage.getItem('user_id');
@@ -65,7 +66,7 @@ const UserProfile = () => {
     fetchUserData();
     fetchAvoidArray();
     fetchOrders();
-  }, []);
+  }, [isFormSubmitted]);
 
   // const fetchRecentOrder = async (recentOrderId) => {
   //   const localUrl = `https://api.interiorize.design/items/byid/${recentOrderId}`;
@@ -93,6 +94,11 @@ const UserProfile = () => {
   //   }
   // };
 
+  const handleFormSubmit = () => {
+    console.log('Parent', isFormSubmitted)
+    setIsSubmitted(!isFormSubmitted);
+  }
+
   return (
     <>
       <div className="wrapper">
@@ -100,7 +106,7 @@ const UserProfile = () => {
           <div className="shipmentCol">
             <h1>Your Account</h1>
             <h2>Recent Shipment</h2>
-            <p>You've got items on the way! </p>
+            {recentOrder.length > 0 ? (<p>You've got items on the way!</p>) : null}
             <div className="shipmentContainer">
               {recentOrder.length > 0 ? (
                 recentOrder.map((order, index) => (
@@ -157,7 +163,9 @@ const UserProfile = () => {
               <p>Loading your style preferences...</p>
             )}
 
-            <Modal/>
+            <Modal
+            handleFormSubmit={handleFormSubmit}
+            />
           </div>
         </div>
       </div>
