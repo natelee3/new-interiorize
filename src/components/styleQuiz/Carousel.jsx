@@ -25,6 +25,7 @@ const CarouselContainer = () => {
   const [checkCount, setCheckCount] = useState(0);
 
   const history = useHistory();
+  const token = localStorage.getItem('token');
 
   //Carousel Controls:
   const next = () => {
@@ -123,7 +124,11 @@ const CarouselContainer = () => {
 
   const doneAlready = async () => {
     const user_id = localStorage.getItem('user_id');
-    const checkUser = await fetch(`https://api.interiorize.design/quizzes/${user_id}`)
+    const checkUser = await fetch(`https://api.interiorize.design/quizzes/${user_id}`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(response => response.json())
     .then(data => {
       if (data.user_id !== undefined) {
@@ -151,7 +156,10 @@ const CarouselContainer = () => {
   const submitQuizData = async (theUrl) => {
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` 
+      },
       body: JSON.stringify({
         user_id: localStorage.getItem('user_id'),
         budget: localStorage.getItem("Budget"),
@@ -174,9 +182,12 @@ const CarouselContainer = () => {
     const url = `https://api.interiorize.design/items/generate-order`;
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` 
+      },      
       body: JSON.stringify({
-        user_id: localStorage.getItem('user_id')
+      user_id: localStorage.getItem('user_id')
       }),
     };
     const response = await fetch(url, requestOptions).then((response) =>
@@ -189,10 +200,13 @@ const CarouselContainer = () => {
   const submitAvoidData = async (url) => {
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` 
+      },      
       body: JSON.stringify({
-        user_id: localStorage.getItem('user_id'),
-        avoid_tags: localStorage.getItem("Avoid"),
+      user_id: localStorage.getItem('user_id'),
+      avoid_tags: localStorage.getItem("Avoid"),
       }),
     };
     const response = await fetch(url, requestOptions).then((response) =>

@@ -14,13 +14,18 @@ const UserProfile = () => {
   const [previousOrder1, setPreviousOrder1] = useState([]);
   const [previousOrder2, setPreviousOrder2] = useState([]);
   const [isFormSubmitted, setIsSubmitted] = useState(false);
-
+  
   useEffect(() => {
-    console.log("An effect has occured");
+     const token = localStorage.getItem('token');
+    console.log("An effect has occured")
     const fetchUserData = async () => {
       const user_id = localStorage.getItem("user_id");
       const localUrl = `https://api.interiorize.design/quizzes/${user_id}`;
-      const response = await fetch(localUrl).then((response) =>
+      const response = await fetch(localUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) =>
         response.json()
       );
       console.log("User Response is: ", response);
@@ -29,7 +34,11 @@ const UserProfile = () => {
     const fetchAvoidArray = async () => {
       const user_id = localStorage.getItem("user_id");
       const localUrl = `https://api.interiorize.design/users/avoid/string/${user_id}`;
-      const response = await fetch(localUrl).then((response) =>
+      const response = await fetch(localUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) =>
         response.json()
       );
       if (response !== null) {
@@ -41,7 +50,11 @@ const UserProfile = () => {
     const fetchOrders = async () => {
       const user_id = localStorage.getItem("user_id");
       const localUrl = `https://api.interiorize.design/orders/${user_id}`;
-      const response = await fetch(localUrl).then((response) =>
+      const response = await fetch(localUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) =>
         response.json()
       );
 

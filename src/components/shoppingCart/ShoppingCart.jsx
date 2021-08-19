@@ -10,6 +10,8 @@ const ShoppingCart = () => {
   const [itemTotal, setItemTotal] = useState(0);
   const [shippingTotal, setShippingTotal] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
+  
+  
 
   useEffect(() => {
     const calculateItemTotal = () => {
@@ -54,30 +56,26 @@ const ShoppingCart = () => {
 
     calculateItemTotal();
   }, [value.cart.length]);
-
-  const _createOrder = async () => {
-    // const localUrl = "http://localhost:3333/orders/add";
-    const url = `https://api.interiorize.design/orders/add`;
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: 2,
-        items: "1, 4, 16",
-      }),
-    };
-    const response = await fetch(url, requestOptions).then((response) =>
-      console.log(response)
-    );
-   
-    setIsVisible(true);
-    //empty the cart
-    dispatch({
-        type: "ACTION_EMPTY_CART"
-    })
-
-    return response
-  };
+  
+     const _createOrder = async () => {
+        const localUrl = "http://localhost:3333/orders/add";
+        const url = `https://api.interiorize.design/orders/add`;
+        const requestOptions = {
+          method: "POST",
+          headers: { 
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+             },
+          body: JSON.stringify({
+            user_id: localStorage.getItem('user_id'),
+            items: "1, 4, 16",
+          }),
+        };
+        const response = await fetch(url, requestOptions).then((response) =>
+          console.log(response)
+        );
+        setIsVisible(true);
+      };
 
   const removeItem = (itemId) => {
     dispatch({
@@ -98,7 +96,7 @@ const ShoppingCart = () => {
                   <li className="cartCard" key={id}>
                     <div className="cartItemImg">
                       <img
-                        className="itemImg"
+                        className="itemImg1" 
                         src={`https://api.interiorize.design/images/${item.img_src}`}
                         alt="Img of Item"
                       />
