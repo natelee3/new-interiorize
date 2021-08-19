@@ -4,7 +4,8 @@
     margin: auto;
     margin-top: 15px;
     width: 100vw;
-    height: 100px;
+    height: 105px;
+    min-height: 100px;
     position: absolute;
     align-content: center;
     justify-content: space-evenly;
@@ -23,6 +24,7 @@
     margin: auto;
     width: 100%;
     max-width: 1520px;
+    height: inherit;
 }
 
 .footerLinks {
@@ -37,34 +39,114 @@
     /* color: #636363; */
 }
 
-
-/* .footerLogoBox {
-    display: flex;
-    justify-content: space-evenly;
-    width: 200px;
-    height: 100%;
-    text-decoration: none;
-    list-style-type: none;
+.companyFooter {
     color: white;
-} */
-
-
-/* .footerLogo {
+    font-size: large;
     width: 100%;
-    height: auto;
-} */
+    justify-content: center;
+    text-align: center;
+}
+
+.area1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    font-size: x-small;
+    align-items: flex-start;
+}
+
+.area2 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    font-size: small;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.area3 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    font-size: small;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.c-box {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-evenly;
+    margin: 0;
+    margin-top: 5px;
+}
+
+.c-1 {
+    width: 25%;
+    height: 100%;
+    text-align: center;
+}
+
+.c-2 {
+    width: 25%;
+    height: 100%;
+    text-align: center;
+}
+
+.footerTitle {
+    margin: 0;
+    color: white;
+    text-align: center;
+}
+
+.footerNames {
+    margin: 0;
+    color: white;
+}
+
+.line {
+    width: 40%;
+    color: white;
+}
 
 
 /* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-@media screen and (min-width: 280px) and (max-width: 540px) {
-    .footerLinks {
-        font-size: .5rem;
+@media screen and (min-width: 280px) and (max-width: 440px) {
+    .area2 {
+        font-size: x-small;
+    }
+    .area3 {
+        font-size: x-small;
+    }
+    .companyFooter {
+        font-size: smaller;
+    }
+    .c-box {
+        width: 100%;
+    }
+    .line {
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 441px) and (max-width: 540px) {
+    .companyFooter {
+        font-size: medium;
     }
 }
 
 @media screen and (min-width: 541px) and (max-width: 700px) {
-    .footerLinks {
+    /* .footerLinks {
         font-size: .8rem;
     }
+    .footerContainer {
+        height: 75px;
+    } */
 }

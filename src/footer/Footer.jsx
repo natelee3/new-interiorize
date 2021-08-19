@@ -9,15 +9,35 @@ const Footer = () => {
         <>
         <footer className="footerContainer">
             <div className="importantLinks">
-                <p className="footerLinks">@2021 Interiorize, Inc.</p>
-                <Link to="/user-profile" className="footerLinks">My Profile</Link>
-                <Link to="/user-profile" className="footerLinks">Recent Orders</Link>
-                {/* <a href="/" className="footerLogoBox">
-                    <img src={logo} alt="Logo" className="footerLogo"/>
-                </a> */}
-                <Link to="/" className="footerLinks">Contact Us</Link>
-                <Link to="/" className="footerLinks">About Us</Link>
-                <Link to="/" className="footerLinks">Link</Link>
+                <div class="area1">
+                    <p className="companyFooter">Interiorize, Inc.</p>
+                </div>
+                <div class="area2">
+                    <h2 className="footerTitle">Company</h2>
+                    <hr className="line" />
+                    <Link to="/user-profile" className="footerLinks">My Profile</Link>
+                    <Link to="/user-profile" className="footerLinks">Recent Orders</Link>
+                    <Link to="/style-quiz" className="footerLinks">Style Quiz</Link>
+                </div>
+                <div class="area3">
+                    <h2 className="footerTitle">Dev Github</h2>
+                    <hr className="line" />
+                    <div className="c-box">
+                        <div className="c-1">
+                            <a href="https://github.com/natelee3/interiorize" target="_blank" className="footerNames">Project</a>
+                            <br />
+                            <a href="https://github.com/logancooper" target="_blank" className="footerNames">Logan</a>
+                            <br />
+                            <a href="https://github.com/natelee3" target="_blank" className="footerNames">Nate</a>
+                        </div>
+                        <div className="c-2">
+                            <a href="https://github.com/sarahdepalo" target="_blank" className="footerNames">Sarah</a>
+                            <br />
+                            <a href="https://github.com/zach-a-g" target="_blank" className="footerNames">Zach</a>
+                        </div>    
+                    </div>
+
+                </div>
             </div>
         </footer>
         </>
