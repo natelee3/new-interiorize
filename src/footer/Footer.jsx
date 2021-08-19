@@ -24,16 +24,16 @@ const Footer = () => {
                     <hr className="line" />
                     <div className="c-box">
                         <div className="c-1">
-                            <a href="https://github.com/natelee3/interiorize" target="_blank" className="footerNames">Project</a>
+                            <a href="https://github.com/natelee3/interiorize" target="_blank" rel="noreferrer" className="footerNames">Project</a>
                             <br />
-                            <a href="https://github.com/logancooper" target="_blank" className="footerNames">Logan</a>
+                            <a href="https://github.com/logancooper" target="_blank" rel="noreferrer" className="footerNames">Logan</a>
                             <br />
-                            <a href="https://github.com/natelee3" target="_blank" className="footerNames">Nate</a>
+                            <a href="https://github.com/natelee3" target="_blank" rel="noreferrer" className="footerNames">Nate</a>
                         </div>
                         <div className="c-2">
-                            <a href="https://github.com/sarahdepalo" target="_blank" className="footerNames">Sarah</a>
+                            <a href="https://github.com/sarahdepalo" target="_blank" rel="noreferrer" className="footerNames">Sarah</a>
                             <br />
-                            <a href="https://github.com/zach-a-g" target="_blank" className="footerNames">Zach</a>
+                            <a href="https://github.com/zach-a-g" target="_blank" rel="noreferrer" className="footerNames">Zach</a>
                         </div>    
                     </div>
 
