@@ -11,13 +11,20 @@ const Modal = ({handleFormSubmit}) => {
     room: "",
   });
   const [avoidArray, setAvoidArray] = useState([]);
+  const token = localStorage.getItem('token');
 
 
   useEffect(() => {
     const storedQuizData = async () => {
       const user_id = localStorage.getItem("user_id");
       const url = `https://api.interiorize.design/quizzes/${user_id}`;
-      const response = await fetch(url)
+
+      //const localurl = `http://localhost:3333/quizzes/${user_id}`;
+      const storedQuizData = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then((response) => response.json())
         .then((data) => {
           setState({
@@ -29,14 +36,12 @@ const Modal = ({handleFormSubmit}) => {
             room: data.category_id,
           });
         });
-        return response
-    };
 
-    const storedAvoidData = async () => {
-      const user_id = localStorage.getItem("user_id");
-      const response = await fetch(
-        `https://api.interiorize.design/users/avoid/${user_id}`
-      )
+      const storedAvoidData = await fetch(`https://api.interiorize.design/users/avoid/${user_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then((response) => response.json())
         .then((results) => {
           if (results !== null) {
@@ -95,7 +100,10 @@ const Modal = ({handleFormSubmit}) => {
     const url = "https://api.interiorize.design/quizzes/update";
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` 
+      },
       body: JSON.stringify({
         user_id: localStorage.getItem("user_id"),
         budget: state.budget,
@@ -118,9 +126,12 @@ const Modal = ({handleFormSubmit}) => {
     const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: localStorage.getItem("user_id"),
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` 
+        },      
+        body: JSON.stringify({
+        user_id: localStorage.getItem('user_id'),
         avoid_tags: avoidArray,
       }),
     };
