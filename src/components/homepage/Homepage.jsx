@@ -16,9 +16,13 @@ const Homepage = () => {
 
     useEffect(() => {
         console.log({isAuthenticated})
+
         const userCheck = async () => {
             console.log(user.sub)
-            const token = localStorage.getItem('token');
+            //GET TOKEN
+            const token = await getAccessTokenSilently();
+            // const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImNMVGhSTDA1Zm4xR3FGaVVtdHZhUyJ9.eyJpc3MiOiJodHRwczovL2Rldi1teHA5a3l1eC51cy5hdXRoMC5jb20vIiwic3ViIjoiS09aTnRNalA2bDRGTnNVQm5Sa0Z1SEFyUk5XWEdxdHNAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLmludGVyaW9yaXplLmRlc2lnbiIsImlhdCI6MTYyOTM4NTU5NCwiZXhwIjoxNjI5NDcxOTk0LCJhenAiOiJLT1pOdE1qUDZsNEZOc1VCblJrRnVIQXJSTldYR3F0cyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.lBz3bA3MM3O_Uf7xpGrgAzhkVcT9jGWAeDpvBxYjoqwEfF1NIpswbEUBeLJBeJEZTfK7nMqJGFcESMcu0QtfTonWWQ7i6X2QMBbHI6gJqjSAHnoCxPhveTABmqh6wayuL_RHkoQvfYefMTJn6bMsH_snKalvDi6P2EwLpBoe_GY8Vl9pcS8LrbVg_ZJjq0ITaPFxjCfADNXQpJ9BFeXsN3ngdsAaWMbplJIo9HTogz9cUIq0tSJnH4SyrG_KfAaeuqJokaq5oIsUlhh9I9CwHCye6GdRIdD1CZWFfxvxADCc9bFm1SzI1i_Hzb0iOrVBCa92jOHZP16W9tPQr-6YxQ'
+            localStorage.setItem('token', token)
             //const localURL = `http://localhost:3333/users/${user.sub}`;
             const url = `https://api.interiorize.design/users/${user.sub}`;
             try {
@@ -37,7 +41,10 @@ const Homepage = () => {
                     let newUrl = `https://api.interiorize.design/users/add`;
                     const requestOptions = {
                         method: "POST",
-                        headers: { "Content-Type": "application/json" },
+                        headers: { 
+                            "Content-Type": "application/json",
+                            Authorization: `Bearer ${token}`
+                         },
                         body: JSON.stringify({
                           user_sub: user.sub,
                           nickname: user.nickname,
@@ -54,22 +61,11 @@ const Homepage = () => {
             } 
         };    
 
-        const getToken = async () => {
-            //WIPE TOKEN
-            localStorage.removeItem('token');
-            //GET TOKEN
-            const token = await getAccessTokenSilently();
-            // const token = 'eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6ImNMVGhSTDA1Zm4xR3FGaVVtdHZhUyJ9.eyJpc3MiOiJodHRwczovL2Rldi1teHA5a3l1eC51cy5hdXRoMC5jb20vIiwic3ViIjoiS09aTnRNalA2bDRGTnNVQm5Sa0Z1SEFyUk5XWEdxdHNAY2xpZW50cyIsImF1ZCI6Imh0dHBzOi8vYXBpLmludGVyaW9yaXplLmRlc2lnbiIsImlhdCI6MTYyOTM4NTU5NCwiZXhwIjoxNjI5NDcxOTk0LCJhenAiOiJLT1pOdE1qUDZsNEZOc1VCblJrRnVIQXJSTldYR3F0cyIsImd0eSI6ImNsaWVudC1jcmVkZW50aWFscyJ9.lBz3bA3MM3O_Uf7xpGrgAzhkVcT9jGWAeDpvBxYjoqwEfF1NIpswbEUBeLJBeJEZTfK7nMqJGFcESMcu0QtfTonWWQ7i6X2QMBbHI6gJqjSAHnoCxPhveTABmqh6wayuL_RHkoQvfYefMTJn6bMsH_snKalvDi6P2EwLpBoe_GY8Vl9pcS8LrbVg_ZJjq0ITaPFxjCfADNXQpJ9BFeXsN3ngdsAaWMbplJIo9HTogz9cUIq0tSJnH4SyrG_KfAaeuqJokaq5oIsUlhh9I9CwHCye6GdRIdD1CZWFfxvxADCc9bFm1SzI1i_Hzb0iOrVBCa92jOHZP16W9tPQr-6YxQ'
-            localStorage.setItem('token', token)
-
-        };
-
         if (isAuthenticated) {
-            getToken();
             userCheck();
         }
 
-    },[isAuthenticated, user])
+    },[isAuthenticated, user, getAccessTokenSilently])
     
 
     return (

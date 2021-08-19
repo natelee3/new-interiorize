@@ -10,7 +10,7 @@ const ShoppingCart = () => {
   const [itemTotal, setItemTotal] = useState(0);
   const [shippingTotal, setShippingTotal] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
-  
+  const token = localStorage.getItem('token');
   
 
   useEffect(() => {
