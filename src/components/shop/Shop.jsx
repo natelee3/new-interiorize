@@ -177,7 +177,9 @@ const Shop = (props) => {
                             <div className="itemCard">
                                 <ul className="itemUl">
                                     <li className="itemLi" key={id}>
-                                        <img className="itemImg" src={`https://api.interiorize.design/images/${item.img_src}`} alt="Img of Item" />
+                                        <div className="pictureBox1">
+                                            <img className="itemImg" src={`https://api.interiorize.design/images/${item.img_src}`} alt="Img of Item" />
+                                        </div>
                                         <p className="itemName">{item.item_name}</p>
                                         <p className="itemPrice">${item.price}</p>
                                         <Link className="moreButton" to={`/shop-intro/shop/${item.id}`}>View More</Link>
