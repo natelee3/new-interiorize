@@ -164,6 +164,10 @@
         background-color: #477272;
     }
     
+    .itemCard:hover {
+        transform: scale(1.05);
+    }
+    
     .itemList {
         display: flex;
         flex-direction: row;
@@ -191,7 +195,7 @@
     
     .pictureBox1 {
         width: 100%;
-        height: 60%;
+        height: 50%;
     }
     
     .itemImg {
@@ -203,6 +207,7 @@
     
     .itemName {
         margin: 5px;
+        max-height: 110px;
     }
     
     .itemPrice {
