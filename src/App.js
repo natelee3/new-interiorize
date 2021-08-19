@@ -29,6 +29,11 @@ function App() {
                 ...state,
                 cart: state.cart.filter((c) => c.id !== action.payload),
             };
+          
+        case 'ACTION_EMPTY_CART':
+            return {
+              cart: []
+            }
         default:
             return state;
     }

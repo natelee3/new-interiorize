@@ -98,6 +98,14 @@
     width: 40%;
 }
 
+.emptyCartContainer {
+    text-align: center;
+}
+
+.emptyCartContainer button {
+    width: 180px;
+}
+
 
 /* Cost Area ~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
