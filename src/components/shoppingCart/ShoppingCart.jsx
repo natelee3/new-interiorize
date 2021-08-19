@@ -98,7 +98,7 @@ const ShoppingCart = () => {
                   <li className="cartCard" key={id}>
                     <div className="cartItemImg">
                       <img
-                        className="itemImg"
+                        className="itemImg1" 
                         src={`https://api.interiorize.design/images/${item.img_src}`}
                         alt="Img of Item"
                       />
