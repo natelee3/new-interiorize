@@ -11,13 +11,18 @@ const Modal = () => {
     room: "",
   });
   const [avoidArray, setAvoidArray] = useState([]);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
     (async () => {
       const user_id = localStorage.getItem('user_id');
       const url = `https://api.interiorize.design/quizzes/${user_id}`;
       //const localurl = `http://localhost:3333/quizzes/${user_id}`;
-      const storedQuizData = await fetch(url)
+      const storedQuizData = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then((response) => response.json())
         .then((data) => {
           setState({
@@ -29,7 +34,11 @@ const Modal = () => {
             room: data.category_id,
           });
         });
-      const storedAvoidData = await fetch(`https://api.interiorize.design/users/avoid/${user_id}`)
+      const storedAvoidData = await fetch(`https://api.interiorize.design/users/avoid/${user_id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then((response) => response.json())
         .then((results) => {
           if(results !== null) {
@@ -80,7 +89,10 @@ const Modal = () => {
     const url = "https://api.interiorize.design/quizzes/update";
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` 
+      },
       body: JSON.stringify({
         user_id: localStorage.getItem('user_id'),
         budget: state.budget,
@@ -101,8 +113,11 @@ const Modal = () => {
     const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
+      headers: { 
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}` 
+        },      
+        body: JSON.stringify({
         user_id: localStorage.getItem('user_id'),
         avoid_tags: avoidArray,
       }),

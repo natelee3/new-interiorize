@@ -9,13 +9,19 @@ const UserProfile = () => {
   const [avoidArray, setAvoidArray] = useState([]);
   const [recentOrder, setRecentOrder] = useState([]);
   const [previousOrders, setPreviousOrders] = useState({});
-
+  const token = localStorage.getItem('token');
+  
   useEffect(() => {
+    
     const fetchUserData = async () => {
       //url to be swapped later
       const user_id = localStorage.getItem('user_id');
       const localUrl = `https://api.interiorize.design/quizzes/${user_id}`;
-      const response = await fetch(localUrl).then((response) =>
+      const response = await fetch(localUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) =>
         response.json()
       );
       console.log("User Response is: ", response);
@@ -24,7 +30,11 @@ const UserProfile = () => {
     const fetchAvoidArray = async () => {
       const user_id = localStorage.getItem('user_id');
       const localUrl = `https://api.interiorize.design/users/avoid/string/${user_id}`;
-      const response = await fetch(localUrl).then((response) =>
+      const response = await fetch(localUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) =>
         response.json()
       );
       if (response !== null) {
@@ -36,7 +46,11 @@ const UserProfile = () => {
     const fetchOrders = async () => {
       const user_id = localStorage.getItem('user_id');
       const localUrl = `https://api.interiorize.design/orders/${user_id}`;
-      const response = await fetch(localUrl).then((response) =>
+      const response = await fetch(localUrl, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((response) =>
         response.json()
       );
 
@@ -44,8 +58,8 @@ const UserProfile = () => {
       const allOrders = response;
       const newestOrder = response.orderHistory.shift();
       const recentOrderId = newestOrder.id;
-      fetchRecentOrder(recentOrderId);
-      fetchPreviousOrders(allOrders);
+      // fetchRecentOrder(recentOrderId);
+      // fetchPreviousOrders(allOrders);
     };
 
     fetchUserData();
@@ -53,31 +67,31 @@ const UserProfile = () => {
     fetchOrders();
   }, []);
 
-  const fetchRecentOrder = async (recentOrderId) => {
-    const localUrl = `https://api.interiorize.design/items/byid/${recentOrderId}`;
-    const response = await fetch(localUrl).then((response) => response.json());
-    console.log("SINGLE ORDER: ", response);
-    setRecentOrder(response);
-  };
+  // const fetchRecentOrder = async (recentOrderId) => {
+  //   const localUrl = `https://api.interiorize.design/items/byid/${recentOrderId}`;
+  //   const response = await fetch(localUrl).then((response) => response.json());
+  //   console.log("SINGLE ORDER: ", response);
+  //   setRecentOrder(response);
+  // };
 
-  const fetchPreviousOrders = async (allOrders) => {
-    console.log("ALL ORDERS: ", allOrders);
-    let pastOrders;
-    if (allOrders.length > 3) {
-      pastOrders = allOrders.orderHistory.slice(1, 4);
-    } else {
-      pastOrders = allOrders.orderHistory;
-    }
-    //need to somehow push each array into an object to map through?
-    for (const order of pastOrders) {
-      let orderId = order.id;
-      const localUrl = `https://api.interiorize.design/items/byid/${orderId}`;
-      const response = await fetch(localUrl).then((response) =>
-        response.json()
-      );
-      console.log("fetch response is:", response);
-    }
-  };
+  // const fetchPreviousOrders = async (allOrders) => {
+  //   console.log("ALL ORDERS: ", allOrders);
+  //   let pastOrders;
+  //   if (allOrders.length > 3) {
+  //     pastOrders = allOrders.orderHistory.slice(1, 4);
+  //   } else {
+  //     pastOrders = allOrders.orderHistory;
+  //   }
+  //   //need to somehow push each array into an object to map through?
+  //   for (const order of pastOrders) {
+  //     let orderId = order.id;
+  //     const localUrl = `https://api.interiorize.design/items/byid/${orderId}`;
+  //     const response = await fetch(localUrl).then((response) =>
+  //       response.json()
+  //     );
+  //     console.log("fetch response is:", response);
+  //   }
+  // };
 
   return (
     <>

@@ -9,15 +9,19 @@ const ShoppingCart = () => {
 
     const [value, dispatch] = useContext(StateContext);
     const [isVisible, setIsVisible] = useState(false);
+    const token = localStorage.getItem('token');
 
     const _createOrder = async () => {
         const localUrl = "http://localhost:3333/orders/add";
         const url = `https://api.interiorize.design/orders/add`;
         const requestOptions = {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
+             },
           body: JSON.stringify({
-            user_id: 2,
+            user_id: localStorage.getItem('user_id'),
             items: "1, 4, 16",
           }),
         };
