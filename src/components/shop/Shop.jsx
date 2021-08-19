@@ -24,6 +24,20 @@ const Shop = (props) => {
         });
     };
 
+    const getShopSearchData = () => {
+        axios({
+        method: "GET",
+        url: `https://api.interiorize.design/items/shop-search`,
+        })
+        .then((response) => {
+            console.log("Response is: ", response.data);  
+            setShopData(response.data);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    };
+
     useEffect(() => {
         getShopData();
     }, []);
@@ -146,7 +160,7 @@ const Shop = (props) => {
                         <hr />
                     </div>
 
-                    <button id="button1" onClick={() => {getShopData();}}>
+                    <button id="button1" onClick={() => {getShopSearchData();}}>
                         Get Items
                     </button>
                 
