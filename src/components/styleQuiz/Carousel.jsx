@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Carousel } from "react-responsive-carousel";
+import { useHistory } from "react-router";
 import anythingIcon from "./imgs/anything.png";
 import pillow from "./imgs/pillow.png";
 import lamp from "./imgs/lamp.png";
@@ -10,10 +11,6 @@ import storage from "./imgs/storage.png";
 import serverware from "./imgs/serverware.png";
 import utensils from "./imgs/utensils.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-//To do:
-//Display a message after submit saying thanks for your responses. Our team of experts will start putting together your first order as soon as possible.
-//Add a button after message to redirect to user profile
 
 const CarouselContainer = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -26,6 +23,8 @@ const CarouselContainer = () => {
   const [color3, setColor3] = useState("");
   const [avoidArray] = useState([]);
   const [checkCount, setCheckCount] = useState(0);
+
+  const history = useHistory();
 
   //Carousel Controls:
   const next = () => {
@@ -183,6 +182,8 @@ const CarouselContainer = () => {
     const response = await fetch(url, requestOptions).then((response) =>
       console.log(response)
     );
+    console.log('Order has been generated');
+    setTimeout(() => {history.push('/user-profile')}, 2000);
   };
 
   const submitAvoidData = async (url) => {
