@@ -54,6 +54,11 @@ const ItemDetails = () => {
 
   return (
     <>
+      <div className="goBack">
+        <button type="button" className="goBackButton" onClick={goBack}>
+          Back To Results
+        </button>
+      </div>
       {itemData !== null ? (
         <div className="detailsContainer">
           <div className="imgBox">
@@ -92,11 +97,6 @@ const ItemDetails = () => {
       ) : (
         <p>Loading Product information...</p>
       )}
-      <div className="goBack">
-        <button type="button" className="goBackButton" onClick={goBack}>
-          Back To Results
-        </button>
-      </div>
     </>
   );
 };

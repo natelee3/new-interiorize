@@ -9,9 +9,11 @@
 .cartHr {
     width: 100%;
 }
+
 .emptyCartBtn {
     margin: 0 auto;
 }
+
 
 /* Items In Cart Area ~~~~~~~~~~~~~~~~ */
 
@@ -128,4 +130,30 @@
     font-weight: 500;
     font-size: 15px;
     width: 140px;
+}
+
+.bigBox {
+    display: flex;
+    flex-direction: row;
+}
+
+
+/* RESPONSIVENESS ~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media screen and (max-width: 1000px) {
+    .cartContainer {
+        flex-direction: column;
+        width: 100%;
+        margin: auto;
+    }
+    .itemsInCart {
+        width: 85%;
+        min-width: 325px;
+        margin: auto;
+    }
+    .costBox {
+        width: 85%;
+        margin: auto;
+        min-width: 325px;
+    }
 }
