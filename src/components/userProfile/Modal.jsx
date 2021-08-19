@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Modal = () => {
+const Modal = ({handleFormSubmit}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [state, setState] = useState({
     budget: "",
@@ -12,12 +12,12 @@ const Modal = () => {
   });
   const [avoidArray, setAvoidArray] = useState([]);
 
+
   useEffect(() => {
-    (async () => {
-      const user_id = localStorage.getItem('user_id');
+    const storedQuizData = async () => {
+      const user_id = localStorage.getItem("user_id");
       const url = `https://api.interiorize.design/quizzes/${user_id}`;
-      //const localurl = `http://localhost:3333/quizzes/${user_id}`;
-      const storedQuizData = await fetch(url)
+      const response = await fetch(url)
         .then((response) => response.json())
         .then((data) => {
           setState({
@@ -29,14 +29,25 @@ const Modal = () => {
             room: data.category_id,
           });
         });
-      const storedAvoidData = await fetch(`https://api.interiorize.design/users/avoid/${user_id}`)
+        return response
+    };
+
+    const storedAvoidData = async () => {
+      const user_id = localStorage.getItem("user_id");
+      const response = await fetch(
+        `https://api.interiorize.design/users/avoid/${user_id}`
+      )
         .then((response) => response.json())
         .then((results) => {
-          if(results !== null) {
+          if (results !== null) {
             setAvoidArray([...results]);
           }
         });
-    }) ();
+        return response
+    };
+
+    storedQuizData();
+    storedAvoidData();
   }, []);
 
   const handleClick = (event) => {
@@ -68,12 +79,16 @@ const Modal = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    updateQuizData();
-    updateAvoidData();
+    const quizUpdate = await updateQuizData();
+    const avoidUpdate = await updateAvoidData();
     setIsVisible(false);
+    if(quizUpdate.status === 200 && avoidUpdate.status === 200) {
+      handleFormSubmit()
+    } 
   };
+
 
   const updateQuizData = async () => {
     // const localurl = "http://localhost:3333/quizzes/update";
@@ -82,7 +97,7 @@ const Modal = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: localStorage.getItem('user_id'),
+        user_id: localStorage.getItem("user_id"),
         budget: state.budget,
         color_one_id: state.color1,
         color_two_id: state.color2,
@@ -93,7 +108,9 @@ const Modal = () => {
     };
     const response = await fetch(url, requestOptions).then((response) => {
       console.log(response);
-    });
+      return response
+    }); 
+    return response;
   };
 
   const updateAvoidData = async () => {
@@ -103,13 +120,15 @@ const Modal = () => {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        user_id: localStorage.getItem('user_id'),
+        user_id: localStorage.getItem("user_id"),
         avoid_tags: avoidArray,
       }),
     };
     const response = await fetch(url, requestOptions).then((response) => {
       console.log(response);
+      return response
     });
+    return response
   };
 
   return (
