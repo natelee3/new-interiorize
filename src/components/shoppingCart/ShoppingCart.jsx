@@ -81,19 +81,17 @@ const ShoppingCart = () => {
                         <p className="totalTitle">Total</p>
                         <p className="totalCost">$220.95</p>
                     </div>
-                    <div className="buttonBox2">
-                        {/* Change this button to open Modal and then give one option to go back to main page */}
-                    
+                    <div className="bigBox">
+                        <div className="buttonBox2">                        
                             <button className="checkoutBtn" type="button" onClick={() => _createOrder()}>Submit Order</button>
-        
-                        {/* should we have the cart be cleared after this button is pressed? */}
+                            {/* should we have the cart be cleared after this button is pressed? */}
+                        </div>
+                        <div className="buttonBox2">
+                            <Link to='/shop-intro/shop'>
+                                <button className="checkoutBtn" type="button">&larr; Shop</button>
+                            </Link>
+                        </div>
                     </div>
-                    <div className="buttonBox2">
-                        <Link to='/shop-intro/shop'>
-                            <button className="checkoutBtn" type="button">&larr; Shop</button>
-                        </Link>
-                    </div>
-                     
                     <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
                     <div className="modal__content1">
                         <div id="master-wrap">

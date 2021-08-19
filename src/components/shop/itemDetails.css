@@ -16,15 +16,20 @@
 }
 
 .imgBox {
-    background-color: #ebebeb;
+    /* background-color: #ebebeb; */
     width: 50%;
+    padding: 15px;
     margin: 15px;
+    height: max-content;
+    min-height: 650px;
+    border: 4px solid #ebebeb
 }
 
 .itemDescBox {
     width: 50%;
     margin: 15px;
     padding: 15px;
+    min-height: 650px;
     /* border: 2px solid #244d42; */
     border: 4px solid #ebebeb
 }
@@ -42,5 +47,27 @@
 }
 
 .productDetailsImage {
-    height: 686px;
+    height: auto;
+    width: 100%
+}
+
+
+/* RESPONSIVENESS ~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media screen and (min-width: 280px) and (max-width: 1025px) {
+    .detailsContainer {
+        flex-direction: column;
+    }
+    .imgBox {
+        margin: auto;
+        width: 70%;
+        min-height: auto;
+    }
+    .itemDescBox {
+        width: 70%;
+        margin: auto;
+        min-height: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }

@@ -2,12 +2,9 @@
 
 .toggle-button1 {
     position: absolute;
-    top: .75rem;
-    right: 1rem;
-    display: none;
+    /* top: .75rem; */
     flex-direction: column;
     justify-content: space-between;
-    width: 30px;
     height: 21px;
     border: none;
     background-color: white;
@@ -21,8 +18,9 @@
 }
 
 .navbar-links1 {
-    display: flex;
+    /* display: flex; */
     width: 100%;
+    margin-top: 50px;
 }
 
 
@@ -31,7 +29,6 @@
 @media screen and (max-width: 960px) {
     /* --- Hamburger Menu Styles --- */
     .toggle-button1 {
-        margin-top: 95px;
         left: 5px;
         display: flex;
         width: 40px;

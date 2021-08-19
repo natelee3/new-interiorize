@@ -16,7 +16,7 @@ const Menu = () => {
                 <div className={!!active1 ? "navbar-links1 active1" : "navbar-links1"}>
                     <ul>
                         <li>
-                            This is the menu
+                            {/* This is the menu */}
                         </li>
                     </ul>
                 </div>
