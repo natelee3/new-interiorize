@@ -12,7 +12,7 @@ const ShoppingCart = () => {
     const token = localStorage.getItem('token');
 
     const _createOrder = async () => {
-        const localUrl = "http://localhost:3333/orders/add";
+        // const localUrl = "http://localhost:3333/orders/add";
         const url = `https://api.interiorize.design/orders/add`;
         const requestOptions = {
           method: "POST",
