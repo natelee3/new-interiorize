@@ -12,7 +12,7 @@ const UserProfile = () => {
   const [previousOrder1, setPreviousOrder1] = useState([]);
   const [previousOrder2, setPreviousOrder2] = useState([]);
   const [isFormSubmitted, setIsSubmitted] = useState(false);
-  //state and function to change it gets passed down so that newOrderModal can open the stylesModal. 
+  //state and function to change it gets passed down so that newOrderModal can open the stylesModal.
   const [isStylesVisible, setIsStylesVisible] = useState(false);
 
   useEffect(() => {
@@ -45,39 +45,18 @@ const UserProfile = () => {
 
     const fetchOrders = async () => {
       const user_id = localStorage.getItem("user_id");
-      const localUrl = `https://api.interiorize.design/orders/${user_id}`;
-      const response = await fetch(localUrl, {
+      const url = `https://api.interiorize.design/orders/${user_id}`;
+      const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       }).then((response) => response.json());
 
       console.log("ORDER RESPONSE:", response);
+      setRecentOrder(response.orderedItems[0]);
 
-      let sortedOrderHistory = response.orderHistory.sort((a, b) => b - a);
-      console.log(sortedOrderHistory);
-      let newestOrderId = sortedOrderHistory[0].id;
-      console.log(newestOrderId);
-
-      let newestOrder2 = response.orderedItems.filter(
-        (order) => order.order_id === newestOrderId
-      );
-
-      console.log("newestORder2", newestOrder2);
-
-      let sortedOrderedItems = response.orderedItems.sort();
-
-      let newestOrder = sortedOrderedItems[0];
-      setRecentOrder(newestOrder);
-      console.log("newest order", newestOrder);
-
-      let previous2 = sortedOrderedItems.slice(1);
-      console.log("previous2:", previous2);
-
-      setPreviousOrder1(previous2[0]);
-      console.log(previousOrder1);
-      setPreviousOrder2(previous2[1]);
-      console.log(previousOrder2);
+      setPreviousOrder1(response.orderedItems[1]);
+      setPreviousOrder2(response.orderedItems[2]);
     };
 
     fetchUserData();
@@ -128,9 +107,10 @@ const UserProfile = () => {
               )}
             </div>
             <NewOrderModal handleClickStylesModal={handleClickStylesModal} />
-            {previousOrder1.length > 1 ? (
+            <h2>Previous Orders</h2>
+            {previousOrder1.length > 0 ? (
               <>
-                {/* <div className="shipmentContainer">
+                <div className="shipmentContainer">
                   {previousOrder1.map((item, index) => (
                     <PreviousOrderCard
                       index={index}
@@ -140,17 +120,18 @@ const UserProfile = () => {
                     />
                   ))}
                 </div>
-
-                <div className="shipmentContainer">
-                  {previousOrder2.map((item, index) => (
-                    <PreviousOrderCard
-                      index={index}
-                      image={item.img_src}
-                      name={item.item_name}
-                      description={item.description}
-                    />
-                  ))}
-                </div> */}
+                {previousOrder2.length > 0 ? (
+                  <div className="shipmentContainer">
+                    {previousOrder2.map((item, index) => (
+                      <PreviousOrderCard
+                        index={index}
+                        image={item.img_src}
+                        name={item.item_name}
+                        description={item.description}
+                      />
+                    ))}
+                  </div>
+                ) : null}
               </>
             ) : (
               <p>You don't have any previous shipments.</p>
