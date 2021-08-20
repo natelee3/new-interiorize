@@ -1,12 +1,18 @@
-// import React, { useState } from 'react'
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import StateContext from "../../context";
+import QuizRedirectModal from "./QuizRedirectModal";
 import "./shopIntro.css"
 
 
 const ShopIntro = () => {
+    const [value] = useContext(StateContext)
 
     return (
         <>
+            {value.generatedItems === false ? (
+                <QuizRedirectModal/>
+            ): null}
             <div className="mainContainer">
                 <div className="title">
                     <h1 className="titleName">Shop By Room</h1>  
