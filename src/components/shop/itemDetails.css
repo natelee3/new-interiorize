@@ -1,10 +1,16 @@
 .goBackButton {
-    margin-left: 15px;
+    /* margin-left: 15px; */
     text-align: center;
-    color: white;
     border: 2px solid #244d42;
-    background-color: #244d42;
+    background-color: white;
+    color: #244d42;
     width: 170px
+}
+
+.twoBtnBox {
+    justify-content: space-between;
+    display: flex;
+    width: 100%;
 }
 
 .detailsContainer {
@@ -23,6 +29,14 @@
     height: max-content;
     min-height: 650px;
     border: 4px solid #ebebeb
+}
+
+.itemNameBox {
+    height: fit-content;
+}
+
+.itemName1 {
+    margin-top: 15px;
 }
 
 .itemDescBox {
@@ -54,7 +68,40 @@
 
 /* RESPONSIVENESS ~~~~~~~~~~~~~~~~~~~~~~~~ */
 
-@media screen and (min-width: 280px) and (max-width: 1025px) {
+@media screen and (min-width: 280px) and (max-width: 545px) {
+    .detailsContainer {
+        flex-direction: column;
+    }
+    .imgBox {
+        margin: auto;
+        width: 70%;
+        min-height: auto;
+    }
+    .itemDescBox {
+        width: 70%;
+        margin: auto;
+        min-height: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .twoBtnBox {
+        flex-direction: column;
+        margin: auto;
+        justify-content: center;
+        text-align: center;
+    }
+    .addToCartButton {
+        margin: auto;
+        margin-bottom: 35px;
+    }
+    .goBackButton {
+        margin: auto;
+        background-color: white;
+        color: #244d42;
+    }
+}
+
+@media screen and (min-width: 544px) and (max-width: 1025px) {
     .detailsContainer {
         flex-direction: column;
     }

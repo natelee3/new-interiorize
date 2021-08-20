@@ -101,7 +101,19 @@
     display: flex;
 }
 
+.topRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomRow {
+    display: flex;
+    flex-direction: row;
+}
+
+
 /* MODAL */
+
 .modal__overlay {
     background-color: rgba(184, 184, 184, 0.5);
     position: absolute;
@@ -111,18 +123,18 @@
     left: 0;
     overflow: hidden;
     display: none;
-  }
-  
-  .hidden {
+}
+
+.hidden {
     display: none;
-  }
-  
-  .visible {
+}
+
+.visible {
     display: flex;
     justify-content: center;
-  }
+}
 
-  #redirectModal {
+#redirectModal {
     background-color: #fff;
     display: flex;
     flex-direction: column;
@@ -134,18 +146,18 @@
     border-radius: 20px;
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.233);
     z-index: 9999;
-  }
+}
 
-  #redirectModal p {
-      margin-top: -5px;
-  }
+#redirectModal p {
+    margin-top: -5px;
+}
 
-  #redirectModal .primaryBtn {
-      width: 200px;
-      margin: 0 auto;
-  }
+#redirectModal .primaryBtn {
+    width: 200px;
+    margin: 0 auto;
+}
   
-  button.modal__close {
+#button.modal__close {
     position: absolute;
     right: 0;
     top: 0;
@@ -155,8 +167,7 @@
     border: none;
     color: slategray;
     border-radius: 15px;
-  }
-  
+}
 
 
 /* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
@@ -165,12 +176,24 @@
     html {
         min-width: 280px;
     }
+    .shopNav {
+        flex-direction: row;
+    }
     .shopList {
         height: auto;
+        flex-direction: row;
     }
-    .shopRoomLinks {
+    .topRow {
+        flex-direction: column;
         width: 50%;
     }
+    .bottomRow {
+        flex-direction: column;
+        width: 50%;
+    }
+    /* .shopRoomLinks {
+        width: 50%;
+    } */
     .roomCard {
         margin-right: 0;
         width: 100%;
@@ -210,7 +233,6 @@
     #redirectModal p {
         margin-top: -12px;
     }
-  
 }
 
 @media screen and (min-width: 641px) and (max-width: 1040px) {}

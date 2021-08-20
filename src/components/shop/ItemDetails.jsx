@@ -54,11 +54,7 @@ const ItemDetails = () => {
 
   return (
     <>
-      <div className="goBack">
-        <button type="button" className="goBackButton" onClick={goBack}>
-          Back To Results
-        </button>
-      </div>
+
       {itemData !== null ? (
         <div className="detailsContainer">
           <div className="imgBox">
@@ -69,7 +65,9 @@ const ItemDetails = () => {
             />
           </div>
           <div className="itemDescBox">
-            <h1 className="itemName">{itemData.item_name}</h1>
+            <div className="itemNameBox">
+              <h1 className="itemName1">{itemData.item_name}</h1>
+            </div>
             <hr />
             <h3 className="itemBrand">{itemData.brand}</h3>
             <h1 className="itemPrice">${itemData.price}</h1>
@@ -85,9 +83,16 @@ const ItemDetails = () => {
             </h3>
             <h3 className="inStock"><strong>In Stock!</strong></h3>
             <br />
-            <button className="addToCartButton" onClick={() => _handleClick()} type="button">
-              Add To Cart
-            </button>
+
+            <div className="twoBtnBox">
+              <button className="addToCartButton" onClick={() => _handleClick()} type="button">
+                Add To Cart
+              </button>
+              <button type="button" className="goBackButton" onClick={goBack}>
+                &larr; Back To Results
+              </button>
+            </div>  
+          
             <CartModal
             isVisible={isVisible}
             closeModal={closeModal}

@@ -18,18 +18,16 @@ const ShopIntro = () => {
 
   return (
     <>
-      <div className="mainContainer">
-        <div className="title">
-          <h1 className="titleName">Shop By Room</h1>
-        </div>
-        <div className="shopNav">
-          <div className="shopList">
-            {!value.generatedItems ? 
-                <QuizRedirectModal
-                isVisible={isVisible}
-                handleClick={handleClick}
-              />
-            : null}
+      <div className="shopNav">
+        <div className="shopList">
+          {!value.generatedItems ? (
+            <QuizRedirectModal
+              isVisible={isVisible}
+              handleClick={handleClick}
+            />
+          ) : null}
+          <div className="topRow">
+            
             <Link className="shopRoomLinks" to="/shop-intro/shop">
               <div className="roomCard">
                 <div className="livingCard">
@@ -60,6 +58,10 @@ const ShopIntro = () => {
               </div>
             </Link>
 
+          </div>
+
+          <div className="bottomRow">
+            
             <Link className="shopRoomLinks" to="/shop">
               <div className="roomCard">
                 <div className="kitchenCard">
@@ -89,7 +91,9 @@ const ShopIntro = () => {
                 </div>
               </div>
             </Link>
+
           </div>
+
         </div>
       </div>
     </>
