@@ -1,5 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
+import { useHistory } from "react-router";
+import StateContext from "../../context";
 import anythingIcon from "./imgs/anything.png";
 import pillow from "./imgs/pillow.png";
 import lamp from "./imgs/lamp.png";
@@ -10,10 +12,6 @@ import storage from "./imgs/storage.png";
 import serverware from "./imgs/serverware.png";
 import utensils from "./imgs/utensils.png";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-
-//To do:
-//Display a message after submit saying thanks for your responses. Our team of experts will start putting together your first order as soon as possible.
-//Add a button after message to redirect to user profile
 
 const CarouselContainer = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -27,7 +25,10 @@ const CarouselContainer = () => {
   const [avoidArray] = useState([]);
   const [checkCount, setCheckCount] = useState(0);
 
+  const history = useHistory();
   const token = localStorage.getItem('token');
+
+  const [dispatch] = useContext(StateContext);
 
   //Carousel Controls:
   const next = () => {
@@ -192,9 +193,22 @@ const CarouselContainer = () => {
       user_id: localStorage.getItem('user_id')
       }),
     };
-    const response = await fetch(url, requestOptions).then((response) =>
-      console.log(response)
+    const response = await fetch(url, requestOptions).then((response) => {
+      console.log('generate order response:',response)
+      if (response.status === 200) {
+        setTimeout(() => {history.push('/user-profile')}, 2000);
+      } else {
+        //no item matches: redirect to the shop
+        history.push('/shop-intro');
+        //this will be used to trigger the modal when redirected to the shop page. 
+        dispatch({
+          type: "ACTION_NO_ITEM_MATCHES"
+        })
+      }
+    }
+    
     );
+    
   };
 
   const submitAvoidData = async (url) => {

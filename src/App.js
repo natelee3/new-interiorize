@@ -14,7 +14,7 @@ import Footer from "./footer/Footer";
 
 
 function App() {
-  const initialState = {cart: []};
+  const initialState = {cart: [], generatedItems: true};
 
   const contextReducer = (state, action) => {
     console.log("Action then State: ",action, state)
@@ -34,6 +34,11 @@ function App() {
             return {
               cart: []
             }
+
+        case 'ACTION_NO_ITEM_MATCHES':
+          return {
+            generatedItems: false
+          }
         default:
             return state;
     }
