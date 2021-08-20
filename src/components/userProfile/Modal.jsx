@@ -126,7 +126,7 @@ const Modal = ({ handleFormSubmit }) => {
   };
 
   const updateAvoidData = async () => {
-    // const localurl = "http://localhost:3333/users/avoid/update";
+    //const localurl = "http://localhost:3333/users/avoid/update";
     const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",
@@ -136,7 +136,7 @@ const Modal = ({ handleFormSubmit }) => {
       },
       body: JSON.stringify({
         user_id: localStorage.getItem("user_id"),
-        avoid_tags: avoidArray,
+        avoid_tags: avoidArray
       }),
     };
     const response = await fetch(url, requestOptions).then((response) => {

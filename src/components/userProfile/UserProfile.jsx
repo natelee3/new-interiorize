@@ -49,8 +49,9 @@ const UserProfile = () => {
 
     const fetchOrders = async () => {
       const user_id = localStorage.getItem("user_id");
-      const localUrl = `https://api.interiorize.design/orders/${user_id}`;
-      const response = await fetch(localUrl, {
+      //const localUrl = `http://localhost:3333/orders/${user_id}`;
+      const url = `https://api.interiorize.design/orders/${user_id}`;
+      const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -58,31 +59,8 @@ const UserProfile = () => {
         response.json()
       );
 
-      let sortedOrderHistory = response.orderHistory.sort((a, b) => b-a);
-      console.log(sortedOrderHistory);
-      let newestOrderId = sortedOrderHistory[0].id;
-      console.log(newestOrderId);
+      console.log(response);
 
-      let newestOrder2 = response.orderedItems.filter(order => order.order_id === newestOrderId);
-
-
-
-
-      console.log('newestORder2',newestOrder2);
-
-      let sortedOrderedItems = response.orderedItems.sort();
-
-      let newestOrder = sortedOrderedItems[0];
-      setRecentOrder(newestOrder);
-      console.log('newest order', newestOrder);
-
-      let previous2 = sortedOrderedItems.slice(1);
-      console.log("previous2:", previous2);
-
-      setPreviousOrder1(previous2[0]);
-      console.log(previousOrder1);
-      setPreviousOrder2(previous2[1]);
-      console.log(previousOrder2);
     };
 
     fetchUserData();
