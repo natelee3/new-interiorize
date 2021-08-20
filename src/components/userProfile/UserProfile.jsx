@@ -149,7 +149,7 @@ const UserProfile = () => {
 
             {previousOrder1.length > 1 ? (
               <>
-                <div className="shipmentContainer">
+                {/* <div className="shipmentContainer">
                   {previousOrder1.map((item, index) => (
                     <PreviousOrderCard 
                     index={index}
@@ -169,7 +169,7 @@ const UserProfile = () => {
                     description={item.description}
                     />
                   ))}
-                </div>
+                </div> */}
               </>
             ) : (
               <p>You don't have any previous shipments.</p>
