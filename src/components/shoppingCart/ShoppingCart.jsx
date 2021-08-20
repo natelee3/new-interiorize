@@ -200,7 +200,7 @@ const ShoppingCart = () => {
                       </Link>
                     </div>
 
-                    <div class="footer animated slow fadeInUp"></div>
+                    <div className="footer animated slow fadeInUp"></div>
                   </div>
                 </div>
               </div>

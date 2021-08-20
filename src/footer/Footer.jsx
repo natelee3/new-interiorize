@@ -9,17 +9,17 @@ const Footer = () => {
         <>
         <footer className="footerContainer">
             <div className="importantLinks">
-                <div class="area1">
+                <div className="area1">
                     <p className="companyFooter">Interiorize, Inc.</p>
                 </div>
-                <div class="area2">
+                <div className="area2">
                     <h2 className="footerTitle">Company</h2>
                     <hr className="line" />
                     <Link to="/user-profile" className="footerLinks">My Profile</Link>
                     <Link to="/user-profile" className="footerLinks">Recent Orders</Link>
                     <Link to="/style-quiz" className="footerLinks">Style Quiz</Link>
                 </div>
-                <div class="area3">
+                <div className="area3">
                     <h2 className="footerTitle">Dev Github</h2>
                     <hr className="line" />
                     <div className="c-box">
