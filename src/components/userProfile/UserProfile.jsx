@@ -5,8 +5,6 @@ import Modal from "./Modal";
 import NewOrderModal from "./NewOrderModal";
 import "./userprofile.css";
 
-//get rid of recent order and previousOrder fetches. New API route gets all that info in one request now.
-
 const UserProfile = () => {
   const [userData, setUserData] = useState({});
   const [avoidArray, setAvoidArray] = useState([]);
@@ -14,20 +12,20 @@ const UserProfile = () => {
   const [previousOrder1, setPreviousOrder1] = useState([]);
   const [previousOrder2, setPreviousOrder2] = useState([]);
   const [isFormSubmitted, setIsSubmitted] = useState(false);
-  
+  //state and function to change it gets passed down so that newOrderModal can open the stylesModal.
+  const [isStylesVisible, setIsStylesVisible] = useState(false);
+
   useEffect(() => {
-     const token = localStorage.getItem('token');
-    console.log("An effect has occured")
+    const token = localStorage.getItem("token");
+    console.log("An effect has occured");
     const fetchUserData = async () => {
       const user_id = localStorage.getItem("user_id");
       const localUrl = `https://api.interiorize.design/quizzes/${user_id}`;
       const response = await fetch(localUrl, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then((response) =>
-        response.json()
-      );
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => response.json());
       console.log("User Response is: ", response);
       setUserData(response);
     };
@@ -36,11 +34,9 @@ const UserProfile = () => {
       const localUrl = `https://api.interiorize.design/users/avoid/string/${user_id}`;
       const response = await fetch(localUrl, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then((response) =>
-        response.json()
-      );
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => response.json());
       if (response !== null) {
         let commaSeparated = response.join(", ");
         setAvoidArray(commaSeparated);
@@ -49,18 +45,18 @@ const UserProfile = () => {
 
     const fetchOrders = async () => {
       const user_id = localStorage.getItem("user_id");
-      //const localUrl = `http://localhost:3333/orders/${user_id}`;
       const url = `https://api.interiorize.design/orders/${user_id}`;
       const response = await fetch(url, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then((response) =>
-        response.json()
-      );
+          Authorization: `Bearer ${token}`,
+        },
+      }).then((response) => response.json());
 
-      console.log(response);
+      console.log("ORDER RESPONSE:", response);
+      setRecentOrder(response.orderedItems[0]);
 
+      setPreviousOrder1(response.orderedItems[1]);
+      setPreviousOrder2(response.orderedItems[2]);
     };
 
     fetchUserData();
@@ -68,24 +64,19 @@ const UserProfile = () => {
     fetchOrders();
   }, [isFormSubmitted]);
 
-  const generateOrder = async () => {
-    // const localUrl = 'http://localhost:3333/items/generate-order';
-    const url = `https://api.interiorize.design/items/generate-order`;
-    const requestOptions = {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        user_id: localStorage.getItem("user_id"),
-      }),
-    };
-    const response = await fetch(url, requestOptions).then((response) =>
-      console.log(response)
-    );
-  };
+  // Styles Modal Functions
 
   const handleFormSubmit = () => {
-    console.log("Parent", isFormSubmitted);
     setIsSubmitted(!isFormSubmitted);
+  };
+
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
+
+  const handleClickStylesModal = (event) => {
+    setIsStylesVisible(!isStylesVisible);
+    scrollToTop();
   };
 
   return (
@@ -115,36 +106,17 @@ const UserProfile = () => {
                 </p>
               )}
             </div>
-            <NewOrderModal />
-            <button
-              type="button"
-              className="primaryBtn"
-              onClick={generateOrder}
-            >
-              Schedule An Order
-            </button>
-            <h2>Past Deliveries</h2>
-
-            {previousOrder1.length > 1 ? (
+            <NewOrderModal handleClickStylesModal={handleClickStylesModal} />
+            <h2>Previous Orders</h2>
+            {!!previousOrder1 ? (
               <>
                 <div className="shipmentContainer">
                   {previousOrder1.map((item, index) => (
-                    <PreviousOrderCard 
-                    index={index}
-                    image={item.img_src}
-                    name={item.item_name}
-                    description={item.description}
-                    />
-                  ))}
-                </div>
-              
-                <div className="shipmentContainer">
-                {previousOrder2.map((item, index) => (
-                    <PreviousOrderCard 
-                    index={index}
-                    image={item.img_src}
-                    name={item.item_name}
-                    description={item.description}
+                    <PreviousOrderCard
+                      index={index}
+                      image={item.img_src}
+                      name={item.item_name}
+                      description={item.description}
                     />
                   ))}
                 </div>
@@ -152,6 +124,18 @@ const UserProfile = () => {
             ) : (
               <p>You don't have any previous shipments.</p>
             )}
+            {!!previousOrder2 ? (
+                  <div className="shipmentContainer">
+                    {previousOrder2.map((item, index) => (
+                      <PreviousOrderCard
+                        index={index}
+                        image={item.img_src}
+                        name={item.item_name}
+                        description={item.description}
+                      />
+                    ))}
+                  </div>
+                ) : null}
           </div>
           <div className="userPreferencesCol">
             <h2>Your Style Preferences</h2>
@@ -182,7 +166,11 @@ const UserProfile = () => {
               <p>Loading your style preferences...</p>
             )}
 
-            <Modal handleFormSubmit={handleFormSubmit} />
+            <Modal
+              handleFormSubmit={handleFormSubmit}
+              handleClickStylesModal={handleClickStylesModal}
+              isStylesVisible={isStylesVisible}
+            />
           </div>
         </div>
       </div>

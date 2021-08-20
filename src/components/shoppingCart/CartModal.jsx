@@ -8,7 +8,7 @@ const CartModal = ({isVisible, closeModal}) => {
     <>
       <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
         <div className="modal__content1">
-          <div id="master-wrap">
+          <div className="master-wrap">
             <div id="logo-box">
               <div className="animated fast fadeInUp">
                 <div className="iconModal">
@@ -29,12 +29,12 @@ const CartModal = ({isVisible, closeModal}) => {
 
                   <Link to='/shopping-cart'>
                     <button className="btn animation" type="button">
-                      &larr; Go To Cart
+                       Go To Cart &rarr;
                     </button>
                   </Link>
                 </div>
 
-                <div class="footer animated slow fadeInUp">
+                <div className="footer animated slow fadeInUp">
                 </div>
               </div>
             </div>

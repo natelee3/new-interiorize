@@ -6,10 +6,10 @@ import { Auth0Provider } from '@auth0/auth0-react';
 
 ReactDOM.render(
   <Auth0Provider
-  domain="dev-mxp9kyux.us.auth0.com"
-  clientId="3ES3hcajfSgsBfCqU5dktrO4kYokrMiX"
+  domain={window.env.DOMAIN}
+  clientId={window.env.CLIENT_ID}
   redirectUri={window.location.origin}
-  audience="https://api.interiorize.design"
+  audience={window.env.API_URL}
   useRefreshTokens={true}
   > 
     <React.StrictMode>

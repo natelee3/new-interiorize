@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
-
 import "./menu.css";
 import "./shop.css";
 
-const Shop = (props) => {
-
+const Shop = () => {
     const [shopData, setShopData] = useState([]);
     const [active1, setActive1] = useState(false);
     const [designArray, setDesignArray] = useState([]);
@@ -207,18 +205,20 @@ const Shop = (props) => {
                     {shopData.length > 0 ?(
                         shopData.map((item, props, id) => (
                         <>
-                            <div className="itemCard">
-                                <ul className="itemUl">
-                                    <li className="itemLi" key={id}>
-                                        <div className="pictureBox1">
-                                            <img className="itemImg" src={`https://api.interiorize.design/images/${item.img_src}`} alt="Img of Item" />
-                                        </div>
-                                        <p className="itemName">{item.item_name}</p>
-                                        <p className="itemPrice">${item.price}</p>
-                                        <Link className="moreButton" to={`/shop-intro/shop/${item.id}`}>View More</Link>
-                                    </li>
-                                </ul>
-                            </div>
+                            <Link to={`/shop-intro/shop/${item.id}`}>
+                                <div className="itemCard">
+                                    <ul className="itemUl">
+                                        <li className="itemLi" key={id}>
+                                            <div className="pictureBox1">
+                                                <img className="itemImg" src={`https://api.interiorize.design/images/${item.img_src}`} alt="Img of Item" />
+                                            </div>
+                                            <p className="itemName">{item.item_name}</p>
+                                            <p className="itemPrice">${item.price}</p>
+                                            <Link className="moreButton" to={`/shop-intro/shop/${item.id}`}>View More</Link>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </Link>
                         </>
                         ))
                     ): <></>}
