@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Carousel } from "react-responsive-carousel";
 import { useHistory } from "react-router";
+import StateContext from "../../context";
 import anythingIcon from "./imgs/anything.png";
 import pillow from "./imgs/pillow.png";
 import lamp from "./imgs/lamp.png";
@@ -26,6 +27,8 @@ const CarouselContainer = () => {
 
   const history = useHistory();
   const token = localStorage.getItem('token');
+
+  const [dispatch] = useContext(StateContext);
 
   //Carousel Controls:
   const next = () => {
@@ -190,11 +193,22 @@ const CarouselContainer = () => {
       user_id: localStorage.getItem('user_id')
       }),
     };
-    const response = await fetch(url, requestOptions).then((response) =>
-      console.log(response)
+    const response = await fetch(url, requestOptions).then((response) => {
+      console.log('generate order response:',response)
+      if (response.status === 200) {
+        setTimeout(() => {history.push('/user-profile')}, 2000);
+      } else {
+        //no item matches: redirect to the shop
+        history.push('/shop-intro');
+        //this will be used to trigger the modal when redirected to the shop page. 
+        dispatch({
+          type: "ACTION_NO_ITEM_MATCHES"
+        })
+      }
+    }
+    
     );
-    console.log('Order has been generated');
-    setTimeout(() => {history.push('/user-profile')}, 2000);
+    
   };
 
   const submitAvoidData = async (url) => {

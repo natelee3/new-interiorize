@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Modal = ({handleFormSubmit}) => {
+const Modal = ({ handleFormSubmit }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [state, setState] = useState({
     budget: "",
@@ -11,19 +11,16 @@ const Modal = ({handleFormSubmit}) => {
     room: "",
   });
   const [avoidArray, setAvoidArray] = useState([]);
-  const token = localStorage.getItem('token');
-
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const storedQuizData = async () => {
       const user_id = localStorage.getItem("user_id");
       const url = `https://api.interiorize.design/quizzes/${user_id}`;
-
-      //const localurl = `http://localhost:3333/quizzes/${user_id}`;
-      const storedQuizData = await fetch(url, {
+      const response = await fetch(url, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          Authorization: `Bearer ${token}`,
+        },
       })
         .then((response) => response.json())
         .then((data) => {
@@ -36,19 +33,26 @@ const Modal = ({handleFormSubmit}) => {
             room: data.category_id,
           });
         });
+      return response;
+    };
 
-      const storedAvoidData = await fetch(`https://api.interiorize.design/users/avoid/${user_id}`, {
-        headers: {
-          Authorization: `Bearer ${token}`
+    const storedAvoidData = async () => {
+      const user_id = localStorage.getItem("user_id");
+      const response = await fetch(
+        `https://api.interiorize.design/users/avoid/${user_id}`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
         }
-      })
+      )
         .then((response) => response.json())
         .then((results) => {
           if (results !== null) {
             setAvoidArray([...results]);
           }
         });
-        return response
+      return response;
     };
 
     storedQuizData();
@@ -88,21 +92,21 @@ const Modal = ({handleFormSubmit}) => {
     event.preventDefault();
     const quizUpdate = await updateQuizData();
     const avoidUpdate = await updateAvoidData();
+    console.log('is this happening?')
     setIsVisible(false);
-    if(quizUpdate.status === 200 && avoidUpdate.status === 200) {
-      handleFormSubmit()
-    } 
+    if (quizUpdate.status === 200 && avoidUpdate.status === 200) {
+      handleFormSubmit();
+    }
   };
-
 
   const updateQuizData = async () => {
     // const localurl = "http://localhost:3333/quizzes/update";
     const url = "https://api.interiorize.design/quizzes/update";
     const requestOptions = {
       method: "POST",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}` 
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
         user_id: localStorage.getItem("user_id"),
@@ -116,8 +120,8 @@ const Modal = ({handleFormSubmit}) => {
     };
     const response = await fetch(url, requestOptions).then((response) => {
       console.log(response);
-      return response
-    }); 
+      return response;
+    });
     return response;
   };
 
@@ -126,20 +130,20 @@ const Modal = ({handleFormSubmit}) => {
     const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}` 
-        },      
-        body: JSON.stringify({
-        user_id: localStorage.getItem('user_id'),
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({
+        user_id: localStorage.getItem("user_id"),
         avoid_tags: avoidArray,
       }),
     };
     const response = await fetch(url, requestOptions).then((response) => {
       console.log(response);
-      return response
+      return response;
     });
-    return response
+    return response;
   };
 
   return (
