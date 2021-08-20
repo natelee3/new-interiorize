@@ -37,20 +37,20 @@ const Navbar = () => {
             ) : (
               <>
                 <li>
-                  <Link to="/shop-intro">Shop</Link>
+                  <Link to="/shop-intro" onClick={()=> setActive(false)}>Shop</Link>
                 </li>
                 <li>
-                  <Link to="/style-quiz">Style Quiz</Link>
+                  <Link to="/style-quiz" onClick={()=> setActive(false)}>Style Quiz</Link>
                 </li>
                 <li>
                   <LogoutButton />
                 </li>
                 <li className="userProfileLink">
-                  <Link to="/user-profile">User Profile</Link>
+                  <Link to="/user-profile" onClick={()=> setActive(false)}>User Profile</Link>
                 </li>
                 <li className="cartIcon">
 
-                <Link to="/shopping-cart"> 
+                <Link to="/shopping-cart" onClick={()=> setActive(false)}> 
 
                     <img className="cartIcon" src={shoppingCart} alt="Shopping Cart" />
                     <span className={value.cart.length > 0 ? "notification" : null}>
