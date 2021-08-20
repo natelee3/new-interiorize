@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Modal = ({ handleFormSubmit }) => {
-  const [isVisible, setIsVisible] = useState(false);
+const Modal = ({ handleFormSubmit, handleClickStylesModal, isStylesVisible }) => {
   const [state, setState] = useState({
     budget: "",
     color1: "",
@@ -58,16 +57,6 @@ const Modal = ({ handleFormSubmit }) => {
     storedQuizData();
     storedAvoidData();
   }, []);
-
-  const handleClick = (event) => {
-    event.preventDefault();
-    setIsVisible(!isVisible);
-    scrollToTop();
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
 
   const handleChange = (event) => {
     const value = event.target.value;
@@ -139,7 +128,7 @@ const Modal = ({ handleFormSubmit }) => {
     event.preventDefault();
     const quizUpdate = await updateQuizData();
     const avoidUpdate = await updateAvoidData();
-    setIsVisible(false);
+    handleClickStylesModal();
     if (quizUpdate.status === 200 && avoidUpdate.status === 200) {
       handleFormSubmit();
     }
@@ -150,16 +139,16 @@ const Modal = ({ handleFormSubmit }) => {
       <button
         type="button"
         className="primaryBtn"
-        onClick={(event) => handleClick(event)}
+        onClick={handleClickStylesModal}
       >
         Edit Preferences
       </button>
-      <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
+      <div className={!!isStylesVisible ? "modal__overlay visible" : "hidden"}>
         <div className="modal__content">
           <button
             type="button"
             className="modal__close"
-            onClick={(event) => handleClick(event)}
+            onClick={handleClickStylesModal}
           >
             x
           </button>
