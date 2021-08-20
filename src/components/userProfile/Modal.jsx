@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 
-const Modal = ({ handleFormSubmit }) => {
-  const [isVisible, setIsVisible] = useState(false);
+const Modal = ({ handleFormSubmit, handleClickStylesModal, isStylesVisible }) => {
   const [state, setState] = useState({
     budget: "",
     color1: "",
@@ -59,16 +58,6 @@ const Modal = ({ handleFormSubmit }) => {
     storedAvoidData();
   }, []);
 
-  const handleClick = (event) => {
-    event.preventDefault();
-    setIsVisible(!isVisible);
-    scrollToTop();
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo(0, 0);
-  };
-
   const handleChange = (event) => {
     const value = event.target.value;
     setState({
@@ -85,17 +74,6 @@ const Modal = ({ handleFormSubmit }) => {
         (e) => parseInt(e) !== parseInt(event.target.value)
       );
       setAvoidArray(filteredAry);
-    }
-  };
-
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const quizUpdate = await updateQuizData();
-    const avoidUpdate = await updateAvoidData();
-    console.log('is this happening?')
-    setIsVisible(false);
-    if (quizUpdate.status === 200 && avoidUpdate.status === 200) {
-      handleFormSubmit();
     }
   };
 
@@ -126,7 +104,7 @@ const Modal = ({ handleFormSubmit }) => {
   };
 
   const updateAvoidData = async () => {
-    // const localurl = "http://localhost:3333/users/avoid/update";
+    //const localurl = "http://localhost:3333/users/avoid/update";
     const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",
@@ -136,7 +114,7 @@ const Modal = ({ handleFormSubmit }) => {
       },
       body: JSON.stringify({
         user_id: localStorage.getItem("user_id"),
-        avoid_tags: avoidArray,
+        avoid_tags: avoidArray
       }),
     };
     const response = await fetch(url, requestOptions).then((response) => {
@@ -146,21 +124,31 @@ const Modal = ({ handleFormSubmit }) => {
     return response;
   };
 
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const quizUpdate = await updateQuizData();
+    const avoidUpdate = await updateAvoidData();
+    handleClickStylesModal();
+    if (quizUpdate.status === 200 && avoidUpdate.status === 200) {
+      handleFormSubmit();
+    }
+  };
+
   return (
     <>
       <button
         type="button"
         className="primaryBtn"
-        onClick={(event) => handleClick(event)}
+        onClick={handleClickStylesModal}
       >
         Edit Preferences
       </button>
-      <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
+      <div className={!!isStylesVisible ? "modal__overlay visible" : "hidden"}>
         <div className="modal__content">
           <button
             type="button"
             className="modal__close"
-            onClick={(event) => handleClick(event)}
+            onClick={handleClickStylesModal}
           >
             x
           </button>

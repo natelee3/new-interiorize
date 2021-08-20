@@ -26,7 +26,7 @@ const CarouselContainer = () => {
   const [checkCount, setCheckCount] = useState(0);
 
   const history = useHistory();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem("token");
 
   const [dispatch] = useContext(StateContext);
 
@@ -126,45 +126,48 @@ const CarouselContainer = () => {
   };
 
   const doneAlready = async () => {
-    const user_id = localStorage.getItem('user_id');
-    const checkUser = await fetch(`https://api.interiorize.design/quizzes/${user_id}`, {
-      headers: {
-        Authorization: `Bearer ${token}`
+    const user_id = localStorage.getItem("user_id");
+    const checkUser = await fetch(
+      `https://api.interiorize.design/quizzes/${user_id}`,
+      {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
       }
-    })
-    .then(response => response.json())
-    .then(data => {
-      if (data.user_id !== undefined) {
-        // let localQuizUrl = 'http://localhost:3333/quizzes/update';
-        let quizUrl = 'https://api.interiorize.design/quizzes/update';
-        // let localAvoidUrl = 'http://localhost:3333/users/avoid/update';
-        let avoidUrl = 'https://api.interiorize.design/users/avoid/update';
-        submitQuizData(quizUrl);
-        if (localStorage.getItem("Avoid").length > 0) {
-          submitAvoidData(avoidUrl);
-        };
-      } else {
-        // let localQuizUrl = 'http://localhost:3333/quizzes/add';
-        let quizUrl = 'https://api.interiorize.design/quizzes/add';
-        // let localAvoidUrl = 'http://localhost:3333/users/avoid/add';
-        let avoidUrl = 'https://api.interiorize.design/users/avoid/add';
-        submitQuizData(quizUrl);
-        if (localStorage.getItem("Avoid").length > 0) {
-          submitAvoidData(avoidUrl);
-        };
-      }
-    })
+    )
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.user_id !== undefined) {
+          // let localQuizUrl = 'http://localhost:3333/quizzes/update';
+          let quizUrl = "https://api.interiorize.design/quizzes/update";
+          // let localAvoidUrl = 'http://localhost:3333/users/avoid/update';
+          let avoidUrl = "https://api.interiorize.design/users/avoid/update";
+          submitQuizData(quizUrl);
+          if (localStorage.getItem("Avoid").length > 0) {
+            submitAvoidData(avoidUrl);
+          }
+        } else {
+          // let localQuizUrl = 'http://localhost:3333/quizzes/add';
+          let quizUrl = "https://api.interiorize.design/quizzes/add";
+          // let localAvoidUrl = 'http://localhost:3333/users/avoid/add';
+          let avoidUrl = "https://api.interiorize.design/users/avoid/add";
+          submitQuizData(quizUrl);
+          if (localStorage.getItem("Avoid").length > 0) {
+            submitAvoidData(avoidUrl);
+          }
+        }
+      });
   };
 
   const submitQuizData = async (theUrl) => {
     const requestOptions = {
       method: "POST",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}` 
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify({
-        user_id: localStorage.getItem('user_id'),
+        user_id: localStorage.getItem("user_id"),
         budget: localStorage.getItem("Budget"),
         color_one_id: localStorage.getItem("Color 1"),
         color_two_id: localStorage.getItem("Color 2"),
@@ -176,51 +179,50 @@ const CarouselContainer = () => {
     const response = await fetch(theUrl, requestOptions).then((response) =>
       console.log(response)
     );
-    
+
     generateOrder();
   };
 
   const generateOrder = async () => {
-    // const localUrl = 'http://localhost:3333/items/generate-order';
+    //const localUrl = 'http://localhost:3333/items/generate-order';
     const url = `https://api.interiorize.design/items/generate-order`;
     const requestOptions = {
       method: "POST",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}` 
-      },      
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
-      user_id: localStorage.getItem('user_id')
+        user_id: localStorage.getItem("user_id"),
       }),
     };
     const response = await fetch(url, requestOptions).then((response) => {
-      console.log('generate order response:',response)
+      console.log("generate order response:", response);
       if (response.status === 200) {
-        setTimeout(() => {history.push('/user-profile')}, 2000);
+        setTimeout(() => {
+          history.push("/user-profile");
+        }, 2000);
       } else {
-        //no item matches: redirect to the shop
-        history.push('/shop-intro');
-        //this will be used to trigger the modal when redirected to the shop page. 
+        //this will be used to trigger the modal when redirected to the shop page.
         dispatch({
-          type: "ACTION_NO_ITEM_MATCHES"
-        })
+          type: "ACTION_NO_ITEM_MATCHES",
+        });
+        //no item matches: redirect to the shop
+        history.push("/shop-intro");
       }
-    }
-    
-    );
-    
+    });
   };
 
   const submitAvoidData = async (url) => {
     const requestOptions = {
       method: "POST",
-      headers: { 
+      headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}` 
-      },      
+        Authorization: `Bearer ${token}`,
+      },
       body: JSON.stringify({
-      user_id: localStorage.getItem('user_id'),
-      avoid_tags: localStorage.getItem("Avoid"),
+        user_id: localStorage.getItem("user_id"),
+        avoid_tags: localStorage.getItem("Avoid"),
       }),
     };
     const response = await fetch(url, requestOptions).then((response) =>
@@ -326,7 +328,10 @@ const CarouselContainer = () => {
                   aria-label="farmhouse"
                 />
 
-                <label className="styleImg farmhouse" htmlFor="farmhouse"></label>
+                <label
+                  className="styleImg farmhouse"
+                  htmlFor="farmhouse"
+                ></label>
 
                 <p>Farmhouse</p>
               </div>
@@ -397,7 +402,10 @@ const CarouselContainer = () => {
                 aria-label="Living Room"
                 required
               />
-              <label htmlFor="livingRoom" className="livingRoom roomIcon"></label>
+              <label
+                htmlFor="livingRoom"
+                className="livingRoom roomIcon"
+              ></label>
               <p>Living Room</p>
             </div>
             <div className="roomCol">
