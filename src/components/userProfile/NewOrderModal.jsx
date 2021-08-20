@@ -53,7 +53,7 @@ const NewOrderModal = ({handleClickStylesModal}) => {
       <button type="button" className="primaryBtn" onClick={handleClick}>
         Schedule An Order
       </button>
-      <p>{!!orderSuccess ? (<p>Your order was successfully placed!</p>) : null}</p>
+      {!!orderSuccess ? (<p>Your order was successfully placed!</p>) : null}
       <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
         <div className="modal__content" id="orderModal">
           <button
