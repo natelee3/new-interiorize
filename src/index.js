@@ -8,7 +8,7 @@ ReactDOM.render(
   <Auth0Provider
   domain="dev-mxp9kyux.us.auth0.com"
   clientId="3ES3hcajfSgsBfCqU5dktrO4kYokrMiX"
-  redirectUri='http://127.0.0.1:3000'
+  redirectUri={window.location.origin}
   audience="https://api.interiorize.design"
   useRefreshTokens={true}
   > 
