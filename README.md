@@ -31,8 +31,8 @@ Make an account and get your personalized style box at Interiorize (link)!
 <ul>
 <li>PostgreSQL</li>
 <li>Express</li>
-<li>Node.js</li>
 <li>React</li>
+<li>Node.js</li>
 </ul>
 
 <h2>Screenshots</h2>
@@ -41,7 +41,7 @@ Make an account and get your personalized style box at Interiorize (link)!
 
 <h2>Process</h2>
 <p>
-Interiorize was designed to function similarly to the popular clothing subscription service, Stitch Fix. But without professional designers on our payroll, we needed to find a way to mock that personalized functionality with just software. To do that we created a mock database of 100 products gathered from Wayfair. These products were organized in a spreadsheet based on style (modern, farmhouse, contemporary, and bohemian) and room. Price, images, description, and brand were collect from these items. Each item was also assigned a color id. This database is the core of Interiorize and allowed us to successfully mock the basic functionality of a personalized subscription service.
+Interiorize was designed to function similarly to the popular clothing subscription service, Stitch Fix. But without professional designers on our payroll, we needed to find a way to mock that personalized functionality with just software. To do that we created a mock database of 100 products gathered from Wayfair. These products were organized into a spreadsheet based on style (modern, farmhouse, contemporary, and bohemian) and room. Price, images, description, color, and brand were also collect from these items. This database is the core of Interiorize and allowed us to successfully mock the basic functionality of a personalized subscription service.
 </p>
 <p>View the spreadsheet <a href="https://docs.google.com/spreadsheets/d/1ru5krQQjEa66y6xwguIUm4_JMwNrWN1gAIL9b8eHNOk/edit?usp=sharing">here</a>.</p>
 <p>Frontend design mockup can be viewed <a href="https://www.canva.com/design/DAEmu5jJqUg/tvbk3hckIqgr0xSnjSxYqQ/view?utm_content=DAEmu5jJqUg&utm_campaign=designshare&utm_medium=link&utm_source=sharebutton">here</a>.<p>
