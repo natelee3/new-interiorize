@@ -20,9 +20,9 @@ const Shop = () => {
     };
 
     const getShopSearchData = async () => {
-        const localurl = `http://localhost:3333/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
-        //const url = `https://api.interiorize.design/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
-        const response = await fetch(localurl).then((response) => response.json());
+        //const localurl = `http://localhost:3333/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
+        const url = `https://api.interiorize.design/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
+        const response = await fetch(url).then((response) => response.json());
         //console.log(response);
         setShopData(response);
     };
