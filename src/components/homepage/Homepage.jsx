@@ -7,6 +7,7 @@ import box from "./imgs/box.png";
 import editedPhoto from "./imgs/editedPhoto.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
     const { isAuthenticated, user } = useAuth0();
@@ -71,12 +72,15 @@ const Homepage = () => {
             <div className="homeMainContainer">
                 <div className="mainBox1">
                     <h1 className="greetingHeading">We decorate so you dont have to</h1>
-                    <p className="greetingContent">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Itaque earum omnis accusamus voluptates tempora enim repellat provident consequatur qui?</p>
-                    <button className="startButton" onClick={() => {
+                    <p className="greetingContent">We’re proud to work with thousands of passionate Stylists from all over the U.S. who are motivated to learn about your style and evolving needs, in order to find the perfect pieces for you.</p>
+                    
+                    <Link to="/style-quiz">
+                        <button className="startButton" onClick={() => {
                         
-                    }}>
-                        START NOW
-                    </button>
+                        }}>
+                            START NOW
+                        </button>
+                    </Link>    
                 </div>
                 <div className="mainBox2">
                 <img className="homepageImg2" src={homepageImg2} alt="Decorated Home" />
@@ -93,17 +97,17 @@ const Homepage = () => {
                     <div className="lowerBoxes">
                         <img className="icons" src={check} alt="Checkbox" />
                         <h3 className="subTitles">1. Take Your Style Quiz</h3>
-                        <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
+                        <p className="subContent">Based off of your quiz, our team of experienced interior design specialists will find the perfect decor pieces that will make your house feel more like a home! A $20 styling fee covers your stylist’s expertise and time—it gets credited toward anything you keep.</p>
                     </div>
                     <div className="lowerBoxes">
                     <img className="icons" src={truck} alt="Truck" />   
                     <h3 className="subTitles">2. Receive Your Items</h3>
-                        <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
+                        <p className="subContent">The best way to see if you like something, is to live with it! After your order is processed, we send your items within 4 business days. Upon arrival, we give you a 14 day experience period where you can make a more educated decision on if you would like to keep your new decor items or send them back.</p>
                     </div>
                     <div className="lowerBoxes">
                     <img className="icons" src={box} alt="Box" /> 
                     <h3 className="subTitles">3. Send Back What You Dont Like</h3>
-                        <p className="subContent">Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia temporibus ad tempora iure odit voluptatum! Facere, voluptas necessitatibus veritatis pariatur exercitationem rerum molestiae ut possimus repellendus atque ducimus officiis nobis!</p>
+                        <p className="subContent">If you love your items, keep them! If not, re-box your item and take it to your nearest UPS Store to be mailed back to us for free. Our design team will then take notes of this returned item and record them on your account to make sure you're only receiving items you'll love!</p>
                     </div>
                 </div>
             </div>
@@ -122,7 +126,7 @@ const Homepage = () => {
 
                 <div className="endTextBox">
                     <h1 className="endTextH1">Seamless Customer Experience</h1>
-                    <p className="endTextP">Paragraph about why we're the best and why they should choose interiorize. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In purus lectus, gravida at mauris in, fringilla sollicitudin augue. Phasellus tempor </p>
+                    <p className="endTextP">It’s our mission to change the way people find decor items they love by combining technology with the personal touch of seasoned style experts. The Interiorize experience is not merely curated—it’s truly personalized to you. We’re here to help you save time, feel great in your newly decorated home and evolve your personal style over time.</p>
                     <button className="learnButton" type="button">LEARN MORE</button>
                 </div>
             </div>

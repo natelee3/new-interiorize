@@ -127,31 +127,115 @@ a:active {
     padding: 30px;
 }
 
+.master-wrap {
+    width: 100%;
+}
 
-/* Desktop only */
-
-@media (min-width: 481px) {
-    #logo-box {
-        position: absolute;
-        text-align: center;
-        left: 50%;
-        top: 48%;
-        width: 400px;
-        margin-left: -230px;
-        height: fit-content;
-        margin-top: -250px;
-        font-size: 20px;
-        background-color: white;
-        border: 3px solid #999;
-        box-shadow: 6px 6px 0px #244d4d;
-    }
-    h1 {
-        font-size: 36px;
-    }
+.lead {
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .truckIcon {
     height: 128px;
     margin: auto;
     width: 100px;
+}
+
+
+/* Desktop only */
+
+
+/* RESPONSIVE ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+@media (min-width: 281px) and (max-width: 412px) {
+    #logo-box {
+        text-align: center;
+        top: 25%;
+        left: 0;
+        width: 100vw;
+        max-width: 400px;
+        height: auto;
+        min-height: 219px;
+        font-size: 20px;
+        background-color: white;
+        border: 3px solid #999;
+        box-shadow: 6px 6px 0px #244d4d;
+        position: fixed;
+    }
+    h1 {
+        font-size: 36px;
+    }
+    .iconModal {
+        margin-top: 20px;
+        padding: 20px;
+    }
+}
+
+@media (min-width: 412px) and (max-width: 500px) {
+    #logo-box {
+        text-align: center;
+        top: 25%;
+        left: 2%;
+        width: 400px;
+        max-width: 400px;
+        height: auto;
+        min-height: 219px;
+        font-size: 20px;
+        background-color: white;
+        border: 3px solid #999;
+        box-shadow: 6px 6px 0px #244d4d;
+        position: fixed;
+    }
+    h1 {
+        font-size: 36px;
+    }
+    .iconModal {
+        margin-top: 20px;
+        padding: 20px;
+    }
+}
+
+@media (min-width: 500px) and (max-width: 960px) {
+    #logo-box {
+        text-align: center;
+        top: 25%;
+        width: 80%;
+        max-width: 400px;
+        margin-left: -205px;
+        height: auto;
+        min-height: 219px;
+        font-size: 20px;
+        background-color: white;
+        border: 3px solid #999;
+        box-shadow: 6px 6px 0px #244d4d;
+        position: fixed;
+    }
+    h1 {
+        font-size: 36px;
+    }
+    .iconModal {
+        margin-top: 20px;
+        padding: 20px;
+    }
+}
+
+@media (min-width: 961px) {
+    #logo-box {
+        text-align: center;
+        top: 25%;
+        width: 80%;
+        max-width: 400px;
+        margin-left: -205px;
+        height: auto;
+        min-height: 219px;
+        font-size: 20px;
+        background-color: white;
+        border: 3px solid #999;
+        box-shadow: 6px 6px 0px #244d4d;
+        position: fixed;
+    }
+    h1 {
+        font-size: 36px;
+    }
 }
