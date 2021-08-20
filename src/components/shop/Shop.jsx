@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
-
 import "./menu.css";
 import "./shop.css";
 
-const Shop = (props) => {
-
+const Shop = () => {
     const [shopData, setShopData] = useState([]);
     const [active1, setActive1] = useState(false);
-
+   
     const getShopData = () => {
         axios({
         method: "GET",
@@ -27,6 +25,7 @@ const Shop = (props) => {
     useEffect(() => {
         getShopData();
     }, []);
+
 
     return (
         <>

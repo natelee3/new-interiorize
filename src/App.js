@@ -37,7 +37,7 @@ function App() {
 
         case 'ACTION_NO_ITEM_MATCHES':
           return {
-            generatedItems: false
+            generatedItems: !state.generatedItems
           }
         default:
             return state;
