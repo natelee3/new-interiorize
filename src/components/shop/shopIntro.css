@@ -101,6 +101,16 @@
     display: flex;
 }
 
+.topRow {
+    display: flex;
+    flex-direction: row;
+}
+
+.bottomRow {
+    display: flex;
+    flex-direction: row;
+}
+
 
 /* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -108,12 +118,24 @@
     html {
         min-width: 280px;
     }
+    .shopNav {
+        flex-direction: row;
+    }
     .shopList {
         height: auto;
+        flex-direction: row;
     }
-    .shopRoomLinks {
+    .topRow {
+        flex-direction: column;
         width: 50%;
     }
+    .bottomRow {
+        flex-direction: column;
+        width: 50%;
+    }
+    /* .shopRoomLinks {
+        width: 50%;
+    } */
     .roomCard {
         margin-right: 0;
         width: 100%;

@@ -21,67 +21,68 @@ const ShopIntro = () => {
                 
                 <div className="shopNav">
                     <div className="shopList">
+                        <div className="topRow">
+                            <Link className="shopRoomLinks" to="/shop-intro/shop">
+                                <div className="roomCard">
+                                    <div className="livingCard">
+                                        <div className="nameBox">
+                                            <h2 className="roomName">Living Room</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>        
+                            
+                            <Link className="shopRoomLinks" to="/shop-intro/shop">
+                                <div className="roomCard">
+                                    <div className="bedroomCard">
+                                        <div className="nameBox">
+                                            <h2 className="roomName">Bedroom</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                            </Link>
 
-                        <Link className="shopRoomLinks" to="/shop-intro/shop">
-                            <div className="roomCard">
-                                <div className="livingCard">
-                                    <div className="nameBox">
-                                        <h2 className="roomName">Living Room</h2>
+                            <Link className="shopRoomLinks" to="/shop-intro/shop">
+                                <div className="roomCard">
+                                    <div className="bathCard">
+                                        <div className="nameBox">
+                                            <h2 className="roomName">Bathroom</h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Link>        
-                        
-                        <Link className="shopRoomLinks" to="/shop-intro/shop">
-                            <div className="roomCard">
-                                <div className="bedroomCard">
-                                    <div className="nameBox">
-                                        <h2 className="roomName">Bedroom</h2>
+                            </Link>
+                        </div>
+                        <div className="bottomRow">
+                            <Link className="shopRoomLinks" to="/shop">
+                                <div className="roomCard">
+                                    <div className="kitchenCard">
+                                        <div className="nameBox">
+                                            <h2 className="roomName">Kitchen</h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
 
-                        <Link className="shopRoomLinks" to="/shop-intro/shop">
-                            <div className="roomCard">
-                                <div className="bathCard">
-                                    <div className="nameBox">
-                                        <h2 className="roomName">Bathroom</h2>
+                            <Link className="shopRoomLinks" to="/shop-intro/shop">
+                                <div className="roomCard">
+                                    <div className="patioCard">
+                                        <div className="nameBox">
+                                            <h2 className="roomName">Patio</h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Link>
+                            </Link>
 
-                        <Link className="shopRoomLinks" to="/shop">
-                            <div className="roomCard">
-                                <div className="kitchenCard">
-                                    <div className="nameBox">
-                                        <h2 className="roomName">Kitchen</h2>
+                            <Link className="shopRoomLinks" to="/shop-intro/shop">
+                                <div className="roomCard">
+                                    <div className="allRoomCard">
+                                        <div className="nameBox">
+                                            <h2 className="roomName">All Rooms</h2>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        </Link>
-
-                        <Link className="shopRoomLinks" to="/shop-intro/shop">
-                            <div className="roomCard">
-                                <div className="patioCard">
-                                    <div className="nameBox">
-                                        <h2 className="roomName">Patio</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-
-                        <Link className="shopRoomLinks" to="/shop-intro/shop">
-                            <div className="roomCard">
-                                <div className="allRoomCard">
-                                    <div className="nameBox">
-                                        <h2 className="roomName">All Rooms</h2>
-                                    </div>
-                                </div>
-                            </div>
-                        </Link>
-                        
+                            </Link>
+                        </div>
                     </div>
                 </div>
             </div>
