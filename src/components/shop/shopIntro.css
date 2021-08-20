@@ -101,6 +101,63 @@
     display: flex;
 }
 
+/* MODAL */
+.modal__overlay {
+    background-color: rgba(184, 184, 184, 0.5);
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    display: none;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .visible {
+    display: flex;
+    justify-content: center;
+  }
+
+  #redirectModal {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    margin-top: 120px;
+    padding: 16px;
+    position: fixed;
+    width: 500px;
+    height: 250px;
+    border-radius: 20px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.233);
+    z-index: 9999;
+  }
+
+  #redirectModal p {
+      margin-top: -5px;
+  }
+
+  #redirectModal .primaryBtn {
+      width: 200px;
+      margin: 0 auto;
+  }
+  
+  button.modal__close {
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-color: #fff;
+    color: black;
+    font-size: 18px;
+    border: none;
+    color: slategray;
+    border-radius: 15px;
+  }
+  
+
 
 /* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -147,6 +204,13 @@
         width: 45%;
         font-size: .55rem;
     }
+    #redirectModal {
+        width: 250px;
+    }
+    #redirectModal p {
+        margin-top: -12px;
+    }
+  
 }
 
 @media screen and (min-width: 641px) and (max-width: 1040px) {}
