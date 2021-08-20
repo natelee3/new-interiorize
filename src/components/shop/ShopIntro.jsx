@@ -27,6 +27,7 @@ const ShopIntro = () => {
             />
           ) : null}
           <div className="topRow">
+            
             <Link className="shopRoomLinks" to="/shop-intro/shop">
               <div className="roomCard">
                 <div className="livingCard">
@@ -56,8 +57,11 @@ const ShopIntro = () => {
                 </div>
               </div>
             </Link>
+
           </div>
+
           <div className="bottomRow">
+            
             <Link className="shopRoomLinks" to="/shop">
               <div className="roomCard">
                 <div className="kitchenCard">
@@ -87,7 +91,9 @@ const ShopIntro = () => {
                 </div>
               </div>
             </Link>
+
           </div>
+
         </div>
       </div>
     </>

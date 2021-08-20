@@ -156,8 +156,8 @@
     width: 200px;
     margin: 0 auto;
 }
-
-button.modal__close {
+  
+#button.modal__close {
     position: absolute;
     right: 0;
     top: 0;
