@@ -11,7 +11,7 @@ const ShoppingCart = () => {
   const [shippingTotal, setShippingTotal] = useState(0);
   const [totalCost, setTotalCost] = useState(0);
   
-  
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
     const calculateItemTotal = () => {
@@ -74,6 +74,9 @@ const ShoppingCart = () => {
         const response = await fetch(url, requestOptions).then((response) =>
           console.log(response)
         );
+        dispatch({
+          type: "ACTION_EMPTY_CART"
+      })
         setIsVisible(true);
       };
 
