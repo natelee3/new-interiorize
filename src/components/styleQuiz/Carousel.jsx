@@ -222,7 +222,7 @@ const CarouselContainer = () => {
       },
       body: JSON.stringify({
         user_id: localStorage.getItem("user_id"),
-        avoid_tags: localStorage.getItem("Avoid"),
+        avoid_tags: avoidArray,
       }),
     };
     const response = await fetch(url, requestOptions).then((response) =>
