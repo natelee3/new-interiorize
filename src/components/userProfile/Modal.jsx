@@ -88,17 +88,6 @@ const Modal = ({ handleFormSubmit }) => {
     }
   };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const quizUpdate = await updateQuizData();
-    const avoidUpdate = await updateAvoidData();
-    console.log('is this happening?')
-    setIsVisible(false);
-    if (quizUpdate.status === 200 && avoidUpdate.status === 200) {
-      handleFormSubmit();
-    }
-  };
-
   const updateQuizData = async () => {
     // const localurl = "http://localhost:3333/quizzes/update";
     const url = "https://api.interiorize.design/quizzes/update";
@@ -144,6 +133,16 @@ const Modal = ({ handleFormSubmit }) => {
       return response;
     });
     return response;
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const quizUpdate = await updateQuizData();
+    const avoidUpdate = await updateAvoidData();
+    setIsVisible(false);
+    if (quizUpdate.status === 200 && avoidUpdate.status === 200) {
+      handleFormSubmit();
+    }
   };
 
   return (

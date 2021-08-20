@@ -58,15 +58,14 @@ const UserProfile = () => {
         response.json()
       );
 
+      console.log('ORDER RESPONSE:', response)
+
       let sortedOrderHistory = response.orderHistory.sort((a, b) => b-a);
       console.log(sortedOrderHistory);
       let newestOrderId = sortedOrderHistory[0].id;
       console.log(newestOrderId);
 
       let newestOrder2 = response.orderedItems.filter(order => order.order_id === newestOrderId);
-
-
-
 
       console.log('newestORder2',newestOrder2);
 
