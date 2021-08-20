@@ -108,7 +108,7 @@ const UserProfile = () => {
             </div>
             <NewOrderModal handleClickStylesModal={handleClickStylesModal} />
             <h2>Previous Orders</h2>
-            {!!previousOrder1  ? (
+            {!!previousOrder1 ? (
               <>
                 <div className="shipmentContainer">
                   {previousOrder1.map((item, index) => (
@@ -125,17 +125,17 @@ const UserProfile = () => {
               <p>You don't have any previous shipments.</p>
             )}
             {!!previousOrder2 ? (
-              <div className="shipmentContainer">
-                {previousOrder2.map((item, index) => (
-                  <PreviousOrderCard
-                    index={index}
-                    image={item.img_src}
-                    name={item.item_name}
-                    description={item.description}
-                  />
-                ))}
-              </div>
-            ) : null}
+                  <div className="shipmentContainer">
+                    {previousOrder2.map((item, index) => (
+                      <PreviousOrderCard
+                        index={index}
+                        image={item.img_src}
+                        name={item.item_name}
+                        description={item.description}
+                      />
+                    ))}
+                  </div>
+                ) : null}
           </div>
           <div className="userPreferencesCol">
             <h2>Your Style Preferences</h2>
