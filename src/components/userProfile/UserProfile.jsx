@@ -87,11 +87,11 @@ const UserProfile = () => {
           <div className="shipmentCol">
             <h1>Your Account</h1>
             <h2>Recent Shipment</h2>
-            {recentOrder.length > 0 ? (
+            {recentOrder !== null ? (
               <p>You've got items on the way!</p>
             ) : null}
             <div className="shipmentContainer">
-              {recentOrder.length > 0 ? (
+              {recentOrder !== null ? (
                 recentOrder.map((order, index) => (
                   <ProductCard
                     index={index}
