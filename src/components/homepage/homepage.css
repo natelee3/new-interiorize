@@ -213,8 +213,8 @@
     }
     .startButton {
         margin: auto;
-        height: 20%;
-        width: 50%;
+        height: 100%;
+        width: 30%;
         border: 1px solid white;
         background-color: transparent;
         color: white;
@@ -260,6 +260,15 @@
         margin: auto;
         text-align: center;
     }
+    .greetingHeading {
+        padding: 0;
+        height: auto;
+    }
+    .greetingContent {
+        width: 75%;
+        text-align: center;
+        margin: auto;
+    }
 }
 
 @media screen and (min-width: 641px) and (max-width: 1040px) {
@@ -297,8 +306,8 @@
     }
     .startButton {
         margin: auto;
-        height: 20%;
-        width: 50%;
+        height: 100%;
+        width: 30%;
         border: 1px solid white;
         background-color: transparent;
         color: white;

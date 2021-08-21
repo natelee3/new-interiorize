@@ -184,7 +184,7 @@ const CarouselContainer = () => {
   };
 
   const generateOrder = async () => {
-    // const localUrl = 'http://localhost:3333/items/generate-order';
+    //const localUrl = 'http://localhost:3333/items/generate-order';
     const url = `https://api.interiorize.design/items/generate-order`;
     const requestOptions = {
       method: "POST",
@@ -222,7 +222,7 @@ const CarouselContainer = () => {
       },
       body: JSON.stringify({
         user_id: localStorage.getItem("user_id"),
-        avoid_tags: localStorage.getItem("Avoid"),
+        avoid_tags: avoidArray,
       }),
     };
     const response = await fetch(url, requestOptions).then((response) =>

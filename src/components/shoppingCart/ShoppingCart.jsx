@@ -155,24 +155,26 @@ const ShoppingCart = () => {
           </div>
           <div className="bigBox">
             {value.cart.length > 0 ? (
-              <div className="buttonBox2">
-                <button
-                  className="checkoutBtn"
-                  type="button"
-                  onClick={() => _createOrder()}
-                >
-                  Submit Order
-                </button>
-              </div>
+              <>
+                <div className="buttonBox2">
+                  <button
+                    className="checkoutBtn"
+                    type="button"
+                    onClick={() => _createOrder()}
+                  >
+                    Submit Order
+                  </button>
+                </div>
+                <div className="buttonBox2">
+                  <Link to="/shop-intro/shop">
+                    <button className="cartShopBtn" type="button">
+                      &larr; Shop
+                    </button>
+                  </Link>
+                </div>
+              </>
             ) : null}
 
-            <div className="buttonBox2">
-              <Link to="/shop-intro/shop">
-                <button className="checkoutBtn" type="button">
-                  &larr; Shop
-                </button>
-              </Link>
-            </div>
           </div>
           <div className={!!isVisible ? "modal__overlay visible" : "hidden"}>
             <div className="modal__content1">
@@ -205,22 +207,6 @@ const ShoppingCart = () => {
                 </div>
               </div>
             </div>
-
-            {/* <div className="modal__content">
-                            <div className="master-wrap">
-                                <div className="logo-box">
-                                    <div className="animated fast fadeInUp">
-                                        <div className="icon">
-                                            <h1>Thank you</h1>
-                                        </div>
-                                        <div className="notice animated fadeInUp">
-                                            <p className="lead">Your order has been submitted. We will contact you very soon with shipping details!</p>
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div> */}
           </div>
         </div>
       </div>

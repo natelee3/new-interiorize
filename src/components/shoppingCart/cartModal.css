@@ -151,7 +151,7 @@ a:active {
 @media (min-width: 281px) and (max-width: 412px) {
     #logo-box {
         text-align: center;
-        top: 25%;
+        top: 10%;
         left: 0;
         width: 100vw;
         max-width: 400px;
@@ -175,7 +175,7 @@ a:active {
 @media (min-width: 412px) and (max-width: 500px) {
     #logo-box {
         text-align: center;
-        top: 25%;
+        top: 10%;
         left: 2%;
         width: 400px;
         max-width: 400px;
