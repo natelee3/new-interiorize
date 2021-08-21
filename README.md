@@ -38,6 +38,7 @@ Make an account and get your personalized style box at Interiorize (link)!
 ## Screenshots
 
 ## Code Examples
+PostgreSQL query used to select all user quiz data to populate the user profile page.
 ``` javascript 
  static async getAllUserQuizData(user_id) {
         try {
