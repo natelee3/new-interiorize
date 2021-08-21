@@ -24,6 +24,16 @@ const CarouselContainer = () => {
   const [color3, setColor3] = useState("");
   const [avoidArray] = useState([]);
   const [checkCount, setCheckCount] = useState(0);
+  const [anythingActive, setAnythingActive] = useState(false);
+  const [pillowActive, setPillowActive] = useState(false);
+  const [lampActive, setLampActive] = useState(false);
+  const [artActive, setArtActive] = useState(false);
+  const [decorActive, setDecorActive] = useState(false);
+  const [linensActive, setLinensActive] = useState(false);
+  const [storageActive, setStorageActive] = useState(false);
+  const [serverwareActive, setServerwareActive] = useState(false);
+  const [utensilsActive, setUtensilsActive] = useState(false);
+
 
   const history = useHistory();
   const token = localStorage.getItem("token");
@@ -77,6 +87,7 @@ const CarouselContainer = () => {
   const handleAvoidChange = (event) => {
     let index;
     console.log("AVOID ARRAY:", avoidArray);
+    changeBackground(event.target.value);
     if (event.target.checked) {
       let newValue = event.target.value;
       avoidArray.push(newValue);
@@ -87,6 +98,21 @@ const CarouselContainer = () => {
       setCheckCount(checkCount - 1);
     }
   };
+
+  const changeBackground = (value) => {
+    switch (value) {
+      case "": return setAnythingActive(!anythingActive);
+      case "7": return setPillowActive(!pillowActive);
+      case "3": return setLampActive(!lampActive);
+      case "4": return setArtActive(!artActive);
+      case "5": return setDecorActive(!decorActive);
+      case "9": return setLinensActive(!linensActive);
+      case "11": return setStorageActive(!storageActive);
+      case "13": return setServerwareActive(!serverwareActive);
+      case "14": return setUtensilsActive(!utensilsActive);
+    }
+
+  }
 
   // SUBMITS
   const handleBudgetSubmit = (event) => {
@@ -945,11 +971,7 @@ const CarouselContainer = () => {
         <form onSubmit={(event) => handleAvoidSubmit(event)}>
           <div className="avoidRow">
             <div className="avoidCol">
-              <img
-                src={anythingIcon}
-                className="avoidIcon"
-                alt="dolly with two boxes"
-              />
+              <label className={anythingActive ? "avoidIcon anything-active" : "avoidIcon anything"}>
               <input
                 type="checkbox"
                 id="anything"
@@ -957,104 +979,108 @@ const CarouselContainer = () => {
                 value=""
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label htmlFor="anything">Send me anything!</label>
+              </label>
+              <p>Send me anything!</p>
             </div>
-            <div className="avoidCol">
-              <img src={pillow} className="avoidIcon" alt="pillow" />
-              <input
-                type="checkbox"
-                id="pillows"
-                name="avoid"
-                value="7"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="pillows">Pillows</label>
+            <div className="avoidCol">             
+              <label className={pillowActive ? "avoidIcon pillow-active" : "avoidIcon pillow"}> 
+                <input
+                  type="checkbox"
+                  id="pillows"
+                  name="avoid"
+                  value="7"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Pillows</p>
             </div>
-            <div className="avoidCol">
-              <img src={lamp} className="avoidIcon" alt="lamp" />
-              <input
-                type="checkbox"
-                id="lamps"
-                name="avoid"
-                value="3"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="lamps">Lamps</label>
-            </div>
-          </div>
-          <div className="avoidRow">
-            <div className="avoidCol">
-              <img src={art} className="avoidIcon" alt="frame" />
-              <input
-                type="checkbox"
-                id="art"
-                name="avoid"
-                value="4"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="art">Art</label>
-            </div>
-            <div className="avoidCol">
-              <img src={decor} className="avoidIcon" alt="house plant" />
-              <input
-                type="checkbox"
-                id="decor"
-                name="avoid"
-                value="5"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="decor">Decor</label>
-            </div>
-            <div className="avoidCol">
-              <img src={linen} className="avoidIcon" alt="kitchen linens" />
-              <input
-                type="checkbox"
-                id="kitchenLinens"
-                name="avoid"
-                value="9"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-
-              <label htmlFor="kitchenLinens">Kitchen Linens</label>
+            <div className="avoidCol">              
+              <label className={lampActive ? "avoidIcon lamp-active" : "avoidIcon lamp"}>
+                <input
+                  type="checkbox"
+                  id="lamps"
+                  name="avoid"
+                  value="3"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Lamps</p>
             </div>
           </div>
           <div className="avoidRow">
-            <div className="avoidCol">
-              <img src={storage} className="avoidIcon" alt="cookie jar" />
-              <input
-                type="checkbox"
-                id="storage"
-                name="avoid"
-                value="11"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="storage">Storage</label>
+            <div className="avoidCol">              
+              <label className={artActive ? "avoidIcon art-active" : "avoidIcon art"}>
+                <input
+                  type="checkbox"
+                  id="art"
+                  name="avoid"
+                  value="4"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Art</p>
             </div>
             <div className="avoidCol">
-              <img src={serverware} className="avoidIcon" alt="serving plate" />
-              <input
-                type="checkbox"
-                id="serverware"
-                name="avoid"
-                value="13"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="serverware">Serverware</label>
+              <label className={decorActive ? "avoidIcon decor-active" : "avoidIcon decor"}>
+                <input
+                  type="checkbox"
+                  id="decor"
+                  name="avoid"
+                  value="5"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Decor</p>
+            </div>
+            <div className="avoidCol">              
+              <label className={linensActive ? "avoidIcon linens-active" : "avoidIcon linens"}>
+                <input
+                  type="checkbox"
+                  id="kitchenLinens"
+                  name="avoid"
+                  value="9"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Kitchen Linens</p>
+            </div>
+          </div>
+          <div className="avoidRow">
+            <div className="avoidCol">              
+              <label className={storageActive ? "avoidIcon storage-active" : "avoidIcon storage"}>
+                <input
+                  type="checkbox"
+                  id="storage"
+                  name="avoid"
+                  value="11"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Storage</p>
+            </div>
+            <div className="avoidCol">            
+              <label className={serverwareActive ? "avoidIcon serverware-active" : "avoidIcon serverware"}>
+                <input
+                  type="checkbox"
+                  id="serverware"
+                  name="avoid"
+                  value="13"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Serverware</p>
             </div>
             <div className="avoidCol">
-              <img
-                src={utensils}
-                className="avoidIcon"
-                alt="cooking utensils"
-              />
-              <input
-                type="checkbox"
-                id="utensils"
-                name="avoid"
-                value="14"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="utensils">Utensils</label>
+              <label className={utensilsActive ? "avoidIcon utensils-active" : "avoidIcon utensils"}>
+                <input
+                  type="checkbox"
+                  id="utensils"
+                  name="avoid"
+                  value="14"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Utensils</p>
             </div>
           </div>
           {checkCount === 0 ? (

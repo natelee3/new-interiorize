@@ -300,12 +300,81 @@
   background-repeat: no-repeat;
   padding: 15px;
   display: block;
-  width: auto !important;
+  height: 100px;
+  width: 100px;
   margin: 0 auto;
+}
+
+.avoidCol input {
+  display: none;
 }
 
 .avoidCol {
   margin-right: 20px;
+}
+
+.anything {background: url("./imgs/anything.png")}
+.anything-active {
+  background: 
+    url("./imgs/green-check.png"), 
+    url("./imgs/anything.png");
+}
+
+.pillow {background: url("./imgs/pillow.png")}
+.pillow-active {
+  background:
+    url("./imgs/red_x.png"),
+    url("./imgs/pillow.png")
+    
+}
+
+.lamp {background: url("./imgs/lamp.png")}
+.lamp-active {
+  background: 
+    url("./imgs/red_x.png"),
+    url("./imgs/lamp.png")
+}
+
+.art {background: url("./imgs/art.png")}
+.art-active {
+  background: 
+    url("./imgs/red_x.png"),
+    url("./imgs/art.png")
+}
+
+.decor {background: url("./imgs/decor.png")}
+.decor-active {
+  background: 
+    url("./imgs/red_x.png"),
+    url("./imgs/decor.png")
+}
+
+.linens {background: url("./imgs/linens.png")}
+.linens-active {
+  background: 
+    url("./imgs/red_x.png"),
+    url("./imgs/linens.png")
+}
+
+.storage {background: url("./imgs/storage.png")}
+.storage-active {
+  background: 
+    url("./imgs/red_x.png"),
+    url("./imgs/storage.png")
+}
+
+.serverware {background: url("./imgs/serverware.png")}
+.serverware-active {
+  background:
+    url("./imgs/red_x.png"),
+    url("./imgs/serverware.png")
+}
+
+.utensils {background: url("./imgs/utensils.png")}
+.utensils-active {
+  background:
+    url("./imgs/red_x.png"),
+    url("./imgs/utensils.png")
 }
 
 /* MEDIA QUERIES */
