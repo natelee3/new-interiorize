@@ -60,6 +60,46 @@ PostgreSQL query used to select all user quiz data to populate the user profile 
         }
     };
 ```
+Sample of the generate order route and queries.
+```javascript
+router.post('/generate-order', checkJwt, async (req, res) => {
+    console.log(req.body);
+    const { user_id } = req.body;
+    //GET all items
+    const allItems = await ItemsModel.getAll();
+    
+    //GET quiz info
+    const quizData = await QuizzesModel.getAllUserQuizData(user_id);
+    const budget = quizData.budget;
+    const category = quizData.category_name;
+    const style_id = quizData.style_id;
+    
+    //GET user inventory
+    const userInventory = await ItemsModel.getUserInventory(user_id);
+    
+    //GET avoid tags
+    const avoidTagsReturn = await UsersModel.getUserAvoidStrings(user_id);
+    const avoidTags = avoidTagsReturn[0].avoid_tags;
+
+    //FILTER BY BUDGET & CATEGORY
+    const filteredByBudget = allItems.filter(item => item.price < budget);
+    
+    //FILTER BY CATEGORY
+    const filteredByBudgetCategory = filteredByBudget.filter(item => item.category_name === category);
+
+    //FILTER BY STYLE TAG
+    let filteredByBudgetCategoryStyle = [];
+    filteredByBudgetCategory.forEach(item => {
+        //If the tags of the item contain the style tag ID, add that item to the new list
+        item.tag_ids.forEach(tag_id => {
+            if(style_id === tag_id)
+            {
+                filteredByBudgetCategoryStyle.push(item);
+            }
+        });
+    }); 
+```
+This route also takes into account user inventory and budget. The route results in a single order that matches the user's style preferences and contains items the user does not already have. Since our database is not extensive, there is a possibility that there are no items matching the quiz and inventory criteria. In that case, the user is directed to the shop.
 
 ## Process
 <p>
