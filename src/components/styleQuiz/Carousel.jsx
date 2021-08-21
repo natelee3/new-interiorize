@@ -24,6 +24,12 @@ const CarouselContainer = () => {
   const [color3, setColor3] = useState("");
   const [avoidArray] = useState([]);
   const [checkCount, setCheckCount] = useState(0);
+  const [anythingActive, setAnythingActive] = useState(false);
+  const [pillowActive, setPillowActive] = useState(false);
+  const [lampActive, setLampActive] = useState(false);
+  const [artActive, setArtActive] = useState(false);
+  const [decorActive, setDecorActive] = useState(false);
+
 
   const history = useHistory();
   const token = localStorage.getItem("token");
@@ -77,6 +83,7 @@ const CarouselContainer = () => {
   const handleAvoidChange = (event) => {
     let index;
     console.log("AVOID ARRAY:", avoidArray);
+    changeBackground(event.target.value);
     if (event.target.checked) {
       let newValue = event.target.value;
       avoidArray.push(newValue);
@@ -87,6 +94,15 @@ const CarouselContainer = () => {
       setCheckCount(checkCount - 1);
     }
   };
+
+  const changeBackground = (value) => {
+    switch (value) {
+      case "": return setAnythingActive(!anythingActive);
+      case "7": return setPillowActive(!pillowActive);
+      case "3": return setLampActive(!lampActive);
+    }
+
+  }
 
   // SUBMITS
   const handleBudgetSubmit = (event) => {
@@ -945,11 +961,7 @@ const CarouselContainer = () => {
         <form onSubmit={(event) => handleAvoidSubmit(event)}>
           <div className="avoidRow">
             <div className="avoidCol">
-              <img
-                src={anythingIcon}
-                className="avoidIcon"
-                alt="dolly with two boxes"
-              />
+              <label className={anythingActive ? "avoidIcon anything-active" : "avoidIcon anything"}>
               <input
                 type="checkbox"
                 id="anything"
@@ -957,29 +969,32 @@ const CarouselContainer = () => {
                 value=""
                 onChange={(event) => handleAvoidChange(event)}
               />
-              <label htmlFor="anything">Send me anything!</label>
+              </label>
+              <p>Send me anything!</p>
             </div>
-            <div className="avoidCol">
-              <img src={pillow} className="avoidIcon" alt="pillow" />
-              <input
-                type="checkbox"
-                id="pillows"
-                name="avoid"
-                value="7"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="pillows">Pillows</label>
+            <div className="avoidCol">             
+              <label className={pillowActive ? "avoidIcon pillow-active" : "avoidIcon pillow"}> 
+                <input
+                  type="checkbox"
+                  id="pillows"
+                  name="avoid"
+                  value="7"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Pillows</p>
             </div>
-            <div className="avoidCol">
-              <img src={lamp} className="avoidIcon" alt="lamp" />
-              <input
-                type="checkbox"
-                id="lamps"
-                name="avoid"
-                value="3"
-                onChange={(event) => handleAvoidChange(event)}
-              />
-              <label htmlFor="lamps">Lamps</label>
+            <div className="avoidCol">              
+              <label className={lampActive ? "avoidIcon lamp-active" : "avoidIcon lamp"}>
+                <input
+                  type="checkbox"
+                  id="lamps"
+                  name="avoid"
+                  value="3"
+                  onChange={(event) => handleAvoidChange(event)}
+                />
+              </label>
+              <p>Lamps</p>
             </div>
           </div>
           <div className="avoidRow">

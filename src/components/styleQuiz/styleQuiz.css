@@ -300,12 +300,42 @@
   background-repeat: no-repeat;
   padding: 15px;
   display: block;
-  width: auto !important;
+  height: 100px;
+  width: 100px;
   margin: 0 auto;
+}
+
+.avoidCol input {
+  display: none;
 }
 
 .avoidCol {
   margin-right: 20px;
+}
+
+.anything {background: url("./imgs/anything.png") 100%}
+
+.anything-active {
+  background: 
+    url("./imgs/red_x.png"), 
+    url("./imgs/anything.png");
+}
+
+.pillow {background: url("./imgs/pillow.png") 100%}
+
+.pillow-active {
+  background:
+    url("./imgs/red_x.png"),
+    url("./imgs/pillow.png")
+    
+}
+
+.lamp {background: url("./imgs/lamp.png")}
+
+.lamp-active {
+  background: 
+    url("./imgs/red_x.png"),
+    url("./imgs/lamp.png")
 }
 
 /* MEDIA QUERIES */
