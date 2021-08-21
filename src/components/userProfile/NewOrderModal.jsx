@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const NewOrderModal = ({handleClickStylesModal}) => {
+const NewOrderModal = ({handleClickStylesModal, handleFormSubmit}) => {
   const [isVisible, setIsVisible] = useState(false);
   const [orderSuccess, setOrderSuccess] = useState(false);
 
@@ -33,10 +33,10 @@ const NewOrderModal = ({handleClickStylesModal}) => {
           setOrderSuccess(true);
           setIsVisible(!isVisible)
           //message will disappear after 3 seconds
-          setTimeout(() => {setOrderSuccess(false);}, 3000)  
+          setTimeout(() => {setOrderSuccess(false);}, 3000) 
+          handleFormSubmit(); 
       }
     }
-    
     );
     
   };

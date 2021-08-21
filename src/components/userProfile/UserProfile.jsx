@@ -14,6 +14,7 @@ const UserProfile = () => {
   const [isFormSubmitted, setIsSubmitted] = useState(false);
   //state and function to change it gets passed down so that newOrderModal can open the stylesModal.
   const [isStylesVisible, setIsStylesVisible] = useState(false);
+  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -74,7 +75,7 @@ const UserProfile = () => {
     window.scrollTo(0, 0);
   };
 
-  const handleClickStylesModal = (event) => {
+  const handleClickStylesModal = () => {
     setIsStylesVisible(!isStylesVisible);
     scrollToTop();
   };
@@ -106,9 +107,11 @@ const UserProfile = () => {
                 </p>
               )}
             </div>
-            <NewOrderModal handleClickStylesModal={handleClickStylesModal} />
+            <NewOrderModal handleClickStylesModal={handleClickStylesModal} 
+            handleFormSubmit={handleFormSubmit}
+            />
             <h2>Previous Orders</h2>
-            {!!previousOrder1 ? (
+            {previousOrder1 !== null ? (
               <>
                 <div className="shipmentContainer">
                   {previousOrder1.map((item, index) => (
@@ -124,7 +127,7 @@ const UserProfile = () => {
             ) : (
               <p>You don't have any previous shipments.</p>
             )}
-            {!!previousOrder2 ? (
+            {previousOrder2 !== null ? (
                   <div className="shipmentContainer">
                     {previousOrder2.map((item, index) => (
                       <PreviousOrderCard
