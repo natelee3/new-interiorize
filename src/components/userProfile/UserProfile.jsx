@@ -57,7 +57,10 @@ const UserProfile = () => {
       setRecentOrder(response.orderedItems[0]);
 
       setPreviousOrder1(response.orderedItems[1]);
-      setPreviousOrder2(response.orderedItems[2]);
+      if(response.orderedItems.length > 2) {
+        setPreviousOrder2(response.orderedItems[2]);
+      }
+      
     };
 
     fetchUserData();
