@@ -64,6 +64,10 @@
     color: white;
 }
 
+.startButton:hover {
+    background-color: #477272;
+}
+
 
 /* HOW IT WORKS SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
@@ -102,7 +106,7 @@
 
 .subContent {
     margin: 10px;
-    text-align: center;
+    text-align: left;
 }
 
 .subTitles {
@@ -157,7 +161,7 @@
 }
 
 .endTextP {
-    text-align: center;
+    text-align: left;
     margin: auto;
     margin-top: 25px;
 }
@@ -171,6 +175,10 @@
     background-color: #244d42;
     color: white;
     margin-top: 25px;
+}
+
+.learnButton:hover {
+    background-color: #477272;
 }
 
 
