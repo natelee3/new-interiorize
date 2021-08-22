@@ -1,6 +1,6 @@
 .footerContainer {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     margin: auto;
     margin-top: 15px;
     width: 100vw;
@@ -16,93 +16,44 @@
     /* background-color: white; */
 }
 
-.importantLinks {
+.footerTitle {
     display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    align-content: center;
+    width: 65vw;
     margin: auto;
-    width: 100%;
-    max-width: 1520px;
-    height: inherit;
-}
-
-.footerLinks {
-    display: flex;
-    justify-content: space-evenly;
-    width: 100%;
-    text-decoration: none;
-    list-style-type: none;
-    color: white;
-    margin: 0;
-    /* Alt Color */
-    /* color: #636363; */
-}
-
-.companyFooter {
-    color: white;
-    font-size: large;
-    width: 100%;
+    margin-bottom: 0;
+    margin-top: 10px;
     justify-content: center;
+    color: white;
+    border-bottom: 1px solid white;
     text-align: center;
+    padding-bottom: 8px;
 }
 
-.area1 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    justify-content: center;
-    font-size: x-small;
-    align-items: flex-start;
-}
-
-.area2 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    font-size: small;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.area3 {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    font-size: small;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-top: 10px;
-}
-
-.c-box {
+.name-box {
     display: flex;
     flex-direction: row;
-    width: 80%;
+    width: 85%;
     justify-content: space-evenly;
-    margin: 0;
+    margin: auto;
     margin-top: 5px;
 }
 
-.c-1 {
-    width: 25%;
+.name-row {
+    display: flex;
+    width: 100%;
     height: 100%;
+    margin: auto;
+    margin-top: 8px;
+    flex-direction: row;
+    justify-content: space-evenly;
     text-align: center;
 }
 
-.c-2 {
-    width: 25%;
-    height: 100%;
-    text-align: center;
-}
-
-.footerTitle {
-    margin: 0;
-    color: white;
-    text-align: center;
+.devLink {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+    font-size: smaller;
 }
 
 .footerNames {
@@ -119,15 +70,6 @@
 /* RESPONSIVE SECTION ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 
 @media screen and (min-width: 280px) and (max-width: 440px) {
-    .area2 {
-        font-size: x-small;
-    }
-    .area3 {
-        font-size: x-small;
-    }
-    .companyFooter {
-        font-size: smaller;
-    }
     .c-box {
         width: 100%;
     }
@@ -136,17 +78,6 @@
     }
 }
 
-@media screen and (min-width: 441px) and (max-width: 540px) {
-    .companyFooter {
-        font-size: medium;
-    }
-}
+@media screen and (min-width: 441px) and (max-width: 540px) {}
 
-@media screen and (min-width: 541px) and (max-width: 700px) {
-    /* .footerLinks {
-        font-size: .8rem;
-    }
-    .footerContainer {
-        height: 75px;
-    } */
-}
+@media screen and (min-width: 541px) and (max-width: 700px) {}
