@@ -1,9 +1,8 @@
 import "./homepage.css";
 import homepageImg2 from "./imgs/homepageImg2.jpg";
-import check from "./imgs/check.png";
+import check from "./imgs/checkbox.png";
 import truck from "./imgs/truck.png";
 import box from "./imgs/box.png";
-// import greenChairs from "./imgs/greenChairs.png";
 import editedPhoto from "./imgs/editedPhoto.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
@@ -71,7 +70,7 @@ const Homepage = () => {
         <>
             <div className="homeMainContainer">
                 <div className="mainBox1">
-                    <h1 className="greetingHeading">We decorate so you dont have to</h1>
+                    <h1 className="greetingHeading">We Decorate So You Don't Have To</h1>
                     <p className="greetingContent">We’re proud to work with thousands of passionate Stylists from all over the U.S. who are motivated to learn about your style and evolving needs, in order to find the perfect pieces for you.</p>
                     
                     <Link to="/style-quiz">
