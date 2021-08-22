@@ -101,6 +101,7 @@ const CarouselContainer = () => {
       case "11": return setStorageActive(!storageActive);
       case "13": return setServerwareActive(!serverwareActive);
       case "14": return setUtensilsActive(!utensilsActive);
+      default: return setAnythingActive(!anythingActive);
     }
 
   }
