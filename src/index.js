@@ -12,6 +12,7 @@ ReactDOM.render(
   redirectUri={window.location.origin}
   audience={env.API_URL}
   useRefreshTokens={true}
+  response_type='id_token token'
   > 
     <React.StrictMode>
       <App />
