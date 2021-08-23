@@ -197,7 +197,7 @@
         flex-direction: column;
     }
     .itemImg1 {
-        width: max-content;
+        width: 95%;
         margin: auto;
     }
     .cartItemImg {
