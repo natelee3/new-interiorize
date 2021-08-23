@@ -46,6 +46,10 @@ h1 {
     margin-bottom: 10px;
 }
 
+#preferencesError {
+  margin-top: 10px;
+}
+
 .stylesCol {
     width: 290px;
 }

@@ -223,7 +223,7 @@ const CarouselContainer = () => {
       } else {
         //this will be used to trigger the modal when redirected to the shop page.
         dispatch({
-          type: "ACTION_NO_ITEM_MATCHES",
+          type: 'ACTION_NO_ITEM_MATCHES',
         });
         //no item matches: redirect to the shop
         history.push("/shop-intro");
