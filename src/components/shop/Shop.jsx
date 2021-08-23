@@ -223,8 +223,9 @@ const Shop = () => {
             <div className="itemContainer">
                 <div className="itemContent">
                     <ul className="itemList">
+                        
                     {shopData.length > 0 ?(
-                        shopData.map((item, props, id) => (
+                        shopData.map((item, id) => (
                         <>
                             <Link to={`/shop-intro/shop/${item.id}`}>
                                 <div className="itemCard">
@@ -242,7 +243,7 @@ const Shop = () => {
                             </Link>
                         </>
                         ))
-                    ): <></>}
+                    ): <p>Sorry, we don't have any items matching that criteria.</p>}
                     </ul> 
                 </div>
             </div>
