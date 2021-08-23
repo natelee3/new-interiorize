@@ -7,9 +7,11 @@ const Shop = () => {
     const [shopData, setShopData] = useState([]);
     const [active1, setActive1] = useState(false);
     const [designArray, setDesignArray] = useState([]);
-    const [categoryArray, setCategoryArray] = useState([]);
+    const [categoryArray, setCategoryArray] = useState([parseInt(localStorage.getItem('Room choice'))]);  
     const [colorArray, setColorArray] = useState([]);
     const [priceTierArray, setPriceTierArray] = useState([]);
+
+   
 
     const getShopData = async () => {
         //const localurl = "http://localhost:3333/items";
@@ -27,10 +29,14 @@ const Shop = () => {
     };
 
     useEffect(() => {
-        getShopData();
+        console.log(categoryArray)
+        if (categoryArray[0] === 6) {
+            getShopData();
+        } else {
+            getShopSearchData();
+        }
+    
     }, []);
-
-
 
     const handleDesignChange = (event) => {
         if (event.target.checked && !designArray.includes(event.target.value)) {

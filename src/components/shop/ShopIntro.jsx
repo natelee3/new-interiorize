@@ -16,6 +16,8 @@ const ShopIntro = () => {
     });
   };
 
+
+
   return (
     <>
       <div className="shopNav">
@@ -28,9 +30,15 @@ const ShopIntro = () => {
           ) : null}
           <div className="topRow">
             
-            <Link className="shopRoomLinks" to="/shop-intro/shop">
+            <Link 
+              className="shopRoomLinks" 
+              to="/shop-intro/shop"
+              >
               <div className="roomCard">
-                <div className="livingCard">
+                <div 
+                  className="livingCard"
+                  onMouseEnter={()=> localStorage.setItem('Room choice', 1)}
+                >
                   <div className="nameBox">
                     <h2 className="roomName">Living Room</h2>
                   </div>
@@ -40,7 +48,10 @@ const ShopIntro = () => {
 
             <Link className="shopRoomLinks" to="/shop-intro/shop">
               <div className="roomCard">
-                <div className="bedroomCard">
+                <div 
+                  className="bedroomCard"
+                  onMouseEnter={()=> localStorage.setItem('Room choice', 2)}
+                >
                   <div className="nameBox">
                     <h2 className="roomName">Bedroom</h2>
                   </div>
@@ -50,7 +61,10 @@ const ShopIntro = () => {
 
             <Link className="shopRoomLinks" to="/shop-intro/shop">
               <div className="roomCard">
-                <div className="bathCard">
+                <div 
+                  className="bathCard"
+                  onMouseEnter={()=> localStorage.setItem('Room choice', 3)}
+                >
                   <div className="nameBox">
                     <h2 className="roomName">Bathroom</h2>
                   </div>
@@ -62,9 +76,12 @@ const ShopIntro = () => {
 
           <div className="bottomRow">
             
-            <Link className="shopRoomLinks" to="/shop">
+            <Link className="shopRoomLinks" to="/shop-intro/shop">
               <div className="roomCard">
-                <div className="kitchenCard">
+                <div 
+                  className="kitchenCard"
+                  onMouseEnter={()=> localStorage.setItem('Room choice', 4)}
+                >
                   <div className="nameBox">
                     <h2 className="roomName">Kitchen</h2>
                   </div>
@@ -74,7 +91,10 @@ const ShopIntro = () => {
 
             <Link className="shopRoomLinks" to="/shop-intro/shop">
               <div className="roomCard">
-                <div className="patioCard">
+                <div 
+                  className="patioCard"
+                  onMouseEnter={()=> localStorage.setItem('Room choice', 5)}
+                >
                   <div className="nameBox">
                     <h2 className="roomName">Patio</h2>
                   </div>
@@ -84,7 +104,10 @@ const ShopIntro = () => {
 
             <Link className="shopRoomLinks" to="/shop-intro/shop">
               <div className="roomCard">
-                <div className="allRoomCard">
+                <div 
+                  className="allRoomCard"
+                  onMouseEnter={()=> localStorage.setItem('Room choice', 6)}
+                >
                   <div className="nameBox">
                     <h2 className="roomName">All Rooms</h2>
                   </div>
