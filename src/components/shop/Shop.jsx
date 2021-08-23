@@ -82,6 +82,13 @@ const Shop = () => {
         }
       };
 
+      const clearShopData = () => {
+          setCategoryArray([]);
+          setColorArray([]);
+          setDesignArray([]);
+          setPriceTierArray([]);
+      }
+
     return (
         <>
         <div className="mainContainer1">
@@ -198,6 +205,9 @@ const Shop = () => {
 
                     <button id="button1" onClick={() => {getShopSearchData();}}>
                         Get Items
+                    </button>
+                    <button onClick={()=> {clearShopData();}}>
+                        Clear Selections
                     </button>
                 
                 </div>
