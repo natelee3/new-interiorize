@@ -284,6 +284,40 @@
             width: 200px;
             height: 500px;
         }
+        .mainContainer1 {
+            flex-direction: column;
+            font-size: x-small;
+        }
+        .navbar1 {
+            display: block;
+            background-color: white;
+            width: fit-content;
+            /* position: fixed; */
+            top: 90px;
+            font: x-small;
+        }
+        .sideContent {
+            display: flex;
+            justify-content: space-around;
+        }
+        .sideBarSections {
+            display: flex;
+            flex-direction: column;
+        }
+        .sideBar {
+            flex-direction: row;
+            max-width: 2000px;
+            width: 100vw;
+            margin-left: 0;
+            flex-direction: column;
+        }
+        .navLine {
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .itemContainer {
+            margin-left: 0;
+        }
     }
     
     @media screen and (min-width: 961px) and (max-width: 1535px) {
