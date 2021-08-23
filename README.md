@@ -10,7 +10,7 @@ Interiorize
 Interiorize was built for those who don’t have the knack or time to decorate their homes. Users are sent boxes of items based on their results from our style quiz. The style quiz asks users for their budget, what items they want us to avoid, and their room, style, and color preferences. Based on these responses, the Interiorize API will create the perfect interior design box for that user. Items can range from unique and quirky decor to beautiful art. Interiorize also offers a shop where users can browse through our inventory and purchase anything that captures their eye.
 </p>
 <p>
-Make an account and get your personalized style box at Interiorize (link)!
+Make an account and get your personalized style box at <a href="https://interiorize.design/">Interiorize</a>!
 </p>
 
 ## Demo
