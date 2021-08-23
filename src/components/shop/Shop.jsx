@@ -108,113 +108,126 @@ const Shop = () => {
 
                 <div className="sideBar">
                     <div className="sideContent">
-                        <h3 className="detailTitle">Design Style</h3>
-                        <div className="sideSection">
-                            <div>
-                                <input type="checkbox" name="style-check-1" value="18" id="style-check-1" checked={!!designArray.includes(18)} onChange={(event) => handleDesignChange(event)}/>
-                                <label className="sideLabel" htmlFor="style-check-1">Bohemian</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="style-check-2" value="17" id="style-check-2" checked={!!designArray.includes(17)} onChange={(event) => handleDesignChange(event)}/>
-                                    <label className="sideLabel" htmlFor="style-check-2">Contemporary</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="style-check-3" value="16" id="style-check-3" checked={!!designArray.includes(16)} onChange={(event) => handleDesignChange(event)}/>
-                                <label className="sideLabel" htmlFor="style-check-3">Farmhouse</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="style-check-4" value="15" id="style-check-4" checked={!!designArray.includes(15)} onChange={(event) => handleDesignChange(event)}/>
-                                    <label className="sideLabel" htmlFor="style-check-4">Modern</label>
-                            </div>
-                        </div>
-                        <hr />
 
-                        <h3 className="detailTitle">Room</h3>
-                        <div className="sideSection">
-                            <div>
-                                <input type="checkbox" name="room-check-1" value="3" id="room-check-1" checked={!!categoryArray.includes(3)} onChange={(event) => handleCategoryChange(event)}/>
-                                <label className="sideLabel" htmlFor="room-check-1">Bathroom</label>
+                        <div className="sideBarSections">
+                            <h3 className="detailTitle">Design Style</h3>
+                            <div className="sideSection">
+                                <div>
+                                    <input type="checkbox" name="style-check-1" value="18" id="style-check-1" checked={!!designArray.includes(18)} onChange={(event) => handleDesignChange(event)}/>
+                                    <label className="sideLabel" htmlFor="style-check-1">Bohemian</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="style-check-2" value="17" id="style-check-2" checked={!!designArray.includes(17)} onChange={(event) => handleDesignChange(event)}/>
+                                        <label className="sideLabel" htmlFor="style-check-2">Contemporary</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="style-check-3" value="16" id="style-check-3" checked={!!designArray.includes(16)} onChange={(event) => handleDesignChange(event)}/>
+                                    <label className="sideLabel" htmlFor="style-check-3">Farmhouse</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="style-check-4" value="15" id="style-check-4" checked={!!designArray.includes(15)} onChange={(event) => handleDesignChange(event)}/>
+                                        <label className="sideLabel" htmlFor="style-check-4">Modern</label>
+                                </div>
                             </div>
-                            <div>
-                                <input type="checkbox" name="room-check-2" value="2" id="room-check-2" checked={!!categoryArray.includes(2)} onChange={(event) => handleCategoryChange(event)}/>
-                                <label className="sideLabel" htmlFor="room-check-2">Bedroom</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="room-check-3" value="4" id="room-check-3" checked={!!categoryArray.includes(4)} onChange={(event) => handleCategoryChange(event)}/>
-                                    <label className="sideLabel" htmlFor="room-check-3">Kitchen</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="room-check-4" value="1" id="room-check-4" checked={!!categoryArray.includes(1)} onChange={(event) => handleCategoryChange(event)}/>
-                                <label className="sideLabel" htmlFor="room-check-4">Living Room</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="room-check-5" value="5" id="room-check-5" checked={!!categoryArray.includes(5)} onChange={(event) => handleCategoryChange(event)}/>
-                                    <label className="sideLabel" htmlFor="room-check-5">Patio</label>
-                            </div>
+                            
                         </div>
-                        <hr />
+                        <hr className="navLine"/>
 
-                        <h3 className="detailTitle">Color</h3>
-                        <div className="sideSection">
-                            <div>
-                                <input type="checkbox" name="color-check-1" value="3" id="color-check" checked={!!colorArray.includes(3)} onChange={(event) => handleColorChange(event)}/>
-                                <label className="sideLabel" htmlFor="color-check-1">Black</label>
+                        <div className="sideBarSections">
+                            <h3 className="detailTitle">Room</h3>
+                            <div className="sideSection">
+                                <div>
+                                    <input type="checkbox" name="room-check-1" value="3" id="room-check-1" checked={!!categoryArray.includes(3)} onChange={(event) => handleCategoryChange(event)}/>
+                                    <label className="sideLabel" htmlFor="room-check-1">Bathroom</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="room-check-2" value="2" id="room-check-2" checked={!!categoryArray.includes(2)} onChange={(event) => handleCategoryChange(event)}/>
+                                    <label className="sideLabel" htmlFor="room-check-2">Bedroom</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="room-check-3" value="4" id="room-check-3" checked={!!categoryArray.includes(4)} onChange={(event) => handleCategoryChange(event)}/>
+                                        <label className="sideLabel" htmlFor="room-check-3">Kitchen</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="room-check-4" value="1" id="room-check-4" checked={!!categoryArray.includes(1)} onChange={(event) => handleCategoryChange(event)}/>
+                                    <label className="sideLabel" htmlFor="room-check-4">Living Room</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="room-check-5" value="5" id="room-check-5" checked={!!categoryArray.includes(5)} onChange={(event) => handleCategoryChange(event)}/>
+                                        <label className="sideLabel" htmlFor="room-check-5">Patio</label>
+                                </div>
                             </div>
-                            <div>
-                                <input type="checkbox" name="color-check-2" value="2" id="color-check" checked={!!colorArray.includes(2)} onChange={(event) => handleColorChange(event)}/>
-                                    <label className="sideLabel" htmlFor="color-check-2">Blue</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="color-check-3" value="6" id="color-check" checked={!!colorArray.includes(6)} onChange={(event) => handleColorChange(event)}/>
-                                <label className="sideLabel" htmlFor="color-check-3">Green</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="color-check-4" value="8" id="color-check" checked={!!colorArray.includes(8)} onChange={(event) => handleColorChange(event)}/>
-                                    <label className="sideLabel" htmlFor="color-check-4">Orange</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="color-check-5" value="7" id="color-check" checked={!!colorArray.includes(7)} onChange={(event) => handleColorChange(event)}/>
-                                <label className="sideLabel" htmlFor="color-check-5">Purple</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="color-check-6" value="1" id="color-check" checked={!!colorArray.includes(1)} onChange={(event) => handleColorChange(event)}/>
-                                <label className="sideLabel" htmlFor="color-check-6">Red</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="color-check-7" value="4" id="color-check" checked={!!colorArray.includes(4)} onChange={(event) => handleColorChange(event)}/>
-                                    <label className="sideLabel" htmlFor="color-check-7">White</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="color-check-8" value="5" id="color-check" checked={!!colorArray.includes(5)} onChange={(event) => handleColorChange(event)}/>
-                                <label className="sideLabel" htmlFor="color-check-8">Yellow</label>
-                            </div>
+                            
                         </div>
-                        <hr />
+                        <hr className="navLine" />
 
-                        <h3 className="detailTitle">Price</h3>
-                        <div className="sideSection">
-                            <div>
-                                <input type="checkbox" name="price-check-1" value="1" id="price-check-1" checked={!!priceTierArray.includes(1)} onChange={(event) => handlePriceTierChange(event)}/>
-                                <label className="sideLabel" htmlFor="price-check-1">$0 - $39</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="check-2" value="2" id="price-check-2" checked={!!priceTierArray.includes(2)} onChange={(event) => handlePriceTierChange(event)}/>
-                                    <label className="sideLabel" htmlFor="price-check-2">$40 - $79</label>
-                            </div>
-                            <div>
-                                <input type="checkbox" name="check-3" value="3" id="price-check-3" checked={!!priceTierArray.includes(3)} onChange={(event) => handlePriceTierChange(event)}/>
-                                <label className="sideLabel" htmlFor="price-check-3">$80 - $120</label>
+                        <div className="sideBarSections">
+                            <h3 className="detailTitle">Color</h3>
+                            <div className="sideSection">
+                                <div>
+                                    <input type="checkbox" name="color-check-1" value="3" id="color-check" checked={!!colorArray.includes(3)} onChange={(event) => handleColorChange(event)}/>
+                                    <label className="sideLabel" htmlFor="color-check-1">Black</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="color-check-2" value="2" id="color-check" checked={!!colorArray.includes(2)} onChange={(event) => handleColorChange(event)}/>
+                                        <label className="sideLabel" htmlFor="color-check-2">Blue</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="color-check-3" value="6" id="color-check" checked={!!colorArray.includes(6)} onChange={(event) => handleColorChange(event)}/>
+                                    <label className="sideLabel" htmlFor="color-check-3">Green</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="color-check-4" value="8" id="color-check" checked={!!colorArray.includes(8)} onChange={(event) => handleColorChange(event)}/>
+                                        <label className="sideLabel" htmlFor="color-check-4">Orange</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="color-check-5" value="7" id="color-check" checked={!!colorArray.includes(7)} onChange={(event) => handleColorChange(event)}/>
+                                    <label className="sideLabel" htmlFor="color-check-5">Purple</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="color-check-6" value="1" id="color-check" checked={!!colorArray.includes(1)} onChange={(event) => handleColorChange(event)}/>
+                                    <label className="sideLabel" htmlFor="color-check-6">Red</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="color-check-7" value="4" id="color-check" checked={!!colorArray.includes(4)} onChange={(event) => handleColorChange(event)}/>
+                                        <label className="sideLabel" htmlFor="color-check-7">White</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="color-check-8" value="5" id="color-check" checked={!!colorArray.includes(5)} onChange={(event) => handleColorChange(event)}/>
+                                    <label className="sideLabel" htmlFor="color-check-8">Yellow</label>
+                                </div>
                             </div>
                         </div>
-                        <hr />
+                        <hr className="navLine"/>
+
+                        <div className="sideBarSections">
+                            <h3 className="detailTitle">Price</h3>
+                            <div className="sideSection">
+                                <div>
+                                    <input type="checkbox" name="price-check-1" value="1" id="price-check-1" checked={!!priceTierArray.includes(1)} onChange={(event) => handlePriceTierChange(event)}/>
+                                    <label className="sideLabel" htmlFor="price-check-1">$0 - $39</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="check-2" value="2" id="price-check-2" checked={!!priceTierArray.includes(2)} onChange={(event) => handlePriceTierChange(event)}/>
+                                        <label className="sideLabel" htmlFor="price-check-2">$40 - $79</label>
+                                </div>
+                                <div>
+                                    <input type="checkbox" name="check-3" value="3" id="price-check-3" checked={!!priceTierArray.includes(3)} onChange={(event) => handlePriceTierChange(event)}/>
+                                    <label className="sideLabel" htmlFor="price-check-3">$80 - $120</label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                
                     </div>
-
-                    <button id="button1" onClick={() => {getShopSearchData();}}>
+                    <br />
+                    {/* <button id="button1" onClick={() => {getShopSearchData();}}>
                         Get Items
-                    </button>
+                    </button> */}
                     <button onClick={()=> {clearShopData();}}>
                         Clear Selections
                     </button>
+                    <br />
                 
                 </div>
                 </div>
