@@ -122,6 +122,7 @@ Working with our own API was both a challenge and an advantage. We could easily 
 <li><strong>Admin Dashboard -</strong> If Interiorize needed to be production ready for a business, it would need an admin dashboard. From the admin dashboard, employees would be able to see user's quiz results, recent transactions, and more. 
 </li>
 <li><strong>Reviews -</strong> Adding functionality for users to be able to review previous orders. Rather than displaying these reviews to the public, this information would go back to the "stylists" to better inform their decisions for the next box.</li>
+<li><strong>Payment -</strong> During our two weeks of active development, we were not able to implement any sort of mock payment setup. Adding a payment page would have been the final touch to the ecommerce portion of the project.</li>
 </ul>
 
 ## Contributors
