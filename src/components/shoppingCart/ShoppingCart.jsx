@@ -58,6 +58,12 @@ const ShoppingCart = () => {
   }, [value.cart, totalCost]);
   
      const _createOrder = async () => {
+       let cartItems = ""
+       value.cart.forEach(item => 
+        cartItems = item.id + "," + cartItems
+       );
+      cartItems = cartItems.replace(/,\s*$/, "");
+       console.log("Cart Item",cartItems)
         const localUrl = "http://localhost:3333/orders/add";
         const url = `https://api.interiorize.design/orders/add`;
         const requestOptions = {
@@ -68,7 +74,7 @@ const ShoppingCart = () => {
              },
           body: JSON.stringify({
             user_id: localStorage.getItem('user_id'),
-            items: "1, 4, 16",
+            items: cartItems,
           }),
         };
         const response = await fetch(url, requestOptions).then((response) =>
