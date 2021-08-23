@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import ProductCard from "./ProductCard";
 import PreviousOrderCard from "./PreviousOrderCard";
 import Modal from "./Modal";
@@ -14,7 +15,6 @@ const UserProfile = () => {
   const [isFormSubmitted, setIsSubmitted] = useState(false);
   //state and function to change it gets passed down so that newOrderModal can open the stylesModal.
   const [isStylesVisible, setIsStylesVisible] = useState(false);
-  
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -54,13 +54,20 @@ const UserProfile = () => {
       }).then((response) => response.json());
 
       console.log("ORDER RESPONSE:", response);
-      setRecentOrder(response.orderedItems[0]);
-
-      setPreviousOrder1(response.orderedItems[1]);
-      if(response.orderedItems.length > 2) {
-        setPreviousOrder2(response.orderedItems[2]);
+      if (response.orderedItems.length === 1) {
+        setRecentOrder(response.orderedItems[0]);
+      } else {
+        if (response.orderedItems.length === 2) {
+          setRecentOrder(response.orderedItems[0]);
+          setPreviousOrder1(response.orderedItems[1]);
+        } else {
+          setRecentOrder(response.orderedItems[0]);
+          setPreviousOrder1(response.orderedItems[1]);
+          setPreviousOrder2(response.orderedItems[2]);
+        }
       }
-      
+
+
     };
 
     fetchUserData();
@@ -90,31 +97,39 @@ const UserProfile = () => {
           <div className="shipmentCol">
             <h1>Your Account</h1>
             <h2>Recent Shipment</h2>
-            {recentOrder !== null ? (
+            {!!recentOrder ? (
               <p>You've got items on the way!</p>
-            ) : null}
+            ) : (
+              <p>
+                You don't have any orders on the way. Check out our shop or take
+                the style quiz today!
+              </p>
+            )}
             <div className="shipmentContainer">
-              {recentOrder !== null ? (
-                recentOrder.map((order, index) => (
-                  <ProductCard
-                    index={index}
-                    description={order.description}
-                    img={order.img_src}
-                    name={order.item_name}
-                  />
-                ))
-              ) : (
-                <p>
-                  You don't have any recent shipments, place your first order
-                  today!
-                </p>
-              )}
+              {!!recentOrder
+                ? recentOrder.map((order, index) => (
+                    <ProductCard
+                      index={index}
+                      description={order.description}
+                      img={order.img_src}
+                      name={order.item_name}
+                    />
+                  ))
+                : null}
             </div>
-            <NewOrderModal handleClickStylesModal={handleClickStylesModal} 
-            handleFormSubmit={handleFormSubmit}
-            />
+            {!!recentOrder ? (
+              <NewOrderModal
+                handleClickStylesModal={handleClickStylesModal}
+                handleFormSubmit={handleFormSubmit}
+              />
+            ) : (
+              <Link to="/shop-intro" className="primaryBtn">
+                Start Shopping
+              </Link>
+            )}
+
             <h2>Previous Orders</h2>
-            {previousOrder1 !== null ? (
+            {!!previousOrder1 ? (
               <>
                 <div className="shipmentContainer">
                   {previousOrder1.map((item, index) => (
@@ -130,53 +145,63 @@ const UserProfile = () => {
             ) : (
               <p>You don't have any previous shipments.</p>
             )}
-            {previousOrder2 !== null ? (
-                  <div className="shipmentContainer">
-                    {previousOrder2.map((item, index) => (
-                      <PreviousOrderCard
-                        index={index}
-                        image={item.img_src}
-                        name={item.item_name}
-                        description={item.description}
-                      />
-                    ))}
-                  </div>
-                ) : null}
+            {!!previousOrder2  ? (
+              <div className="shipmentContainer">
+                {previousOrder2.map((item, index) => (
+                  <PreviousOrderCard
+                    index={index}
+                    image={item.img_src}
+                    name={item.item_name}
+                    description={item.description}
+                  />
+                ))}
+              </div>
+            ) : null}
           </div>
           <div className="userPreferencesCol">
             <h2>Your Style Preferences</h2>
-            {userData !== null ? (
-              <div className="preferencesRow">
-                <div className="stylesCol">
-                  <h3>Budget</h3>
-                  <p>${userData.budget}</p>
-                  <h3>Color Palette</h3>
-                  <p>
-                    {userData.color1}, {userData.color2}, {userData.color3}
-                  </p>
-                  <h3>Style</h3>
-                  <p>{userData.style_name}</p>
+            {!!recentOrder ? (
+              <>
+                <div className="preferencesRow">
+                  <div className="stylesCol">
+                    <h3>Budget</h3>
+                    <p>${userData.budget}</p>
+                    <h3>Color Palette</h3>
+                    <p>
+                      {userData.color1}, {userData.color2}, {userData.color3}
+                    </p>
+                    <h3>Style</h3>
+                    <p>{userData.style_name}</p>
+                  </div>
+                  <div>
+                    <h3>Room</h3>
+                    <p>{userData.category_name}</p>
+                    <h3>Avoid</h3>
+                    {avoidArray.length > 0 ? (
+                      <p>{avoidArray}</p>
+                    ) : (
+                      <p>No avoid preferences</p>
+                    )}
+                  </div>
                 </div>
-                <div>
-                  <h3>Room</h3>
-                  <p>{userData.category_name}</p>
-                  <h3>Avoid</h3>
-                  {avoidArray.length > 0 ? (
-                    <p>{avoidArray}</p>
-                  ) : (
-                    <p>No avoid preferences</p>
-                  )}
-                </div>
-              </div>
-            ) : (
-              <p>Loading your style preferences...</p>
-            )}
 
-            <Modal
-              handleFormSubmit={handleFormSubmit}
-              handleClickStylesModal={handleClickStylesModal}
-              isStylesVisible={isStylesVisible}
-            />
+                <Modal
+                  handleFormSubmit={handleFormSubmit}
+                  handleClickStylesModal={handleClickStylesModal}
+                  isStylesVisible={isStylesVisible}
+                />
+              </>
+            ) : (
+              <>
+                <p id="preferencesError">
+                  It looks like you haven't taken our style quiz yet. Take the
+                  quiz to set your preferences!
+                </p>
+                <Link to="/style-quiz" className="primaryBtn">
+                  Take The Quiz!
+                </Link>
+              </>
+            )}
           </div>
         </div>
       </div>
