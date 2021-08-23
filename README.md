@@ -36,6 +36,9 @@ Make an account and get your personalized style box at Interiorize (link)!
 </ul>
 
 ## Screenshots
+![homepage of Interiorize](./public/homepageScreenshot.png)
+![shop page](./public/shop.png)
+![user profile page](./public/userProfile.png)
 
 ## Code Examples
 PostgreSQL query used to select all user quiz data to populate the user profile page.
@@ -131,5 +134,5 @@ Working with our own API was both a challenge and an advantage. We could easily 
 <a href="https://github.com/natelee3">Nate Lee</a>
 </br>
 </br>
-<p>Don't forget to checkout the backend code and the API which can be found <a href="https://github.com/natelee3/interiorize-backend">here!</a></p>
+<p>Don't forget to checkout the <a href="https://github.com/natelee3/interiorize-backend">backend code</a> and the API! </p>
 

@@ -6,11 +6,11 @@ import "./shopIntro.css";
 
 const ShopIntro = () => {
   const [value, dispatch] = useContext(StateContext);
-  const [isVisible, setIsVisible] = useState(true);
+  const [isRedirectModalVisible, setIsRedirectModalVisible] = useState(true);
   //if the isGenerated context is set to true display the modal will display
 
   const handleClick = () => {
-    setIsVisible(!isVisible);
+    setIsRedirectModalVisible(!isRedirectModalVisible);
     dispatch({
       type: "ACTION_NO_ITEM_MATCHES",
     });
@@ -20,9 +20,9 @@ const ShopIntro = () => {
     <>
       <div className="shopNav">
         <div className="shopList">
-          {!value.generatedItems ? (
+          {value.generatedItems === false ? (
             <QuizRedirectModal
-              isVisible={isVisible}
+              isVisible={isRedirectModalVisible}
               handleClick={handleClick}
             />
           ) : null}

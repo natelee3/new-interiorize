@@ -56,7 +56,7 @@ const Modal = ({ handleFormSubmit, handleClickStylesModal, isStylesVisible }) =>
 
     storedQuizData();
     storedAvoidData();
-  }, []);
+  }, [token]);
 
   const handleChange = (event) => {
     const value = event.target.value;

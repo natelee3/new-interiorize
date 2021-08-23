@@ -40,7 +40,7 @@ const ItemDetails = () => {
     };
 
     getItemInfo(id);
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const goBack = () => {
     history.goBack();

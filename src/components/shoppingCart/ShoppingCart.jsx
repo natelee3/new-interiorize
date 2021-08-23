@@ -55,7 +55,7 @@ const ShoppingCart = () => {
     };
 
     calculateItemTotal();
-  }, [value.cart.length]);
+  }, [value.cart, totalCost]);
   
      const _createOrder = async () => {
         const localUrl = "http://localhost:3333/orders/add";
