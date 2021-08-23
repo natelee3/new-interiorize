@@ -1,4 +1,3 @@
-import "./homepage.css";
 import homepageImg2 from "./imgs/homepageImg2.jpg";
 import check from "./imgs/checkbox.png";
 import truck from "./imgs/truck.png";
@@ -7,6 +6,8 @@ import editedPhoto from "./imgs/editedPhoto.png";
 import { useAuth0 } from "@auth0/auth0-react";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import HomepageLogin from "../auth0/HomepageLogin";
+import "./homepage.css";
 
 const Homepage = () => {
     const { isAuthenticated, user } = useAuth0();
@@ -73,13 +74,14 @@ const Homepage = () => {
                     <h1 className="greetingHeading">We Decorate So You Don't Have To</h1>
                     <p className="greetingContent">We’re proud to work with thousands of passionate Stylists from all over the U.S. who are motivated to learn about your style and evolving needs, in order to find the perfect pieces for you.</p>
                     
-                    <Link to="/style-quiz">
+                    {/* <Link to="/style-quiz">
                         <button className="startButton" onClick={() => {
                         
                         }}>
                             START NOW
                         </button>
-                    </Link>    
+                    </Link>     */}
+                    <HomepageLogin/>
                 </div>
                 <div className="mainBox2">
                 <img className="homepageImg2" src={homepageImg2} alt="Decorated Home" />
