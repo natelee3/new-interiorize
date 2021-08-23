@@ -1,0 +1,14 @@
+{
+  "short_name": "Interiorize",
+  "name": "Interiorze - Design Made Easy",
+  "icons": [
+    {
+      "src": "interiorizeFavicon.png",
+      "type": "image/png"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}

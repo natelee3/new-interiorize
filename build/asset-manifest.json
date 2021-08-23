@@ -1,0 +1,30 @@
+{
+  "files": {
+    "main.css": "/static/css/main.50024773.chunk.css",
+    "main.js": "/static/js/main.8f811cc6.chunk.js",
+    "main.js.map": "/static/js/main.8f811cc6.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7231d546.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7231d546.js.map",
+    "static/css/2.ed1298f3.chunk.css": "/static/css/2.ed1298f3.chunk.css",
+    "static/js/2.1b533bde.chunk.js": "/static/js/2.1b533bde.chunk.js",
+    "static/js/2.1b533bde.chunk.js.map": "/static/js/2.1b533bde.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.ed1298f3.chunk.css.map": "/static/css/2.ed1298f3.chunk.css.map",
+    "static/css/main.50024773.chunk.css.map": "/static/css/main.50024773.chunk.css.map",
+    "static/js/2.1b533bde.chunk.js.LICENSE.txt": "/static/js/2.1b533bde.chunk.js.LICENSE.txt",
+    "static/media/shopIntro.css": "/static/media/patio.25aa4164.jpg",
+    "static/media/styleQuiz.css": "/static/media/orange.9b3b087f.png",
+    "static/media/editedPhoto.b11e7111.png": "/static/media/editedPhoto.b11e7111.png",
+    "static/media/homepageImg2.ab5e88c4.jpg": "/static/media/homepageImg2.ab5e88c4.jpg",
+    "static/media/interiorize404.3da31fbe.gif": "/static/media/interiorize404.3da31fbe.gif",
+    "static/media/logo.05c34f79.png": "/static/media/logo.05c34f79.png",
+    "static/media/truck.a3fc830b.gif": "/static/media/truck.a3fc830b.gif"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7231d546.js",
+    "static/css/2.ed1298f3.chunk.css",
+    "static/js/2.1b533bde.chunk.js",
+    "static/css/main.50024773.chunk.css",
+    "static/js/main.8f811cc6.chunk.js"
+  ]
+}
