@@ -2,7 +2,10 @@ import './cartModal.css';
 import { Link } from 'react-router-dom';
 import shoppingCart from './imgs/shoppingCart.png';
 
-const CartModal = ({isVisible, closeModal}) => {
+const CartModal = ({isVisible}) => {
+  const scrollToTop = () => {
+    window.scrollTo(0, 0);
+  };
 
   return (
     <>
@@ -22,7 +25,7 @@ const CartModal = ({isVisible, closeModal}) => {
                   </p>
 
                   <Link to='/shop-intro/shop'>
-                    <button className="btn animation" type="button">
+                    <button className="btn animation" type="button" onClick={scrollToTop}> 
                       &larr; Back To Shop
                     </button>
                   </Link>

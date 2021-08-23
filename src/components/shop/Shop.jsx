@@ -95,6 +95,11 @@ const Shop = () => {
           setPriceTierArray([]);
       }
 
+      const scrollToTop = () => {
+        window.scrollTo(0, 0);
+      };
+    
+
     return (
         <>
         <div className="mainContainer1">
@@ -249,7 +254,7 @@ const Shop = () => {
                                             </div>
                                             <p className="itemName">{item.item_name}</p>
                                             <p className="itemPrice">${item.price}</p>
-                                            <button className="moreButton primaryBtn">View More</button>
+                                            <button className="moreButton primaryBtn" onClick={scrollToTop}>View More</button>
                                         </li>
                                     </ul>
                                 </div>
