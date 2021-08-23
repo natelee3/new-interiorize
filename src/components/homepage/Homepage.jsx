@@ -129,7 +129,7 @@ const Homepage = () => {
                     <h1 className="endTextH1">Seamless Customer Experience</h1>
                     <p className="endTextP">It’s our mission to change the way people find decor items they love by combining technology with the personal touch of seasoned style experts. Our online Shop helps you save time by allowing you to filter out items that do not match your style, and present you with decor that you'll love.</p>
                     <Link to="/shop-intro">
-                        <button className="learnButton" type="button">START SHOPPING</button>
+                        <button className="learnButton" type="button">Start Shopping</button>
                     </Link>
                 </div>
             </div>
