@@ -29,14 +29,13 @@ const Shop = () => {
     };
 
     useEffect(() => {
-        console.log(categoryArray)
         if (categoryArray[0] === 6) {
             getShopData();
         } else {
             getShopSearchData();
         }
     
-    }, []);
+    }, [categoryArray, getShopData, getShopSearchData]);
 
     const handleDesignChange = (event) => {
         if (event.target.checked && !designArray.includes(event.target.value)) {
