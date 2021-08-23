@@ -217,13 +217,13 @@
     
     .moreButton {
         display: flex;
-        width: 100px;
+        /* width: 100px; */
         margin: auto;
         margin-bottom: 10px;
         margin-top: 10px;
         justify-content: center;
         border: 1px solid #244d42;
-        color: #244d42;
+        color: #FFFFFF;
         align-items: flex-end;
         text-align: center;
     }

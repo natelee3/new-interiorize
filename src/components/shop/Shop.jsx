@@ -229,7 +229,7 @@ const Shop = () => {
                                             </div>
                                             <p className="itemName">{item.item_name}</p>
                                             <p className="itemPrice">${item.price}</p>
-                                            <Link className="moreButton" to={`/shop-intro/shop/${item.id}`}>View More</Link>
+                                            <button className="moreButton primaryBtn">View More</button>
                                         </li>
                                     </ul>
                                 </div>
