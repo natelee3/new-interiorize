@@ -8,6 +8,7 @@ const NewOrderModal = ({handleClickStylesModal, handleFormSubmit}) => {
 
   const handleClick = () => {
       setIsVisible(!isVisible);
+      scrollToTop()
   }
 
   const scrollToTop = () => {

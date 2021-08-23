@@ -93,19 +93,19 @@
 
 /* STYLE SELECTION*/
 .bohemian {
-  background: url("./imgs/bohemian.jpeg");
+  background: url("./imgs/bohemian.jpg");
 }
 
 .farmhouse {
-  background: url("./imgs/farmhouse.jpeg");
+  background: url("./imgs/farmhouse.jpg");
 }
 
 .contemporary {
-  background: url("./imgs/contemporary.jpeg");
+  background: url("./imgs/contemporary.jpg");
 }
 
 .modern {
-  background: url("./imgs/modern.jpeg");
+  background: url("./imgs/modern.jpg");
 }
 
 .styleCol {
