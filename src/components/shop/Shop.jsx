@@ -7,17 +7,11 @@ const Shop = () => {
     const [shopData, setShopData] = useState([]);
     const [active1, setActive1] = useState(false);
     const [designArray, setDesignArray] = useState([]);
-    const [categoryArray, setCategoryArray] = useState([]);
+    const [categoryArray, setCategoryArray] = useState([parseInt(localStorage.getItem('Room choice'))]);  
     const [colorArray, setColorArray] = useState([]);
     const [priceTierArray, setPriceTierArray] = useState([]);
 
-    const getShopData = async () => {
-        //const localurl = "http://localhost:3333/items";
-        const url = "https://api.interiorize.design/items";
-        const response = await fetch(url).then((response) => response.json());
-        setShopData(response);
-    };
-
+   
     const getShopSearchData = async () => {
         //const localurl = `http://localhost:3333/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
         const url = `https://api.interiorize.design/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
@@ -27,10 +21,28 @@ const Shop = () => {
     };
 
     useEffect(() => {
-        getShopData();
-    }, []);
+        const getShopData = async () => {
+            //const localurl = "http://localhost:3333/items";
+            const url = "https://api.interiorize.design/items";
+            const response = await fetch(url).then((response) => response.json());
+            setShopData(response);
+        };
 
+        const getShopSearchData = async () => {
+            //const localurl = `http://localhost:3333/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
+            const url = `https://api.interiorize.design/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
+            const response = await fetch(url).then((response) => response.json());
+            //console.log(response);
+            setShopData(response);
+        };
 
+        if (categoryArray[0] === 6) {
+            getShopData();
+        } else {
+            getShopSearchData();
+        }
+    
+    }, [categoryArray, colorArray, priceTierArray, designArray]);
 
     const handleDesignChange = (event) => {
         if (event.target.checked && !designArray.includes(event.target.value)) {
@@ -75,6 +87,13 @@ const Shop = () => {
           setPriceTierArray(filteredAry);
         }
       };
+
+      const clearShopData = () => {
+          setCategoryArray([]);
+          setColorArray([]);
+          setDesignArray([]);
+          setPriceTierArray([]);
+      }
 
     return (
         <>
@@ -193,6 +212,9 @@ const Shop = () => {
                     <button id="button1" onClick={() => {getShopSearchData();}}>
                         Get Items
                     </button>
+                    <button onClick={()=> {clearShopData();}}>
+                        Clear Selections
+                    </button>
                 
                 </div>
                 </div>
@@ -213,7 +235,7 @@ const Shop = () => {
                                             </div>
                                             <p className="itemName">{item.item_name}</p>
                                             <p className="itemPrice">${item.price}</p>
-                                            <Link className="moreButton" to={`/shop-intro/shop/${item.id}`}>View More</Link>
+                                            <button className="moreButton primaryBtn">View More</button>
                                         </li>
                                     </ul>
                                 </div>
