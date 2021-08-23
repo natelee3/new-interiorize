@@ -12,14 +12,6 @@ const Shop = () => {
     const [priceTierArray, setPriceTierArray] = useState([]);
 
    
-
-    const getShopData = async () => {
-        //const localurl = "http://localhost:3333/items";
-        const url = "https://api.interiorize.design/items";
-        const response = await fetch(url).then((response) => response.json());
-        setShopData(response);
-    };
-
     const getShopSearchData = async () => {
         //const localurl = `http://localhost:3333/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
         const url = `https://api.interiorize.design/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
@@ -29,13 +21,28 @@ const Shop = () => {
     };
 
     useEffect(() => {
+        const getShopData = async () => {
+            //const localurl = "http://localhost:3333/items";
+            const url = "https://api.interiorize.design/items";
+            const response = await fetch(url).then((response) => response.json());
+            setShopData(response);
+        };
+
+        const getShopSearchData = async () => {
+            //const localurl = `http://localhost:3333/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
+            const url = `https://api.interiorize.design/items/shop-search?designArray=${designArray}&categoryArray=${categoryArray}&colorArray=${colorArray}&priceTierArray=${priceTierArray}`;
+            const response = await fetch(url).then((response) => response.json());
+            //console.log(response);
+            setShopData(response);
+        };
+
         if (categoryArray[0] === 6) {
             getShopData();
         } else {
             getShopSearchData();
         }
     
-    }, [categoryArray, getShopData, getShopSearchData]);
+    }, [categoryArray, colorArray, priceTierArray, designArray]);
 
     const handleDesignChange = (event) => {
         if (event.target.checked && !designArray.includes(event.target.value)) {
