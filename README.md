@@ -17,6 +17,7 @@ Make an account and get your personalized style box at <a href="https://interior
 </p>
 
 ## Demo
+[![Interiorize Demo](./public/interiorizeVideoScreenshot.png)](https://www.youtube.com/watch?v=-zCIreM_Cro "Interiorize Demo")
 
 ## Features
 <ul>
