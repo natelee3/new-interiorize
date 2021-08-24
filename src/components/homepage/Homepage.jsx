@@ -72,7 +72,7 @@ const Homepage = () => {
             <div className="homeMainContainer">
                 <div className="mainBox1">
                     <h1 className="greetingHeading">We Decorate So You Don't Have To</h1>
-                    <p className="greetingContent">We’re proud to work with thousands of passionate Stylists from all over the U.S. who are motivated to learn about your style and evolving needs, in order to find the perfect pieces for you.</p>
+                    <p className="greetingContent">We’re proud to work with thousands of passionate interior designers from all over the U.S. who are motivated to learn about your style and evolving needs, in order to find the perfect pieces for you.</p>
                     
                     {/* <Link to="/style-quiz">
                         <button className="startButton" onClick={() => {
@@ -107,7 +107,7 @@ const Homepage = () => {
                     </div>
                     <div className="lowerBoxes">
                     <img className="icons" src={box} alt="Box" /> 
-                    <h3 className="subTitles">3. Send Back What You Dont Like</h3>
+                    <h3 className="subTitles">3. Send Back What You Don't Like</h3>
                         <p className="subContent">If you love your items, keep them! If not, re-box your item and take it to your nearest UPS Store to be mailed back to us for free. Our design team will then take notes of this returned item and record them on your account to make sure you're only receiving items you'll love!</p>
                     </div>
                 </div>
@@ -117,17 +117,11 @@ const Homepage = () => {
                 <div className="pictureBox">
                     {/* Edited Photo With Green Box Included*/}
                     <img className="greenChairs" src={editedPhoto} alt="Decorated Dining Room" />
-
-                    {/* Photo and Box are separate */}
-                    {/* <img className="greenChairs" src={greenChairs} alt="Decorated Dining Room" />
-                    <div className="backdropBox">
-                        <img className="greenChairs" src={greenChairs} alt="Decorated Dining Room" />
-                    </div> */}
                 </div>
 
                 <div className="endTextBox">
                     <h1 className="endTextH1">Seamless Customer Experience</h1>
-                    <p className="endTextP">It’s our mission to change the way people find decor items they love by combining technology with the personal touch of seasoned style experts. Our online Shop helps you save time by allowing you to filter out items that do not match your style, and present you with decor that you'll love.</p>
+                    <p className="endTextP">It’s our mission to change the way people find decor items they love by combining technology with the personal touch of seasoned style experts. Our online shop helps you save time by allowing you to filter out items that do not match your style, and present you with decor that you'll love.</p>
                     <Link to="/shop-intro">
                         <button className="learnButton" type="button">Start Shopping</button>
                     </Link>
