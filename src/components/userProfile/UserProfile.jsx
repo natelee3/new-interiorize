@@ -32,8 +32,9 @@ const UserProfile = () => {
     };
     const fetchAvoidArray = async () => {
       const user_id = localStorage.getItem("user_id");
-      const localUrl = `https://api.interiorize.design/users/avoid/string/${user_id}`;
-      const response = await fetch(localUrl, {
+      // const localUrl = `http://localhost:3333/users/avoid/string/${user_id}`;
+      const url = `https://api.interiorize.design/users/avoid/string/${user_id}`;
+      const response = await fetch(url, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -41,6 +42,8 @@ const UserProfile = () => {
       if (response !== null) {
         let commaSeparated = response.join(", ");
         setAvoidArray(commaSeparated);
+      } else {
+        setAvoidArray([])
       }
     };
 
