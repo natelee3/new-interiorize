@@ -104,7 +104,7 @@ const Modal = ({ handleFormSubmit, handleClickStylesModal, isStylesVisible }) =>
   };
 
   const updateAvoidData = async () => {
-    //const localurl = "http://localhost:3333/users/avoid/update";
+    // const localurl = "http://localhost:3333/users/avoid/update";
     const url = "https://api.interiorize.design/users/avoid/update";
     const requestOptions = {
       method: "POST",

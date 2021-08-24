@@ -161,9 +161,8 @@ const CarouselContainer = () => {
           // let localAvoidUrl = 'http://localhost:3333/users/avoid/update';
           let avoidUrl = "https://api.interiorize.design/users/avoid/update";
           submitQuizData(quizUrl);
-          if (localStorage.getItem("Avoid").length > 0) {
-            submitAvoidData(avoidUrl);
-          }
+          submitAvoidData(avoidUrl);
+        
         } else {
           // let localQuizUrl = 'http://localhost:3333/quizzes/add';
           let quizUrl = "https://api.interiorize.design/quizzes/add";
