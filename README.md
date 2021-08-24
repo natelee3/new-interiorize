@@ -129,9 +129,9 @@ Working with our own API was both a challenge and an advantage. We could easily 
 </ul>
 
 ## Contributors
-<a href="https://github.com/sarahdepalo">Sarah dePalo</a> - Technical writer, user profile and style quiz design and functionality. Shopping cart calculations and item removal.
+<a href="https://github.com/sarahdepalo">Sarah dePalo</a> - Technical writer, user profile and style quiz design and functionality. Shopping cart calculations and item removal
 </br>
-<a href="https://github.com/zach-a-g">Zach Gleeson</a> - homepage, shop intro, item details, and shopping cart design and functionality. 
+<a href="https://github.com/zach-a-g">Zach Gleeson</a> - homepage, shop intro, item details, and shopping cart design and functionality
 </br>
 <a href="https://github.com/logancooper">Logan Cooper</a> - Project manager, seeding and setup of database, setup of generateOrder and shopSearch routes
 </br>
