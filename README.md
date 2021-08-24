@@ -17,6 +17,7 @@ Make an account and get your personalized style box at <a href="https://interior
 </p>
 
 ## Demo
+[![Interiorize Demo](./public/interiorizeVideoScreenshot.png)](https://www.youtube.com/watch?v=-zCIreM_Cro "Interiorize Demo")
 
 ## Features
 <ul>
@@ -129,13 +130,13 @@ Working with our own API was both a challenge and an advantage. We could easily 
 </ul>
 
 ## Contributors
-<a href="https://github.com/sarahdepalo">Sarah dePalo</a>
+<a href="https://github.com/sarahdepalo">Sarah dePalo</a> - Technical writer, user profile and style quiz design and functionality. Shopping cart calculations and item removal
 </br>
-<a href="https://github.com/zach-a-g">Zach Gleeson</a>
+<a href="https://github.com/zach-a-g">Zach Gleeson</a> - Homepage, shop intro, item details, and shopping cart design and functionality
 </br>
-<a href="https://github.com/logancooper">Logan Cooper</a>
+<a href="https://github.com/logancooper">Logan Cooper</a> - Project manager, seeding and setup of database, setup of generateOrder and shopSearch routes
 </br>
-<a href="https://github.com/natelee3">Nate Lee</a>
+<a href="https://github.com/natelee3">Nate Lee</a> - Creating and securing API, frontend and backend deployment, auth0 integration, API docs
 </br>
 </br>
 <p>Don't forget to checkout the <a href="https://github.com/natelee3/interiorize-backend">backend code</a> and the API! </p>
